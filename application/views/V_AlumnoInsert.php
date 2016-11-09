@@ -15,14 +15,20 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
-                        <?= form_error('nombre_persona'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('apellidos_persona') ?>" placeholder="Apellidos" name="apellidos_persona" maxlength="60">
+                        <?= form_error('apellidos_persona'); ?>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('apellidos_persona') ?>" placeholder="Apellidos" name="apellidos_persona" maxlength="60">
-                        <?= form_error('apellidos_persona'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  </div> 
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nie') ?>" placeholder="NIE" name="nie" class="input-text" maxlength="7">
+                        <?= form_error('nie'); ?>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -33,22 +39,85 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('nie') ?>" placeholder="NIE" name="nie" class="input-text" maxlength="7">
-                        <?= form_error('nie'); ?>
+                        <input type="date" class="form-control" value="<?= set_value('fechaNac') ?>" placeholder="Fecha Nacimiento" name="fechaNac">
+                      <?= form_error('fechaNac'); ?>
                     </div>
-                  </div>
+                  </div>                   
                   <div class="col-md-6">
                     <div class="form-group">                        
-                      <input type="email" class="form-control" value="<?= set_value('correo') ?>"placeholder="Email" name="correo">
-                      <?= form_error('correo'); ?>
+                      <input type="text" class="form-control" value="<?= set_value('nombreT1') ?>"placeholder="Nombre T1" name="nombreT1">
+                      <?= form_error('nombreT1'); ?>
                    </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="date" class="form-control" value="<?= set_value('') ?>"placeholder="Email" name="correo">
-                      <?= form_error('correo'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('dniT1') ?>"placeholder="DNI T1" name="dniT1">
+                      <?= form_error('dniT1'); ?>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                    <div class="form-group">                        
+                      <input type="text" class="form-control" value="<?= set_value('nombreT2') ?>"placeholder="Nombre T2" name="nombreT2">
+                      <?= form_error('nombreT2'); ?>
+                   </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('dniT2') ?>"placeholder="DNI T2" name="dniT2">
+                      <?= form_error('dniT2'); ?>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('direccion') ?>" placeholder="Dirección" name="direccion" maxlength="40">
+                        <?= form_error('direccion'); ?>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                   <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
+                        <?= form_error('nombre_persona'); ?>
+                    </div>
                   <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
                 </div>
               </form>      
