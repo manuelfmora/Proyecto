@@ -9,7 +9,7 @@
 function CreaSelect($datos, $name) {
 
     $datos = CreaArrayParaSelect($datos);
-    $html = '<select class="country_to_state country_select" id="billing_country" name="' . $name . '">';
+    $html = '<select class="form-control" id="billing_country" name="' . $name . '">';
 
     foreach ($datos as $idx => $texto) {
         $html.= "<option value='$idx' " . set_select($name, $idx) . " >$texto</option>";
@@ -29,7 +29,7 @@ function CreaSelect($datos, $name) {
 function CreaSelectMod($datos, $name, $opcSelected) {
 
     $datos = CreaArrayParaSelect($datos);
-    $html = '<select class="country_to_state country_select" id="billing_country" name="' . $name . '">';
+    $html = '<select class="form-control" id="billing_country" name="' . $name . '">';
 
     foreach ($datos as $idx => $texto) {
         $html.= "<option value=$idx ";

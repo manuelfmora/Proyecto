@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2016 a las 19:51:52
+-- Tiempo de generación: 09-11-2016 a las 23:43:27
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -51,8 +51,7 @@ CREATE TABLE `alumnado` (
   `tipo` varchar(45) DEFAULT NULL,
   `situacion` varchar(45) DEFAULT NULL,
   `implicacion_escolar` varchar(45) DEFAULT NULL,
-  `provincias_cod` char(2) NOT NULL,
-  `provincias_cod1` char(2) NOT NULL
+  `provincias_cod` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -291,12 +290,11 @@ CREATE TABLE `usuario_has_alumnado` (
 -- Indices de la tabla `alumnado`
 --
 ALTER TABLE `alumnado`
-  ADD PRIMARY KEY (`idAlumnado`,`Consejo_Orientador_idConsejo_Orientador`,`provincias_cod`,`provincias_cod1`),
+  ADD PRIMARY KEY (`idAlumnado`,`Consejo_Orientador_idConsejo_Orientador`,`provincias_cod`),
   ADD KEY `fk_Alumnado_Consejo_Orientador1_idx` (`Consejo_Orientador_idConsejo_Orientador`),
   ADD KEY `fk_Alumnado_Transito1_idx` (`Transito_idTransito`),
   ADD KEY `fk_Alumnado_Trayect_Acad1_idx` (`Trayect_Acad_idTrayect_Acad`),
-  ADD KEY `fk_Alumnado_provincias1_idx` (`provincias_cod`),
-  ADD KEY `fk_Alumnado_provincias2_idx` (`provincias_cod1`);
+  ADD KEY `fk_Alumnado_provincias1_idx` (`provincias_cod`);
 
 --
 -- Indices de la tabla `consejo_orientador`
@@ -413,8 +411,7 @@ ALTER TABLE `alumnado`
   ADD CONSTRAINT `fk_Alumnado_Consejo_Orientador1` FOREIGN KEY (`Consejo_Orientador_idConsejo_Orientador`) REFERENCES `consejo_orientador` (`idConsejo_Orientador`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Alumnado_Transito1` FOREIGN KEY (`Transito_idTransito`) REFERENCES `transito` (`idTransito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Alumnado_Trayect_Acad1` FOREIGN KEY (`Trayect_Acad_idTrayect_Acad`) REFERENCES `trayect_acad` (`idTrayect_Acad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Alumnado_provincias1` FOREIGN KEY (`provincias_cod`) REFERENCES `provincias` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Alumnado_provincias2` FOREIGN KEY (`provincias_cod1`) REFERENCES `provincias` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Alumnado_provincias1` FOREIGN KEY (`provincias_cod`) REFERENCES `provincias` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `datos_salud`
