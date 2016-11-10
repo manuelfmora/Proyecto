@@ -15,14 +15,14 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('apellidos_persona') ?>" placeholder="Apellidos" name="apellidos_persona" maxlength="60">
-                        <?= form_error('apellidos_persona'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('apellidos') ?>" placeholder="Apellidos" name="apellidos" maxlength="60">
+                        <?= form_error('apellidos'); ?>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('nombre_persona') ?>" placeholder="Nombre" name="nombre_persona" maxlength="40">
-                        <?= form_error('nombre_persona'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('nombre') ?>" placeholder="Nombre" name="nombre" maxlength="40">
+                        <?= form_error('nombre'); ?>
                     </div>
                   </div> 
                   <div class="col-md-6">
@@ -126,9 +126,14 @@
                         <input type="text" class="form-control" value="<?= set_value('implicacion_escolar') ?>" placeholder="Implicación Escolar" name="implicacion_escolar">
                         <?= form_error('implicacion_escolar'); ?>
                     </div>
-                  </div>                     
+                  </div>
+                   <div class="col-md-12">
+                    <div class="form-group">
+                      <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
+                    </div>
+                  </div>
               
-                  <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
+                  
                 </div>
               </form>      
             </div>

@@ -25,6 +25,20 @@ class M_Student extends CI_Model{
       
         return $query->num_rows();
     }
+    
+        /**
+     * Consulta el número de nie que tienen el mismo número que el pasado por parámetro
+     * @param String $nie NIE
+     * @return Int Nº de NIE
+     */
+    public function getCount_Nie($nie) {
+     
+        $query = $this->db->query("SELECT * "
+                . "FROM alumnado "
+                . "WHERE nie = '$nie' ");
+      
+        return $query->num_rows();
+    }
 
     /**
      * Añade un usuario a la base de datos

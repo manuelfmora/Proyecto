@@ -38,8 +38,6 @@ class User_insert extends CI_Controller{
      * Comprueba que los datos introducidos en el formulario sean correctos
      */
     public function Usuario() {
-//        $provincias = $this->M_Provincias->getProvincias();
-//        $select = CreaSelect($provincias, 'cod_provincia');
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
 
