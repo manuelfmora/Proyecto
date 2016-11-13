@@ -11,7 +11,7 @@
               <span class="mu-title-bar"></span>
             </div>
             <div class="mu-reservation-content">
-              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/AlumnoInsert/Student' ?>" method="post">
+              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/AlumnoInsert/Alumno' ?>" method="post">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -39,8 +39,8 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="date" class="form-control" value="<?= set_value('fechaNac') ?>" placeholder="Fecha Nacimiento" name="fechaNac">
-                      <?= form_error('fechaNac'); ?>
+                        <input type="date" class="form-control" value="<?= set_value('fechaNacimiento') ?>" placeholder="Fecha Nacimiento" name="fechaNacimiento">
+                      <?= form_error('fechaNacimiento'); ?>
                     </div>
                   </div>
                     <div class="col-md-6">

@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Description of M_Student
+ * Description of M_Alumno
  *
  * @author Manuel Mora
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-class M_Student extends CI_Model{
+class M_Alumno extends CI_Model{
     
     public function __construct() {
         $this->load->database();
     }
 
     /**
-     * Consulta el número de usuarios que tienen el mismo nombre que el pasado por parámetro
-     * @param String $nombre_usu Nombre de usuario
-     * @return Int Nº de usuarios
+     * Consulta el número de Alumnos que tienen el mismo nombre que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
      */
     public function getCount_NombreUsuario($nombre_usu) {
      
         $query = $this->db->query("SELECT * "
-                . "FROM usuario "
+                . "FROM alumno "
                 . "WHERE nombre_usu = '$nombre_usu' ");
       
         return $query->num_rows();
@@ -34,71 +34,73 @@ class M_Student extends CI_Model{
     public function getCount_Nie($nie) {
      
         $query = $this->db->query("SELECT * "
-                . "FROM alumnado "
+                . "FROM alumno "
                 . "WHERE nie = '$nie' ");
       
         return $query->num_rows();
     }
 
     /**
-     * Añade un usuario a la base de datos
-     * @param Array $data Datos del usuario
+     * Añade un Alumno a la base de datos
+     * @param Array $data Datos del Alumno
      */
-    public function addUsuario($data) {
-
-        $this->db->insert('usuario', $data);
+    public function addalumno($data) {
+        
+        
+        print_r($data);
+        $this->db->insert('alumno', $data);
     }
 
     /**
-     * Consulta la contraseña del usuario
-     * @param String $username Nombre de usuario
+     * Consulta la contraseña del Alumno
+     * @param String $username Nombre de Alumno
      * @return String Contraseña codificada
      */
     public function getClave($username) {
 
         $query = $this->db->query("SELECT clave "
-                . "FROM usuario "
+                . "FROM alumno "
                 . "WHERE nombre_usu = '$username'; ");
 
         return $query->row_array()['clave'];
     }
 
     /**
-     * Cambia el estado de un usuario a 'B', baja
-     * @param String $username Nombre de usuario
+     * Cambia el estado de un Alumno a 'B', baja
+     * @param String $username Nombre de Alumno
      */
     public function setBajaUsuario($username) {
         $data = array(
             'estado' => 'B'
         );
         $this->db->where('nombre_usu', $username);
-        $this->db->update('usuario', $data);
+        $this->db->update('alumno', $data);
     }
     
     /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
-     * @param String $nombre_usu Nombre de usuario
+     * @param String $nombre_usu Nombre de Alumno
      * @return Array
      */
     public function getDatosModificar($nombre_usu) {
 
         $query = $this->db->query("SELECT idUsuario, nombre_usu, correo "
-                . "FROM usuario "
+                . "FROM alumno "
                 . "WHERE nombre_usu = '$nombre_usu'");
                    
         return $query->row_array();
     }
     
     /**
-     * Consulta el número de usuario que tienen el nombre de usuario pasado por parámetro y no es el ID pasado por parámetro
-     * @param String $nombre_usu Nombre de usuario
-     * @param Int $idUsuario ID de usuario
-     * @return Int Nº de usuarios
+     * Consulta el número de Alumno que tienen el nombre de Alumno pasado por parámetro y no es el ID pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @param Int $idUsuario ID de Alumno
+     * @return Int Nº de Alumnos
      */
     public function getCount_NombreUsuarioModificar($nombre_usu, $idUsuario) {
 
         $query = $this->db->query("SELECT * "
-                . "FROM usuario "
+                . "FROM alumno "
                 . "WHERE nombre_usu = '$nombre_usu' "
                 . "AND idUsuario != $idUsuario; ");
 
@@ -107,14 +109,14 @@ class M_Student extends CI_Model{
     
         /**
      * Consulta 
-     * @param String $username Nombre de usuario
-     * @param String $clave Clave usuario
-     * @return Int Nº de usuarios
+     * @param String $username Nombre de Alumno
+     * @param String $clave Clave Alumno
+     * @return Int Nº de Alumnos
      */
     public function getEstado($username) {
         
         $query = $this->db->query("SELECT estado "
-                . "FROM usuario "
+                . "FROM alumno "
                 . "WHERE nombre_usu = '$username' "
                 . "AND estado = 'A' ;"
                 );   
@@ -122,26 +124,26 @@ class M_Student extends CI_Model{
     }
     
     /**
-     * Consulta el id de usuario a través de su nombre de usuario
-     * @param String $nombre_usu Nombre de usuario
-     * @return Int ID de usuario
+     * Consulta el id de Alumno a través de su nombre de Alumno
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int ID de Alumno
      */
     public function getId($nombre_usu) {
 
         $query = $this->db->query("SELECT idUsuario "
-                . "FROM usuario "
+                . "FROM alumno "
                 . "WHERE nombre_usu = '$nombre_usu' ");
 
         return $query->row_array()['idUsuario'];
     }
     
     /**
-     * Actualiza los datos de un usuario
-     * @param Int $id ID de usuario
+     * Actualiza los datos de un Alumno
+     * @param Int $id ID de Alumno
      * @param Array $data Datos de la actualización
      */
     public function updateUsuario($id,$data) {
         $this->db->where('idUsuario', $id);
-        $this->db->update('usuario', $data);
+        $this->db->update('alumno', $data);
     }
 }

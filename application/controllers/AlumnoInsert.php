@@ -13,7 +13,7 @@ class AlumnoInsert extends CI_Controller{
         
         $this->load->helper('Formulario');
         $this->load->model('M_Provincias');
-        $this->load->model('M_Student');    
+        $this->load->model('M_Alumno');    
         $this->load->library('form_validation');        
     }
 
@@ -37,7 +37,7 @@ class AlumnoInsert extends CI_Controller{
     /**
      * Comprueba que los datos introducidos en el formulario sean correctos
      */
-    public function Student() {
+    public function Alumno() {
         
         $provincias = $this->M_Provincias->getProvincias();
         $select = CreaSelect($provincias, 'cod_provincia');
@@ -49,23 +49,26 @@ class AlumnoInsert extends CI_Controller{
         
         //Establecemos reglas de validación para el formulario
         $this->setReglasValidacion();
-
-        if ($this->form_validation->run() == FALSE || !claves_check($this->input->post('clave'), $this->input->post('rep_clave'))) {//Validación de datos incorrecta
-            $errorclave = '';
-
-            if (!claves_check($this->input->post('clave'), $this->input->post('rep_clave'))) {//Si las claves no son iguales, se muestra error
-                $errorclave = '<div class="alert alert-danger"><b>¡Error! </b> Las contraseñas no son iguales</div>';
-            }
-            
+//|| !claves_check($this->input->post('clave'), $this->input->post('rep_clave'))
+        if ($this->form_validation->run() == FALSE ) {//Validación de datos incorrecta
+//            $errorclave = '';
+//
+//            if (!claves_check($this->input->post('clave'), $this->input->post('rep_clave'))) {//Si las claves no son iguales, se muestra error
+//                $errorclave = '<div class="alert alert-danger"><b>¡Error! </b> Las contraseñas no son iguales</div>';
+//            }
+//          
+          
             $cuerpo = $this->load->view('V_AlumnoInsert', array(
-                                        'select' => $select,
-                                        'errorclave' => $errorclave), true);
+                                             'select' => $select), true);
+
             $this->load->view('V_Plantilla', Array(
-                               'cuerpo' => $cuerpo,                                
-                               'homeactive' => 'active'));
+                                    'cuerpo' => $cuerpo,
+                                    'homeactive' => 'active'));
+            
+            
         } else {//Validación de datos correcta
             
-            //Crea el array de los datos a insertar en la tabla usuario
+            //Crea el array de los datos a insertar en la tabla Alumno
             foreach ($this->input->post() as $key => $value) {
                 if($key == 'clave')
                 {
@@ -76,8 +79,8 @@ class AlumnoInsert extends CI_Controller{
                 
             }
             
-            //Inserta en la tabla usuario
-            $this->M_Student->addUsuario($data);
+            //Inserta en la tabla alumnado
+            $this->M_Alumno->addalumno($data);
             
             redirect('Login/Login/'.$data['nombre_usu'], 'location', 301);
         }
@@ -108,7 +111,7 @@ class AlumnoInsert extends CI_Controller{
      */
     function nombreUsuRepetido_check($nombre_usu) {
 
-        $countNomUsuario = $this->M_Student->getCount_NombreUsuario($nombre_usu);
+        $countNomUsuario = $this->M_Alumno->getCount_NombreUsuario($nombre_usu);
 
         if ($countNomUsuario == 0) {//No existen nombres guardados
             return TRUE;
@@ -122,7 +125,7 @@ class AlumnoInsert extends CI_Controller{
      * @return boolean
      */
     function numeroNieRepetido_chek($nie){
-        $cunetaNie=$this->M_Student->getCount_Nie($nie);
+        $cunetaNie=$this->M_Alumno->getCount_Nie($nie);
         if($cunetaNie==0){
             return TRUE;
         }else{
@@ -171,7 +174,7 @@ class AlumnoInsert extends CI_Controller{
         $this->form_validation->set_rules('nombre', 'nombre', 'required');
         $this->form_validation->set_rules('dni', 'DNI', 'required|exact_length[9]|callback_dni_check');
         $this->form_validation->set_rules('nie', 'NIE', 'required|exact_length[5]|callback_numeroNieRepetido_chek');
-        $this->form_validation->set_rules('fechaNac', 'fecha nacimiento', 'required|callback_validar_fecha');
+        $this->form_validation->set_rules('fechaNacimiento', 'fecha nacimiento', 'required|callback_validar_fecha');
         $this->form_validation->set_rules('nombreT1', 'nombre titular 1', 'required');
         $this->form_validation->set_rules('dniT1', 'DNI T1', 'required|exact_length[9]|callback_dni_check');
         $this->form_validation->set_rules('nombreT2', 'nombre titular 2', 'required');
@@ -187,7 +190,7 @@ class AlumnoInsert extends CI_Controller{
         $this->form_validation->set_rules('situacion', 'Situación', 'required');
         $this->form_validation->set_rules('implicacion_escolar', 'Implicación Escolar', 'required');
         //Preguntar si el correo es necesario.
-        $this->form_validation->set_rules('correo', 'correo electrónico', 'required|valid_email');
+//        $this->form_validation->set_rules('correo', 'correo electrónico', 'required|valid_email');
   
     }
 }
