@@ -68,14 +68,14 @@ class AlumnoInsert extends CI_Controller{
             
         } else {//Validación de datos correcta
             
-            //Crea el array de los datos a insertar en la tabla Alumno
+            //Crea el array de los datos a insertar en la tabla usuario
             foreach ($this->input->post() as $key => $value) {
-                if($key == 'clave')
-                {
-                    $data[$key] = password_hash($value, PASSWORD_DEFAULT);
-                }
-                else if ($key != 'rep_clave' && $key != 'GuardarUsuario')
-                    $data[$key] = $value;
+//                if($key == 'clave')
+//                {
+//                    $data[$key] = password_hash($value, PASSWORD_DEFAULT);
+//                }
+//                else if ($key != 'rep_clave' && $key != 'GuardarUsuario')
+//                    $data[$key] = $value;
                 
             }
             
@@ -134,7 +134,8 @@ class AlumnoInsert extends CI_Controller{
         
     }
     function validar_fecha($str) {
-        $patron = "/^(\d){4}\-(\d){2}\-(\d){2}$/i";
+        
+        $patron = "/^(\d{1,2})-(\d{1,2})-(\d{4})$/";
         if (preg_match($patron, $str)) {
             return TRUE;
         } else {

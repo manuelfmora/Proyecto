@@ -6,7 +6,7 @@
           <div class="mu-reservation-area">
             <div class="mu-title">
               <span class="mu-subtitle">Insertar un</span>
-              <h2>Alumno</h2>
+              <h2>Alumno/a</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>
@@ -33,65 +33,66 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('dni') ?>" placeholder="DNI" name="dni" class="input-text" maxlength="9">
-                        <?= form_error('dni'); ?>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="date" class="form-control" value="<?= set_value('fechaNacimiento') ?>" placeholder="Fecha Nacimiento" name="fechaNacimiento">
+                        <input type="text" class="form-control" value="<?= set_value('fechaNacimiento') ?>" placeholder="Fecha Nacimiento dd/mm/aaaa " name="fechaNacimiento">
                       <?= form_error('fechaNacimiento'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
+
+                   <!-- Edad Campo Calculado--->
+                   
+                   <!-- Foto Alumno --->
+                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('tipo') ?>" placeholder="Tipo" name="tipo" >
-                        <?= form_error('tipo'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('datos_medicos') ?>" placeholder="Datos Médicos" name="datos_medicos" >
+                        
                     </div>
-                  </div>                    
-                  <div class="col-md-6">
+                  </div>
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('datos_psicologicos') ?>" placeholder="Datos Psicológicos" name="datos_psicologicos" >
+                       
+                    </div>
+                  </div>          
+                 <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('informe_medico') ?>" placeholder="Informe Médico" name="informe_medico" >
+                        
+                    </div>
+                  </div>
+                     
+                  <div class="col-md-6">                      
                     <div class="form-group">                        
-                      <input type="text" class="form-control" value="<?= set_value('nombreT1') ?>"placeholder="Nombre T1" name="nombreT1">
+                      <input type="text" class="form-control" value="<?= set_value('nombreT1') ?>"placeholder="Tutor 1" name="nombreT1">
                       <?= form_error('nombreT1'); ?>
                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('dniT1') ?>"placeholder="DNI T1" name="dniT1">
-                      <?= form_error('dniT1'); ?>
-                    </div>
-                  </div>
+                  </div>    
                   <div class="col-md-6">
                     <div class="form-group">                        
-                      <input type="text" class="form-control" value="<?= set_value('nombreT2') ?>"placeholder="Nombre T2" name="nombreT2">
-                      <?= form_error('nombreT2'); ?>
+                      <input type="text" class="form-control" value="<?= set_value('nombreT2') ?>"placeholder="Tutor 2" name="nombreT2">
+                      
                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('dniT2') ?>"placeholder="DNI T2" name="dniT2">
-                      <?= form_error('dniT2'); ?>
-                    </div>
-                  </div>
+                  
+                  <!--Empieza a fallar--->
                   <div class="col-md-6">
                     <div class="form-group">
                         <input type="text" class="form-control" value="<?= set_value('direccion') ?>" placeholder="Dirección" name="direccion" maxlength="40">
                         <?= form_error('direccion'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
+                  <div class="col-md-6">
                     <div class="form-group">
                         <input type="text" class="form-control" value="<?= set_value('cp') ?>" placeholder="Codigo Postal" name="cp">
                         <?= form_error('cp'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
+                  <div class="col-md-6">
                     <div class="form-group">
                         <input type="text" class="form-control" value="<?= set_value('poblacion') ?>" placeholder="Población" name="poblacion" >
                         <?= form_error('poblacion'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
+                  <div class="col-md-6">
                     <div class="form-group">
                     <?= $select ?> 
                     <?= form_error('cod_provincia'); ?>
@@ -99,19 +100,19 @@
                   </div>
                     <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('telefono1') ?>" placeholder="Teléfono1" name="telefono1" maxlength="9">
+                        <input type="text" class="form-control" value="<?= set_value('telefono1') ?>" placeholder="Teléfono 1" name="telefono1" maxlength="9">
                         <?= form_error('telefono1'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
+                  <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('telefono2') ?>" placeholder="Teléfono2" name="telefono2" maxlength="9">
+                        <input type="text" class="form-control" value="<?= set_value('telefono2') ?>" placeholder="Teléfono 2" name="telefono2" maxlength="9">
                         <?= form_error('telefono2'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
+                  <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('tipo') ?>" placeholder="Tipo" name="tipo" >
+                        <input type="text" class="form-control" value="<?= set_value('tipo') ?>" placeholder="Tipo Familia" name="tipo" >
                         <?= form_error('tipo'); ?>
                     </div>
                   </div> 
@@ -127,13 +128,15 @@
                         <?= form_error('implicacion_escolar'); ?>
                     </div>
                   </div>
-                   <div class="col-md-12">
-                    <div class="form-group">
-                      <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
+                  <center>
+                    <div class="col-md-12">
+                      <div class="form-group">
+
+                        <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
+
+                      </div>
                     </div>
-                  </div>
-              
-                  
+                  </center>
                 </div>
               </form>      
             </div>

@@ -87,45 +87,97 @@
                               <!-- Menú salir -->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">HOLA:  <?= $this->session->userdata('username'); ?><span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">                
-                                   <li><a href="<?= base_url() . 'index.php/Login/Logout' ?>">SALIR</a></li>                                       
-                                </ul>
+                                    <ul class="dropdown-menu" role="menu">                
+                                        <li>
+                                            <a href="<?= base_url() . 'index.php/Login/Logout' ?>">SALIR</a>
+                                        </li>
+                                    
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">MI CUENTA<span class="caret"></span></a>
+                                            <ul class="dropdown-menu" role="menu">          
+                                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Usuario</a></li>                                    
+                                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Usuario</a></li>                                          
+                                            </ul>
+                                        </li>
+                                    </ul>
                             </li>
 
                         <!-- Menú Opciones usuario-->
-                        <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">MI CUENTA<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">                
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Usuario</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Usuario</a></li>                                          
-                                </ul>
-                            </li>
+                       
                             <!-- /Menú Opciones usuario-->
                             <!-- Menú Opciones Alumnos-->
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ALUMNOS<span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ALUMNADO<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu"> 
                                     <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
                                     <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
                                     <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
                                 </ul>
                             </li>
+                            
+                            
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">NEAE<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                </ul>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">AT. DIVERSIDAD<span class="caret"></span></a>
+                               <ul class="dropdown-menu" role="menu">                            
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">NEAE<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu"> 
+                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">MEDIDAS EDUCATIVAS<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu"> 
+                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                        </ul>
+                                    </li>
+                               </ul>    
                             </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">MEDIDAS EDUCATIVAS<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                </ul>
+                            
+                                                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">AT. DIVERSIDAD<span class="caret"></span></a>
+                               <ul class="dropdown-menu" role="menu"> 
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">PROTOCOLOS<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu"> 
+                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ENTREVISTAS<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu"> 
+                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">TRAY. ACADEMICA<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu"> 
+                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                        </ul>
+                                    </li> 
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">TRANSITO<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu"> 
+                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                        </ul>
+                                    </li>
+                          
+                               </ul>    
                             </li>
+
+                             <!----->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">CONSEJO ORIENTADOR<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu"> 
@@ -134,37 +186,11 @@
                                     <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">PROTOCOLOS<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ENTREVISTAS<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">TRAY. ACADEMICA<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                </ul>
-                            </li>                                                       <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">TRANSITO<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                </ul>
-                            </li>
+                            
+                            <!----->
+
+
+
                              <!-- /Menú Opciones Alumnos-->
                             <?php endif; ?> 
                         </ul>                            

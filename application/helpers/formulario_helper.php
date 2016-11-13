@@ -9,8 +9,8 @@
 function CreaSelect($datos, $name) {
 
     $datos = CreaArrayParaSelect($datos);
-    $html = '<select class="form-control" id="billing_country" name="' . $name . '">';
-
+    $html = '<select class="form-control" id="billing_country" name="' . $name . '">'.'<option>Provincias</option>'  ;
+ 
     foreach ($datos as $idx => $texto) {
         $html.= "<option value='$idx' " . set_select($name, $idx) . " >$texto</option>";
     }
@@ -70,6 +70,17 @@ function cambiaFormatoFecha($fecha){
     $date = date_create($fecha);
     
     return date_format($date, 'd/m/Y');
+}
+/**
+ * Cambia el formato de una fecha
+ * @param Date $fecha Fecha a cambiar
+ * @return Date Fecha cambiada
+ */
+function formatoFechaAmericano($fecha){
+    print_r($fecha);
+    $date = date_create($fecha);
+    
+    return date_format($date, 'Y/m/d');
 }
 
 /**
