@@ -13,7 +13,7 @@
                         <span class="mu-title-bar"></span>
                     </div>
                     <div class="mu-reservation-content">             
-                        <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Modificar' ?>" method="post">
+                        <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Buscar' ?>" method="post">
                             <div class="row">
                                 <div class="mu-title">
                                     <div class="col-md-6">

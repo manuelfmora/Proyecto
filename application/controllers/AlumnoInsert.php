@@ -16,6 +16,7 @@ class AlumnoInsert extends CI_Controller {
         $this->load->model('M_Provincias');
         $this->load->model('M_Alumno');
         $this->load->library('form_validation');
+        $this->load->model('M_User');
     }
 
     /**
@@ -70,7 +71,8 @@ class AlumnoInsert extends CI_Controller {
                     $data[$key] = $value;
                 }
             }
-            
+            $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
+            $data['Usuario_idUsuario']=$datos['idUsuario'];
             //Inserta en la tabla alumnado
             $this->M_Alumno->addalumno($data);
 

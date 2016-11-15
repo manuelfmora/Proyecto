@@ -110,8 +110,8 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ALUMNADO<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu"> 
                                     <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                    <li><a href="<?= base_url() . 'index.php/AlumnoModify' ?>">Modificar Alumno</a></li>                                    
+                                    <li><a href="<?= base_url() . 'index.php/AlumnoRemove' ?>">Eliminar Alumno</a></li>                                          
                                 </ul>
                             </li>
                             

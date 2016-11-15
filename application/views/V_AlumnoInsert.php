@@ -131,9 +131,7 @@
                   <center>
                     <div class="col-md-12">
                       <div class="form-group">
-
-                        <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
-
+                          <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
                       </div>
                     </div>
                   </center>

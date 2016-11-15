@@ -84,7 +84,9 @@ class M_Alumno extends CI_Model{
      */
     public function getDatosModificar($nombre_usu) {
 
-        $query = $this->db->query("SELECT idUsuario, nombre_usu, correo "
+        $query = $this->db->query("SELECT idAlumno,apellidos,nombre,nie,fechaNacimiento,edad,fotoAlumnado,datos_medicos,"
+                ."datos_psicologicos,informe_medico,nombreT1,nombreT2,dirección,cp,poblacion,cod_provincia,telefono1,"
+                ."telefono2,tipo,situacion,implicacion_escolar "
                 . "FROM alumno "
                 . "WHERE nombre_usu = '$nombre_usu'");
                    

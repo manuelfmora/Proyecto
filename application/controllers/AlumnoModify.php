@@ -5,7 +5,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserModify extends CI_Controller {
+class AlumnoModify extends CI_Controller {
 
     public function __construct() {
         parent::__construct();  
@@ -26,15 +26,19 @@ class UserModify extends CI_Controller {
             return; //Sale de la función
         }
 
-        $provincias = $this->M_Provincias->getProvincias();
-        $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
+//        $provincias = $this->M_Provincias->getProvincias();
+//        $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
+//
+//        $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
 
-        $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
-
-        $cuerpo = $this->load->view('V_AlumnoModify', array('id' => 'modificar', 'datos' => $datos), true);
+        $cuerpo = $this->load->view('V_DateModify', array(), true);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
                                                 'homeactive' => 'active'));
+    }
+    
+    public function Buscar(){
+        
     }
 
     /**
@@ -46,12 +50,12 @@ class UserModify extends CI_Controller {
             $todocorrecto = TRUE;
             $cambiarclave = FALSE;
 
-//            $provincias = $this->M_Provincias->getProvincias();
-//            $select = CreaSelect($provincias, 'cod_provincia');
+            $provincias = $this->M_Provincias->getProvincias();
+            $select = CreaSelect($provincias, 'cod_provincia');
 
             $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
 
-            print_r($datos);
+         ;
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario

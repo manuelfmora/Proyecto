@@ -11,7 +11,7 @@ class UserModify extends CI_Controller {
         parent::__construct();  
         
         $this->load->helper('Formulario');
-//        $this->load->model('M_Provincias');
+        $this->load->model('M_Provincias');
         $this->load->model('M_User');    
         $this->load->library('form_validation');
     }
@@ -26,15 +26,19 @@ class UserModify extends CI_Controller {
             return; //Sale de la función
         }
 
-//        $provincias = $this->M_Provincias->getProvincias();
+        $provincias = $this->M_Provincias->getProvincias();
         $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
-
-//        $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
+        print_r($datos);
+        $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
 
         $cuerpo = $this->load->view('V_UserModify', array('id' => 'modificar', 'datos' => $datos), true);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
                                                 'homeactive' => 'active'));
+    }
+
+    public function id(){
+        
     }
 
     /**
@@ -108,8 +112,7 @@ class UserModify extends CI_Controller {
                 }
 
                 if ($todocorrecto) {
-
-                    print_r('todo coreccccccccto');
+                    
                     //Crea el array de los datos a insertar en la tabla usuario
                     foreach ($this->input->post() as $key => $value) {
                         if ($key == 'clave_nueva' && $cambiarclave) {
