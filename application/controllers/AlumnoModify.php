@@ -38,11 +38,21 @@ class AlumnoModify extends CI_Controller {
     }
     
     public function Buscar(){
-        
-//        $alumno=$this->getApellidosUsuario($this->input->post('apellidos'));
-        print_r('El valor del POST es:'.$this->input->post('apellidos').'<br>');
-        $alumno=$this->M_Alumno->getApellidosUsuario($this->input->post('apellidos'));
-        print_r('Valor de Alumnos:   '.$alumno);
+
+//       $valor= $this->input->post('apellidos');
+//
+//        print_r('El valor del POST es:'.$valor.'<br>');
+//        
+//        $alumnos=$this->M_Alumno->getApellidosUsuario($this->input->post('apellidos'));
+//        print_r('Valor de Alumnos:   '.$alumno);
+        $alumnos=Array('apellidos'=>"Mora Martin",
+                        'nombre'=>"Manuel",
+                         'nie'=>"12345");
+                   
+        $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
+                                                'homeactive' => 'active'));
         
     }
 
@@ -60,7 +70,7 @@ class AlumnoModify extends CI_Controller {
 
             $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
 
-         ;
+        
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario

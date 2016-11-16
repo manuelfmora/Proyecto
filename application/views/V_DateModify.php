@@ -14,16 +14,16 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="mu-contact-left">
-                    <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AlumnoModify/Buscar' ?>"  method="post" >
+                    <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AlumnoModify/Buscar' ?>"  method="POST" >
                       <div class="form-group">
-                        <label for="name">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" value="apellidos">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" class="form-control" placeholder="Apellidos" value="apellidos">
                       </div>                                      
-                      <button type="submit" class="mu-send-btn">Buscar</button>
+                      <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
                     </form>
                   </div>
                 </div>
-                <div class="col-md-6">
+<!--                <div class="col-md-6">
                   <div class="mu-contact-right">
                     <div class="mu-contact-widget">
                       <h3>Office Address</h3>
@@ -43,7 +43,7 @@
                       </address>
                     </div>
                   </div>
-                </div>
+              </div>  fin clase--->
               </div>
             </div>
           </div>

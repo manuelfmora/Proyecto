@@ -37,10 +37,6 @@ class UserModify extends CI_Controller {
                                                 'homeactive' => 'active'));
     }
 
-    public function id(){
-        
-    }
-
     /**
      * Modifica un usuario si se han introducido correctamente los datos
      */

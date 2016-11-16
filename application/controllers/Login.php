@@ -9,7 +9,6 @@ class Login extends CI_Controller{
    
     public function __construct() {
         parent::__construct();
-//        $this->load->library('L_Cart', 0, 'myCart');
         $this->load->model('M_User');
     }
 
