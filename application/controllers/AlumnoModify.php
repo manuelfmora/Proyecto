@@ -12,7 +12,7 @@ class AlumnoModify extends CI_Controller {
         
         $this->load->helper('Formulario');
         $this->load->model('M_Provincias');
-        $this->load->model('M_User');    
+        $this->load->model('M_Alumno');    
         $this->load->library('form_validation');
     }
 
@@ -38,6 +38,11 @@ class AlumnoModify extends CI_Controller {
     }
     
     public function Buscar(){
+        
+//        $alumno=$this->getApellidosUsuario($this->input->post('apellidos'));
+        print_r('El valor del POST es:'.$this->input->post('apellidos').'<br>');
+        $alumno=$this->M_Alumno->getApellidosUsuario($this->input->post('apellidos'));
+        print_r('Valor de Alumnos:   '.$alumno);
         
     }
 

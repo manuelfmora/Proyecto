@@ -13,19 +13,32 @@ class M_Alumno extends CI_Model{
     }
 
     /**
-     * Consulta el número de Alumnos que tienen el mismo nombre que el pasado por parámetro
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno
      * @return Int Nº de Alumnos
      */
-    public function getCount_NombreUsuario($nombre_usu) {
+    public function getCount_NombreUsuario($apellidos_alum) {
      
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
-                . "WHERE nombre_usu = '$nombre_usu' ");
+                . "WHERE apellidos = '$apellidos_alum' ");
       
         return $query->num_rows();
     }
-    
+        /**
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
+     */
+    public function getApellidosUsuario($apellidos_alum) {
+        print_r('El apellido es'.$apellidos_alum);
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE apellidos = '$apellidos_alum' ");
+        print_r('Muestra'.$query->row_array()['apellidos']);
+   
+        return $query->row_array()['apellidos'];
+    }
         /**
      * Consulta el número de nie que tienen el mismo número que el pasado por parámetro
      * @param String $nie NIE

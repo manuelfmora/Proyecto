@@ -14,12 +14,12 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="mu-contact-left">
-                    <form class="mu-contact-form action="<?= base_url() . 'index.php/AlumnoModify/Modificar' ?>" method="post"">
+                    <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AlumnoModify/Buscar' ?>"  method="post" >
                       <div class="form-group">
                         <label for="name">Apellidos</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name">
+                        <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" value="apellidos">
                       </div>                                      
-                      <button type="submit" class="mu-send-btn">Send Message</button>
+                      <button type="submit" class="mu-send-btn">Buscar</button>
                     </form>
                   </div>
                 </div>
