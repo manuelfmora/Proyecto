@@ -1,7 +1,4 @@
-<!-- Cragamos la vista Modificar-->
-<?php if(isset($id)) print_r($id)?>
-<section id="<?php if(isset($id)) echo $id ?>">
-<!--    <section id="modificar">-->
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -13,8 +10,8 @@
                         <span class="mu-title-bar"></span>
                     </div>
                     <div class="mu-reservation-content"> 
-                        //MIRAR CODIGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO USER MODIFY
-                        <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Buscar' ?>" method="post">
+                        
+                        <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Modificar' ?>" method="post">
                             <div class="row">
                                 <div class="mu-title">
                                     <div class="col-md-6">
