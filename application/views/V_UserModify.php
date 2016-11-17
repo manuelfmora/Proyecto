@@ -12,7 +12,8 @@
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
-                    <div class="mu-reservation-content">             
+                    <div class="mu-reservation-content"> 
+                        //MIRAR CODIGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO USER MODIFY
                         <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Buscar' ?>" method="post">
                             <div class="row">
                                 <div class="mu-title">
