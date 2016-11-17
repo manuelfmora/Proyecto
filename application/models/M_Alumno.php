@@ -37,7 +37,7 @@ class M_Alumno extends CI_Model{
                 . "WHERE apellidos = '$apellidos_alum' ");
      
    
-        return $query->row_array();
+        return $query->result_array();
     }
         /**
      * Consulta el número de nie que tienen el mismo número que el pasado por parámetro

@@ -37,7 +37,13 @@ class AlumnoModify extends CI_Controller {
         $apellidos=$this->input->post('apellidos');
         
        $alumnos= $this->M_Alumno-> getApellidosUsuario($apellidos);
-          print_r($alumnos);         
+       print_r($alumnos);
+       if(empty($alumnos)){
+                $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
+
+           $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
+                                                'homeactive' => 'active'));
+       }         
         $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
@@ -76,7 +82,7 @@ class AlumnoModify extends CI_Controller {
                                                'select'=>$select,
                                                'fecha'=>$fecha,
                                                'datos' => $datos), true);
-                                           print_r($datos);
+                                           
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
                                                         'homeactive' => 'active'));
 

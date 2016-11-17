@@ -15,34 +15,34 @@
                      </div>
                      <div class="mu-contact-content">
                          <div class="row">
-
-                             <div class="table-responsive">
+                             <div class="cart-view-table">
+                             <div class="table table-bordered">
 
                                  <table class="table">
                                      <thead>
-                                         <tr>                    
-                                             <th>Apellido</th>
-                                             <th>Nombre</th>
+                                         <tr> 
                                              <th>NIE</th>
+                                             <th>Apellido</th>
+                                             <th>Nombre</th>                                             
                                              <th>Modificar</th>                                       
                                          </tr>
                                      </thead>
                                      <tbody>  <!--Creación tabla de alumno-->
-                                         <?php print_r($alumnos); foreach ($alumnos as $alumno): ?>
+                                         <?php  foreach ($alumnos as $alumno): ?>
                                                  <tr>
-
+                                                     <td><?= $alumno['nie'] ?></td>  
                                                      <td><?= $alumno['apellidos'] ?></td>
                                                      <td><?= $alumno['nombre'] ?>  </td>
-                                                     <td><?= $alumno['nie'] ?></td>                                                     
-<!--                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>-->
-                                                     <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>
-
+                                                                                                        
+                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>
+<!--                                                     <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>-->
 
                                                  </tr>
                                              <?php endforeach;?>
                                          <!--/Creación tabla de alumno-->
                                      </tbody>
                                  </table>
+                             </div><!--/Fin table responsive -->
                              </div>
                          </div>
 
