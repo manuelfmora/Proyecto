@@ -26,11 +26,6 @@ class AlumnoModify extends CI_Controller {
             return; //Sale de la función
         }
 
-//        $provincias = $this->M_Provincias->getProvincias();
-//        $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
-//
-//        $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
-
         $cuerpo = $this->load->view('V_DateModify', array(), true);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
@@ -39,21 +34,12 @@ class AlumnoModify extends CI_Controller {
     
     public function Buscar(){
 
-//       $valor= $this->input->post('apellidos');
-//
-//        print_r('El valor del POST es:'.$valor.'<br>');
-//        
-//        $alumnos=$this->M_Alumno->getApellidosUsuario($this->input->post('apellidos'));
-//        print_r('Valor de Alumnos:   '.$alumno);
-        $alumnos=Array(array('apellidos'=>"Mora Martin",
-                                'nombre'=>"Manuel",
-                                   'nie'=>"12345"),
-                         array('apellidos'=>"Mora Martin",
-                                'nombre'=>"Manuel",
-                                   'nie'=>"12345")            );
-                   
+        $apellidos=$this->input->post('apellidos');
+        
+       $alumnos= $this->M_Alumno-> getApellidosUsuario($apellidos);
+          print_r($alumnos);         
         $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), TRUE);
-//        echo $cuerpo;
+
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
                                                 'homeactive' => 'active'));
 
@@ -69,9 +55,7 @@ class AlumnoModify extends CI_Controller {
 
         if (SesionIniciadaCheck()) {
             
-            $todocorrecto = TRUE;
-            $cambiarclave = FALSE;
-            
+
             //Optenemos los datos del alumno.
             $datos = $this->M_Alumno->getDatosModificar($nie);
             
@@ -80,160 +64,125 @@ class AlumnoModify extends CI_Controller {
             $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
 
             
-          
+          $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario
             $this->setReglasValidacion();
 
             if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-                print_r('Validacion incorrecta');
+                $fecha=$this->formato_americano($datos['fechaNacimiento']);
                 $cuerpo = $this->load->view('V_AlumnoModify', array(
                                                'select'=>$select,
+                                               'fecha'=>$fecha,
                                                'datos' => $datos), true);
-
+                                           print_r($datos);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
                                                         'homeactive' => 'active'));
 
 
-
-                $todocorrecto = FALSE;
+            
             } else {
-
-                if ($this->setRVcalven() == FALSE) {
-
-                    $errorclavenuevo = '<div class="alert alert-danger"><b>¡Error! </b> Las contraseñas no pueden estar vacias1</div>';
-                    $cuerpo = $this->load->view('V_AlumnoModify', array(
-                        'errorclavenuevo' => $errorclavenuevo,
-                        'datos' => $datos), true);
-                    $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'titulo' => 'Modificar Usuario',
-                        'homeactive' => 'active'));
-
-                    $todocorrecto = FALSE;
-                }
-                if ($this->setRVcalverep() == FALSE) {
-
-                    $errorclaverep = '<div class="alert alert-danger"><b>¡Error! </b> Las contraseñas no pueden estar vacias2</div>';
-                    $cuerpo = $this->load->view('V_AlumnoModify', array(
-                        'errorclaverep' => $errorclaverep,
-                        'datos' => $datos), true);
-                    $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'titulo' => 'Modificar Usuario',
-                        'homeactive' => 'active'));
-
-                    $todocorrecto = FALSE;
-                }
-                
-                $cambiarclave = TRUE;
-                if (!claves_check($this->input->post('clave_nueva'), $this->input->post('rep_clave_nueva'))) {
-
-                    $errorclave = '<div class="alert alert-danger"><b>¡Error! </b> Las contraseñas no son iguales</div>';
-                    $cuerpo = $this->load->view('V_AlumnoModify', array(
-                        'errorclave' => $errorclave,
-                        'datos' => $datos), true);
-                    $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'titulo' => 'Modificar Usuario',
-                        'homeactive' => 'active'));
-
-                    $todocorrecto = FALSE;
-                }
-
-                if ($todocorrecto) {
-
-                    print_r('todo coreccccccccto');
-                    //Crea el array de los datos a insertar en la tabla usuario
-                    foreach ($this->input->post() as $key => $value) {
-                        if ($key == 'clave_nueva' && $cambiarclave) {
-                            $data['clave'] = password_hash($value, PASSWORD_DEFAULT);
-                        } else if ($key == 'clave' && !$cambiarclave) {
-                            $data['clave'] = password_hash($value, PASSWORD_DEFAULT);
-                        }
-
-                        if ($key != 'rep_clave_nueva' && $key != 'GuardarUsuario' && $key != 'clave_nueva' && $key != 'clave') {
-                            $data[$key] = $value;
-                        }
-                    }
-                  
-
-                    $datos = array('username'=>$this->input->post('nombre_usu'));
-                   
-                    $this->session->set_userdata($datos);
-                    $this->M_User->updateUsuario($this->session->userdata('userid'),$data); //Inserta en la tabla usuario
-                    $cuerpo = $this->load->view('V_AlumnoModifyok', array(), true);
-                    $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'titulo' => 'Modificar Usuario',
-                        'homeactive' => 'active'));
-                }
+           
+               
+                 $config['apellidos'] =  $this->input->post('apellidos');
+                 $config['nombre'] =  $this->input->post('nombre');
+                 $config['nie'] =  $this->input->post('nie');
+                 $config['fechaNacimiento'] = $this->formato_mysql($this->input->post('fechaNacimiento')) ;
+                 $config['datos_medicos'] =  $this->input->post('datos_medicos');
+                 $config['datos_psicologicos'] =  $this->input->post('datos_psicologicos');
+                 $config['informe_medico'] =  $this->input->post('informe_medico');
+                 $config['nombreT1'] =  $this->input->post('nombreT1');
+                 $config['nombreT2'] =  $this->input->post('nombreT2');
+                 $config['direccion'] =  $this->input->post('direccion');
+                 $config['cp'] =  $this->input->post('cp');
+                 $config['poblacion'] =  $this->input->post('poblacion');
+                 $config['cod_provincia'] =  $this->input->post('cod_provincia');
+                 $config['telefono1'] =  $this->input->post('telefono1');
+                 $config['telefono2'] =  $this->input->post('telefono2');
+                 $config['tipo'] =  $this->input->post('tipo');
+                 $config['situacion'] =  $this->input->post('situacion');
+                 $config['implicacion_escolar'] =  $this->input->post('implicacion_escolar');
+                 $config['Usuario_idUsuario'] = $this->session->userdata('logged_in');
+                 $id=$this->M_Alumno->getId($this->input->post('nie'));
+                 $this->M_Alumno->updateAlumno($id,$config);
+                 $cuerpo = $this->load->view('V_AlumnoModifyok', array(), true);
+                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                        'homeactive' => 'active'));
             }
         }
     }
+    
+    
 
-    /**
-     * Devuelve si un nombre de usuario ya está guardado en la base de datos
-     * @param String $nombre_usu Nombre del usuario
-     * @return boolean
-     */
-    function nombreUsuRepetido_check($nombre_usu) {
 
-        $countNomUsuario = $this->M_User->getCount_NombreUsuarioModificar($nombre_usu, $this->session->userdata('userid'));
+    function formato_americano($date) {
 
-        if ($countNomUsuario == 0) {//No existen nombres guardados
-            return TRUE;
-        } else {
-            return FALSE;
+        if (!empty($date)) {
+            $var = explode('/', str_replace('-', '/', $date));
+            return "$var[2]/$var[1]/$var[0]";
         }
     }
 
-    /**
-     * Devuelve si la clave introducida corresponde con la guardada en la base de datos
-     * @return boolean
-     */
-    function clavecorrecta_check() {
+    function formato_mysql($date) {
 
-        if (password_verify($this->input->post('clave'), $this->M_User->getClave($this->session->userdata('username'))))
+        if (!empty($date)) {
+            $var = explode('/', str_replace('-', '/', $date));
+            return "$var[2]-$var[1]-$var[0]";
+        }
+    }
+
+    function validar_fecha($str) {
+        $date = $this->formato_americano($str);
+
+        return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
+    }
+
+    function validar_telefono($tel) {
+        $patron = " /^((\+?34([ \t|\-])?)?[9|6|7]((\d{1}([ \t|\-])?[0-9]{3})|(\d{2}([ \t|\-])?[0-9]{2}))([ \t|\-])?[0-9]{2}([ \t|\-])?[0-9]{2})$/ ";
+        if (preg_match($patron, $tel)) {
             return TRUE;
-        else
+        } else {
+
             return FALSE;
+        }
     }
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
      */
     function setMensajesErrores() {
-        $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
         $this->form_validation->set_message('required', 'El campo %s está vacío');
         $this->form_validation->set_message('valid_email', 'Formato de correo electrónico incorrecto');
         $this->form_validation->set_message('integer', 'El campo %s debe ser un número de 5 dígitos');
         $this->form_validation->set_message('exact_length', 'El campo %s debe tener %s caracteres');
         $this->form_validation->set_message('integer', 'El campo %s debe ser númerico');
-        $this->form_validation->set_message('nombreUsuRepetido_check', 'El nombre de usuario ya existe');
-        $this->form_validation->set_message('clavecorrecta_check', 'La contraseña es incorrecta');
+        $this->form_validation->set_message('numeroNieRepetido_chek', 'El campo %s ya existe');
+        $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
+        $this->form_validation->set_message('validar_telefono', 'El campo %s debe ser númerico');
     }
 
     /**
      * Establece las reglas que deben seguir cada campo del formulario
      */
     function setReglasValidacion() {
-        $this->form_validation->set_rules('nombre_usu', 'nombre de usuario', 'required|callback_nombreUsuRepetido_check');
-        $this->form_validation->set_rules('clave', 'contraseña', 'required|callback_clavecorrecta_check');
-        $this->form_validation->set_rules('correo', 'correo electrónico', 'required|valid_email');
+        $this->form_validation->set_rules('apellidos', 'apellidos', 'required');
+        $this->form_validation->set_rules('nombre', 'nombre', 'required');
+        $this->form_validation->set_rules('fechaNacimiento', 'fecha nacimiento', 'required|callback_validar_fecha');
+        $this->form_validation->set_rules('nombreT1', 'nombre titular 1', 'required');
+        $this->form_validation->set_rules('nombreT2', 'nombre titular 2', 'required');
+        $this->form_validation->set_rules('direccion', 'dirección', 'required');
+        $this->form_validation->set_rules('cp', 'CP', 'required|integer|exact_length[5]');
+        $this->form_validation->set_rules('poblacion', 'Población', 'required');
+        $this->form_validation->set_rules('cod_provincia', 'provincia', 'required');
+        $this->form_validation->set_rules('telefono1', 'Teléfono 1', 'required|exact_length[9]|callback_validar_telefono');
+        $this->form_validation->set_rules('telefono2', 'Teléfono 2', 'exact_length[9]|callback_validar_telefono');
+        $this->form_validation->set_rules('cod_provincia', 'provincia', 'required');
+        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
+        $this->form_validation->set_rules('situacion', 'Situación', 'required');
+        $this->form_validation->set_rules('implicacion_escolar', 'Implicación Escolar', 'required');
     }
-    
-    public function setRVcalven(){
 
 
-       $this->form_validation->set_rules('clave_nueva', 'Contraseña Nueva', 'required');
-       if($this->form_validation->run() == FALSE){
-           return FALSE;
-       }else{
-           return TRUE;
-       }
-    }
-    public function setRVcalverep(){
-
-      $this->form_validation->set_rules('rep_clave_nueva', 'Repita Contraseña Nueva', 'required');
-       if($this->form_validation->run() == FALSE){
-           return FALSE;
-       }else{
-           return TRUE;
-       }
-    }
 
 }

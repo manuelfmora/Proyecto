@@ -6,7 +6,7 @@
           <div class="mu-reservation-area">
             <div class="mu-title">
               <span class="mu-subtitle">OK</span>
-              <h2>USUARIO MODIFICADO CORRECTAMENTE.</h2>
+              <h2>ALUMNO MODIFICADO CORRECTAMENTE.</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>

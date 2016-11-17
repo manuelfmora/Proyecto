@@ -33,7 +33,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= $datos['fechaNacimiento'] ?>" placeholder="Fecha Nacimiento dd/mm/aaaa " name="fechaNacimiento">
+                        <input type="text" class="form-control" value="<?=$fecha ?>" placeholder="Fecha Nacimiento dd/mm/aaaa " name="fechaNacimiento">
                       <?= form_error('fechaNacimiento'); ?>
                     </div>
                   </div>
@@ -128,15 +128,17 @@
                         <?= form_error('implicacion_escolar'); ?>
                     </div>
                   </div>
-                  <center>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group">
-
-                        <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
-
+                        <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Modificar</button>
                       </div>
                     </div>
-                  </center>
+                   <div class="col-md-6">
+                      <div class="form-group">
+                          <br>
+                        <a class="mu-readmore-btn" href="<?= base_url().'index.php'?>"> Cancelar</a> 
+                      </div>
+                    </div>
                 </div>
               </form>      
             </div>

@@ -17,7 +17,7 @@
                     <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AlumnoModify/Buscar' ?>"  method="POST" >
                       <div class="form-group">
                         <label for="apellidos">Apellidos</label>
-                        <input type="text" class="form-control" placeholder="Apellidos" value="apellidos">
+                        <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">
                       </div>                                      
                       <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
                     </form>

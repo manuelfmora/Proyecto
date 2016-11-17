@@ -31,13 +31,13 @@ class M_Alumno extends CI_Model{
      * @return Int Nº de Alumnos
      */
     public function getApellidosUsuario($apellidos_alum) {
-        print_r('El apellido es'.$apellidos_alum);
+      
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
                 . "WHERE apellidos = '$apellidos_alum' ");
-        print_r('Muestra'.$query->row_array()['apellidos']);
+     
    
-        return $query->row_array()['apellidos'];
+        return $query->row_array();
     }
         /**
      * Consulta el número de nie que tienen el mismo número que el pasado por parámetro
@@ -69,7 +69,7 @@ class M_Alumno extends CI_Model{
      * @return Array
      */
     public function getDatosModificar($nie) {
-        print_r('El nie esssssssssssss:'.$nie.'<br>');
+       
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
                 . "WHERE nie = '$nie'");
@@ -152,17 +152,17 @@ class M_Alumno extends CI_Model{
     }
     
     /**
-     * Consulta el id de Alumno a través de su nombre de Alumno
-     * @param String $nombre_usu Nombre de Alumno
+     * Consulta el id de Alumno a través de su NIE de Alumno
+     * @param String $NIE Nombre de Alumno
      * @return Int ID de Alumno
      */
-    public function getId($nombre_usu) {
+    public function getId($nie) {
 
-        $query = $this->db->query("SELECT idUsuario "
+        $query = $this->db->query("SELECT idAlumno "
                 . "FROM alumno "
-                . "WHERE nombre_usu = '$nombre_usu' ");
+                . "WHERE nie = '$nie' ");
 
-        return $query->row_array()['idUsuario'];
+        return $query->row_array()['idAlumno'];
     }
     
     /**
@@ -170,8 +170,8 @@ class M_Alumno extends CI_Model{
      * @param Int $id ID de Alumno
      * @param Array $data Datos de la actualización
      */
-    public function updateUsuario($id,$data) {
-        $this->db->where('idUsuario', $id);
+    public function updateAlumno($id,$data) {
+        $this->db->where('idAlumno', $id);
         $this->db->update('alumno', $data);
     }
 }

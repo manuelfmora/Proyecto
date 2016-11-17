@@ -24,26 +24,22 @@
                                              <th>Apellido</th>
                                              <th>Nombre</th>
                                              <th>NIE</th>
-                                             <th>Ver Resumen</th>
-                                             <th>PDF</th>
-                                             <th>PDF</th>
-                                             <th>Anular Pedido</th>
+                                             <th>Modificar</th>                                       
                                          </tr>
                                      </thead>
                                      <tbody>  <!--Creación tabla de alumno-->
-                                         <?php if (isset($alumnos)): foreach ($alumnos as $alumno): ?>
+                                         <?php print_r($alumnos); foreach ($alumnos as $alumno): ?>
                                                  <tr>
 
                                                      <td><?= $alumno['apellidos'] ?></td>
                                                      <td><?= $alumno['nombre'] ?>  </td>
-                                                     <td><?= $alumno['nie'] ?></td>
+                                                     <td><?= $alumno['nie'] ?></td>                                                     
+<!--                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>-->
                                                      <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>
 
 
                                                  </tr>
-                                             <?php endforeach;
-                                         endif;
-                                         ?>
+                                             <?php endforeach;?>
                                          <!--/Creación tabla de alumno-->
                                      </tbody>
                                  </table>
