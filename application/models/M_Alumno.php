@@ -63,6 +63,19 @@ class M_Alumno extends CI_Model{
         print_r($data);
         $this->db->insert('alumno', $data);
     }
+        /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosModificar($nie) {
+        print_r('El nie esssssssssssss:'.$nie.'<br>');
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE nie = '$nie'");
+                   
+        return $query->row_array();
+    }
 
     /**
      * Consulta la contraseña del Alumno
@@ -95,16 +108,16 @@ class M_Alumno extends CI_Model{
      * @param String $nombre_usu Nombre de Alumno
      * @return Array
      */
-    public function getDatosModificar($nombre_usu) {
-
-        $query = $this->db->query("SELECT idAlumno,apellidos,nombre,nie,fechaNacimiento,edad,fotoAlumnado,datos_medicos,"
-                ."datos_psicologicos,informe_medico,nombreT1,nombreT2,dirección,cp,poblacion,cod_provincia,telefono1,"
-                ."telefono2,tipo,situacion,implicacion_escolar "
-                . "FROM alumno "
-                . "WHERE nombre_usu = '$nombre_usu'");
-                   
-        return $query->row_array();
-    }
+//    public function getDatosModificar($nombre_usu) {
+//
+//        $query = $this->db->query("SELECT idAlumno,apellidos,nombre,nie,fechaNacimiento,edad,fotoAlumnado,datos_medicos,"
+//                ."datos_psicologicos,informe_medico,nombreT1,nombreT2,dirección,cp,poblacion,cod_provincia,telefono1,"
+//                ."telefono2,tipo,situacion,implicacion_escolar "
+//                . "FROM alumno "
+//                . "WHERE nombre_usu = '$nombre_usu'");
+//                   
+//        return $query->row_array();
+//    }
     
     /**
      * Consulta el número de Alumno que tienen el nombre de Alumno pasado por parámetro y no es el ID pasado por parámetro

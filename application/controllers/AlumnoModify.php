@@ -45,32 +45,42 @@ class AlumnoModify extends CI_Controller {
 //        
 //        $alumnos=$this->M_Alumno->getApellidosUsuario($this->input->post('apellidos'));
 //        print_r('Valor de Alumnos:   '.$alumno);
-        $alumnos=Array('apellidos'=>"Mora Martin",
-                        'nombre'=>"Manuel",
-                         'nie'=>"12345");
+        $alumnos=Array(array('apellidos'=>"Mora Martin",
+                                'nombre'=>"Manuel",
+                                   'nie'=>"12345"),
+                         array('apellidos'=>"Mora Martin",
+                                'nombre'=>"Manuel",
+                                   'nie'=>"12345")            );
                    
-        $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), true);
-
+        $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), TRUE);
+//        echo $cuerpo;
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
                                                 'homeactive' => 'active'));
+
         
     }
 
     /**
      * Modifica un usuario si se han introducido correctamente los datos
      */
-    public function Modificar() {
-
-        if (SesionIniciadaCheck()) {
-            $todocorrecto = TRUE;
-            $cambiarclave = FALSE;
-
-            $provincias = $this->M_Provincias->getProvincias();
-            $select = CreaSelect($provincias, 'cod_provincia');
-
-            $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
+    public function Modificar($nie) {        
 
         
+
+        if (SesionIniciadaCheck()) {
+            
+            $todocorrecto = TRUE;
+            $cambiarclave = FALSE;
+            
+            //Optenemos los datos del alumno.
+            $datos = $this->M_Alumno->getDatosModificar($nie);
+            
+            $provincias = $this->M_Provincias->getProvincias();
+
+            $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
+
+            
+          
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario
@@ -79,10 +89,10 @@ class AlumnoModify extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
                 print_r('Validacion incorrecta');
                 $cuerpo = $this->load->view('V_AlumnoModify', array(
-                    'datos' => $datos), true);
+                                               'select'=>$select,
+                                               'datos' => $datos), true);
 
-                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                                                        'titulo' => 'Modificar Usuario',
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
                                                         'homeactive' => 'active'));
 
 
