@@ -4,14 +4,14 @@
         <div class="col-md-12">
           <div class="mu-reservation-area">
             <div class="mu-title">
-              <span class="mu-subtitle">BAJA  alumno</span>
-              <h2>¿Desea darlo de baja?</h2>
+              <span class="mu-subtitle">BAJA  USUARIO</span>
+              <h2>¿Desea darse de baja?</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>
             <div class="mu-reservation-content">
                 <center>
-                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/UserRemove/eliminar/'.$alumno['idAlumno'] ?>">SI</a>               
+                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/AlumnoRemove/eliminado/'.$id?>">SI</a>               
                     <a class="mu-readmore-btn" href="<?= base_url().'index.php'?>"> NO</a>    
                 </center>
             </div>

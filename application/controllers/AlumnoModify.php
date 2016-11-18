@@ -37,13 +37,15 @@ class AlumnoModify extends CI_Controller {
         $apellidos=$this->input->post('apellidos');
         
        $alumnos= $this->M_Alumno-> getApellidosUsuario($apellidos);
-       print_r($alumnos);
+//       print_r($alumnos);
        if(empty($alumnos)){
                 $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
 
            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
                                                 'homeactive' => 'active'));
-       }         
+       }
+       
+       //Mostramo la ventana de modificación OK
         $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
@@ -112,6 +114,8 @@ class AlumnoModify extends CI_Controller {
                  $config['Usuario_idUsuario'] = $this->session->userdata('logged_in');
                  $id=$this->M_Alumno->getId($this->input->post('nie'));
                  $this->M_Alumno->updateAlumno($id,$config);
+                 
+                 //Pantalla de Confirmación
                  $cuerpo = $this->load->view('V_AlumnoModifyok', array(), true);
                  $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                                                         'homeactive' => 'active'));

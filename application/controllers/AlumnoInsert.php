@@ -61,7 +61,7 @@ class AlumnoInsert extends CI_Controller {
                 'cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
         } else {//Validación de datos correcta
-            print_r('Validación correcta');
+           
             //Crea el array de los datos a insertar en la tabla usuario
             foreach ($this->input->post() as $key => $value) {
                 if ($key == 'fechaNacimiento') {
@@ -74,9 +74,14 @@ class AlumnoInsert extends CI_Controller {
             $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
             $data['Usuario_idUsuario']=$datos['idUsuario'];
             //Inserta en la tabla alumnado
-            $this->M_Alumno->addalumno($data);
+            $this->M_Alumno->addalumno($data); 
+            
+            //Pantalla de Confirmación
+            $cuerpo = $this->load->view('V_AlumnoInsertok', array(), true);
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                   'homeactive' => 'active'));
 
-            redirect('Login/Login/' . $data['nombre_usu'], 'location', 301);
+
         }
     }
     /**

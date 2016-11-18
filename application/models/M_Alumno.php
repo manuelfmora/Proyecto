@@ -95,12 +95,12 @@ class M_Alumno extends CI_Model{
      * Cambia el estado de un Alumno a 'B', baja
      * @param String $username Nombre de Alumno
      */
-    public function setBajaUsuario($username) {
-        $data = array(
-            'estado' => 'B'
-        );
-        $this->db->where('nombre_usu', $username);
-        $this->db->update('alumno', $data);
+    public function setBajaAlumno($id) {
+     
+        $this->db->where('idAlumno',$id);
+        $this->db->delete('alumno');
+//        $this->db->where('nombre_usu', $username);
+//        $this->db->delete('alumno', $data);
     }
     
     /**

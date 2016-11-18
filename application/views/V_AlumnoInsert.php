@@ -9,7 +9,7 @@
               <h2>Alumno/a</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
-            </div>
+            </div>              
             <div class="mu-reservation-content">
               <form class="mu-reservation-form" action="<?= base_url() . 'index.php/AlumnoInsert/Alumno' ?>" method="post">
                 <div class="row">
@@ -137,7 +137,7 @@
                   </center>
                 </div>
               </form>      
-            </div>
+            </div>               
           </div>
         </div>
       </div>

@@ -24,7 +24,8 @@
                                              <th>NIE</th>
                                              <th>Apellido</th>
                                              <th>Nombre</th>                                             
-                                             <th>Modificar</th>                                       
+                                             <th>Modificar</th>
+                                             <th>Eliminar</th>
                                          </tr>
                                      </thead>
                                      <tbody>  <!--Creación tabla de alumno-->
@@ -36,6 +37,7 @@
                                                                                                         
                                                      <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>
 <!--                                                     <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>-->
+                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoRemove/eliminar/".$alumno['idAlumno'] ?>">Eliminar</a></td>
 
                                                  </tr>
                                              <?php endforeach;?>
