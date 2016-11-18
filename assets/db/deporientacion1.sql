@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2016 a las 14:34:20
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 7.0.9
+-- Tiempo de generación: 16-11-2016 a las 18:26:00
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ CREATE TABLE `alumno` (
   `apellidos` varchar(45) DEFAULT NULL,
   `nombre` varchar(30) DEFAULT NULL,
   `nie` int(7) DEFAULT NULL,
-  `fechaNacimiento` date DEFAULT NULL,
+  `fechaNacimiento` datetime DEFAULT NULL,
   `edad` int(2) DEFAULT NULL,
   `fotoAlumnado` varchar(45) DEFAULT NULL,
   `datos_medicos` varchar(100) DEFAULT NULL,
@@ -48,8 +48,6 @@ CREATE TABLE `alumno` (
   `tipo` varchar(45) DEFAULT NULL COMMENT 'Tipo de familia(Tradicional,Monoparental...)',
   `situacion` varchar(45) DEFAULT NULL,
   `implicacion_escolar` varchar(45) DEFAULT NULL,
-  `curso` int(1) DEFAULT NULL,
-  `grupo` char(1) DEFAULT NULL,
   `Usuario_idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -57,9 +55,9 @@ CREATE TABLE `alumno` (
 -- Volcado de datos para la tabla `alumno`
 --
 
-INSERT INTO `alumno` (`idAlumno`, `apellidos`, `nombre`, `nie`, `fechaNacimiento`, `edad`, `fotoAlumnado`, `datos_medicos`, `datos_psicologicos`, `informe_medico`, `nombreT1`, `nombreT2`, `direccion`, `cp`, `poblacion`, `cod_provincia`, `telefono1`, `telefono2`, `tipo`, `situacion`, `implicacion_escolar`, `curso`, `grupo`, `Usuario_idUsuario`) VALUES
-(10, 'Mora Perez', 'Manuel', 12125, '1970-12-28', NULL, NULL, 'Ninguno', 'Nimguno', 'Sin insidencias', 'Manuel Mora', 'Inmaculada Ramos', 'Avda. Andalucia nº 85 2º', 21500, 'Gigraleón', '21', 959301125, 607535988, 'Monoparental', 'Estable', 'Estable', NULL, NULL, 1),
-(11, 'Ramos Bebia', 'Inmaculada', 54321, '1971-12-25', NULL, NULL, 'Ninguno', 'Ninguno', 'Aceptado', 'Luis Ramos', 'Antónia Bebia', 'Avda. Andalucia nº 85 2º', 21500, 'Gigraleón', '21', 959301125, 607535544, 'Normal', 'Normal', 'Normal', NULL, NULL, 1);
+INSERT INTO `alumno` (`idAlumno`, `apellidos`, `nombre`, `nie`, `fechaNacimiento`, `edad`, `fotoAlumnado`, `datos_medicos`, `datos_psicologicos`, `informe_medico`, `nombreT1`, `nombreT2`, `direccion`, `cp`, `poblacion`, `cod_provincia`, `telefono1`, `telefono2`, `tipo`, `situacion`, `implicacion_escolar`, `Usuario_idUsuario`) VALUES
+(6, 'Mora', 'WEQRW', 12345, '2016-11-17 00:00:00', 12, 'ASD', 'sadas', 'sda', 'asda', 'ads', 'sda', 'asd', 21500, 'gifsdf', '18', 959, 959, 'rewge', 'ewger', 'wergweg', 1),
+(9, 'Mora', 'fggggs', 12346, '1970-12-28 00:00:00', NULL, NULL, 'areg', 'afdg', 'dfg', 'adfga', 'adfg', 'Avda. Andalucía Nº85 2º', 21500, 'Gibraleón', '18', 959301156, 959301156, 'dfgad', 'adfg', 'afddddd', 1);
 
 -- --------------------------------------------------------
 
@@ -357,7 +355,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `datos_salud`
 --

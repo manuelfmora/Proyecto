@@ -34,24 +34,22 @@ class AlumnoModify extends CI_Controller {
     
     public function Buscar(){
 
-        $apellidos=$this->input->post('apellidos');
-        
-       $alumnos= $this->M_Alumno-> getApellidosUsuario($apellidos);
+        $apellidos = $this->input->post('apellidos');
+
+        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos);
 //       print_r($alumnos);
-       if(empty($alumnos)){
-                $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
+        if (empty($alumnos)) {
+            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
 
-           $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
-                                                'homeactive' => 'active'));
-       }
-       
-       //Mostramo la ventana de modificación OK
-        $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos'=>$alumnos), TRUE);
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        } else {
+            //Mostramo la ventana de modificación OK
+            $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos' => $alumnos), TRUE);
 
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
-                                                'homeactive' => 'active'));
-
-        
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        }
     }
 
     /**

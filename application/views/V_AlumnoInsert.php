@@ -128,6 +128,18 @@
                         <?= form_error('implicacion_escolar'); ?>
                     </div>
                   </div>
+                   <div class="col-md-6">
+                   <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('curso') ?>" placeholder="Curos" name="curso">
+                        <?= form_error('curso'); ?>
+                   </div>
+                  </div>
+                   <div class="col-md-6">
+                   <div class="form-group">
+                        <input type="text" class="form-control" value="<?= set_value('grupo') ?>" placeholder="Grupo" name="grupo">
+                        <?= form_error('grupo'); ?>
+                   </div>
+                  </div>
                   <center>
                     <div class="col-md-12">
                       <div class="form-group">
