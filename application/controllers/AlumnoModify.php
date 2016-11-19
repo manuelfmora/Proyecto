@@ -155,6 +155,27 @@ class AlumnoModify extends CI_Controller {
             return FALSE;
         }
     }
+        function vaildar_curso($curso){
+//        
+//        $curso+=$curso;
+//        print_r($curso);
+        if($curso>0&&$curso<5){
+          
+            return TRUE;
+            
+        } else {
+            print_r('Entra en FALSE');
+            return FALSE;
+        }
+    }
+      function vaildar_grupo($grupo){
+        if($grupo=='A'||$grupo=='B'||$grupo=='C'||$grupo=='D'){
+            return TRUE;
+            
+        } else {
+            return FALSE;
+        }
+    }
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
@@ -168,6 +189,8 @@ class AlumnoModify extends CI_Controller {
         $this->form_validation->set_message('numeroNieRepetido_chek', 'El campo %s ya existe');
         $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
         $this->form_validation->set_message('validar_telefono', 'El campo %s debe ser númerico');
+        $this->form_validation->set_message('vaildar_curso', 'El campo %s debe ser númerico y comprendido entre 1 y 4');
+        $this->form_validation->set_message('vaildar_grupo', 'El campo %s debe ser texto en mayuscula y comprendido entre la A y la D');        
     }
 
     /**
@@ -189,6 +212,8 @@ class AlumnoModify extends CI_Controller {
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
         $this->form_validation->set_rules('situacion', 'Situación', 'required');
         $this->form_validation->set_rules('implicacion_escolar', 'Implicación Escolar', 'required');
+        $this->form_validation->set_rules('curso', 'Curso', 'required|integer|max_length[1]|callback_vaildar_curso');
+        $this->form_validation->set_rules('grupo', 'Grupo', 'required|max_length[1]|callback_vaildar_grupo');        
     }
 
 

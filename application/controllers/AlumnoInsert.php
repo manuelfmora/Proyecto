@@ -147,9 +147,11 @@ class AlumnoInsert extends CI_Controller {
     }
     
     function vaildar_curso($curso){
-        print_r($curso);
-        if($curso==2){
-            print_r('Entra en TRUE');
+//        
+//        $curso+=$curso;
+//        print_r($curso);
+        if($curso>0&&$curso<5){
+          
             return TRUE;
             
         } else {
@@ -175,7 +177,6 @@ class AlumnoInsert extends CI_Controller {
         $this->form_validation->set_message('integer', 'El campo %s debe ser un número de 5 dígitos');
         $this->form_validation->set_message('exact_length', 'El campo %s debe tener %s caracteres');
         $this->form_validation->set_message('integer', 'El campo %s debe ser númerico');
-//        $this->form_validation->set_message('dni_check', 'Formato de DNI incorrecto');
         $this->form_validation->set_message('numeroNieRepetido_chek', 'El campo %s ya existe');
         $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
         $this->form_validation->set_message('validar_telefono', 'El campo %s debe ser númerico');
@@ -189,13 +190,10 @@ class AlumnoInsert extends CI_Controller {
     function setReglasValidacion() {
         $this->form_validation->set_rules('apellidos', 'apellidos', 'required');
         $this->form_validation->set_rules('nombre', 'nombre', 'required');
-//        $this->form_validation->set_rules('dni', 'DNI', 'required|exact_length[9]|callback_dni_check');
         $this->form_validation->set_rules('nie', 'NIE', 'required|exact_length[5]|callback_numeroNieRepetido_chek');
         $this->form_validation->set_rules('fechaNacimiento', 'fecha nacimiento', 'required|callback_validar_fecha');
         $this->form_validation->set_rules('nombreT1', 'nombre titular 1', 'required');
-//        $this->form_validation->set_rules('dniT1', 'DNI T1', 'required|exact_length[9]|callback_dni_check');
         $this->form_validation->set_rules('nombreT2', 'nombre titular 2', 'required');
-//        $this->form_validation->set_rules('dniT2', 'DNI T2', 'required|exact_length[9]|callback_dni_check');
         $this->form_validation->set_rules('direccion', 'dirección', 'required');
         $this->form_validation->set_rules('cp', 'CP', 'required|integer|exact_length[5]');
         $this->form_validation->set_rules('poblacion', 'Población', 'required');
@@ -208,8 +206,7 @@ class AlumnoInsert extends CI_Controller {
         $this->form_validation->set_rules('implicacion_escolar', 'Implicación Escolar', 'required');
         $this->form_validation->set_rules('curso', 'Curso', 'required|integer|max_length[1]|callback_vaildar_curso');
         $this->form_validation->set_rules('grupo', 'Grupo', 'required|max_length[1]|callback_vaildar_grupo');
-        //Preguntar si el correo es necesario.
-//        $this->form_validation->set_rules('correo', 'correo electrónico', 'required|valid_email');
+
     }
 
 }

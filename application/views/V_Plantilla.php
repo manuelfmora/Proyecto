@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">    
-        <title>SpicyX | Home</title>
+        <title>Dep. Orientación</title>
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="<?= base_url() ?>assets/img/favicon.ico" type="image/x-icon">
@@ -112,8 +112,7 @@
   <!----------------------------------------------------------------------------------------------------------------------------------------------->
 
                                     <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoModify' ?>">Modificar Alumno</a></li>                                    
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoRemove' ?>">Eliminar Alumno</a></li>                                          
+                                    <li><a href="<?= base_url() . 'index.php/AlumnoModify' ?>">Modificar Eliminar Alumno</a></li>                         
                                 </ul>
                             </li>
                             
