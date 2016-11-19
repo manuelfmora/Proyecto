@@ -73,7 +73,7 @@ class User_insert extends CI_Controller{
             }
             
             //Inserta en la tabla usuario
-            print_r($data);
+//            print_r($data);
             $this->M_User->addUsuario($data);
             
             redirect('Login/Login/'.$data['nombre_usu'], 'location', 301);

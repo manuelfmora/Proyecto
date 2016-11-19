@@ -41,8 +41,7 @@ class AlumnoRemove extends CI_Controller {
 //            redirect("Error404", 'Location', 301);
 //            return; //Sale de la función
 //        }
-        print_r('Entra en eliminar y el valor es:');
-        print_r($id);
+
         $this->M_Alumno->setBajaAlumno($id);
         $cuerpo = $this->load->view('V_AlumnoRemoveOK', Array(), true); 
         $this->load->view('V_Plantilla', Array( 'cuerpo' => $cuerpo,

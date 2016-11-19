@@ -140,7 +140,7 @@
                             </li>
                             
                                                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">AT. DIVERSIDAD<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ACC. TUTORIAL<span class="caret"></span></a>
                                <ul class="dropdown-menu" role="menu"> 
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">PROTOCOLOS<span class="caret"></span></a>

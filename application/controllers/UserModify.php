@@ -49,14 +49,14 @@ class UserModify extends CI_Controller {
 
             $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
 
-            print_r($datos);
+//            print_r($datos);
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario
             $this->setReglasValidacion();
 
             if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-                print_r('Validacion incorrecta');
+//                print_r('Validacion incorrecta');
                 $cuerpo = $this->load->view('V_UserModify', array(
                     'datos' => $datos), true);
 

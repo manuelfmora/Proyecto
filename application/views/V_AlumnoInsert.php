@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="mu-reservation-area">
             <div class="mu-title">
-              <span class="mu-subtitle">Insertar un</span>
+              <span class="mu-subtitle">Insertar</span>
               <h2>Alumno/a</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
@@ -130,7 +130,7 @@
                   </div>
                    <div class="col-md-6">
                    <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('curso') ?>" placeholder="Curos" name="curso">
+                        <input type="text" class="form-control" value="<?= set_value('curso') ?>" placeholder="Curso" name="curso">
                         <?= form_error('curso'); ?>
                    </div>
                   </div>

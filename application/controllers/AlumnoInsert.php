@@ -147,15 +147,13 @@ class AlumnoInsert extends CI_Controller {
     }
     
     function vaildar_curso($curso){
-//        
-//        $curso+=$curso;
-//        print_r($curso);
+
         if($curso>0&&$curso<5){
           
             return TRUE;
             
         } else {
-            print_r('Entra en FALSE');
+           
             return FALSE;
         }
     }

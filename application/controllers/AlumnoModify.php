@@ -14,6 +14,7 @@ class AlumnoModify extends CI_Controller {
         $this->load->model('M_Provincias');
         $this->load->model('M_Alumno');    
         $this->load->library('form_validation');
+         $this->load->library('pagination');
     }
 
     /**
@@ -32,12 +33,15 @@ class AlumnoModify extends CI_Controller {
                                                 'homeactive' => 'active'));
     }
     
-    public function Buscar(){
+    public function Buscar($desde = 0){
 
-        $apellidos = $this->input->post('apellidos');
+        $apellidos = $this->input->post('apellidos');     
+        //PAGINACÓN
+        $config = $this->getConfigPag();       
 
-        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos);
-//       print_r($alumnos);
+        $result=$this->pagination->initialize($config);
+        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
+        
         if (empty($alumnos)) {
             $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
 
@@ -156,15 +160,13 @@ class AlumnoModify extends CI_Controller {
         }
     }
         function vaildar_curso($curso){
-//        
-//        $curso+=$curso;
-//        print_r($curso);
+
         if($curso>0&&$curso<5){
           
             return TRUE;
             
         } else {
-            print_r('Entra en FALSE');
+           
             return FALSE;
         }
     }
@@ -214,6 +216,39 @@ class AlumnoModify extends CI_Controller {
         $this->form_validation->set_rules('implicacion_escolar', 'Implicación Escolar', 'required');
         $this->form_validation->set_rules('curso', 'Curso', 'required|integer|max_length[1]|callback_vaildar_curso');
         $this->form_validation->set_rules('grupo', 'Grupo', 'required|max_length[1]|callback_vaildar_grupo');        
+    }
+    
+        /**
+     * Establece y devuelve la configuración de la paginación
+     * @return Array Configuración
+     */
+    public function getConfigPag(){
+        //Configuración de Paginación
+        $config['base_url'] = site_url('/AlumnoModify/Buscar');
+        $config['total_rows'] = $this->M_Alumno->getNumAlumnos();
+        $config['per_page'] = $this->config->item('per_page_seleccionadas');
+        $config['uri_segment'] = 3;
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="pag_activa"><span>';
+        $config['cur_tag_close'] = '</span></li>';
+        $config['prev_tag_open'] = '<li title="Anterior">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li title="Siguiente">';
+        $config['next_tag_close'] = '</li>';
+        $config['first_link'] = '«';
+        $config['prev_link'] = '‹';
+        $config['last_link'] = '»';
+        $config['next_link'] = '›';
+        $config['first_tag_open'] = '<li title="Inicio">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li title="Final">';
+        $config['last_tag_close'] = '</li>';
+
+    
+        return $config;
     }
 
 

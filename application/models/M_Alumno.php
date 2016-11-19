@@ -30,11 +30,13 @@ class M_Alumno extends CI_Model{
      * @param String $nombre_usu Nombre de Alumno
      * @return Int Nº de Alumnos
      */
-    public function getApellidosUsuario($apellidos_alum) {
-      
+    public function getApellidosUsuario($apellido,$limit,$start) {
+//      $start=0;
+//      $limit=1;
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
-                . "WHERE apellidos like '%$apellidos_alum%' ");
+                . "WHERE apellidos like '%$apellido%' "
+                . "LIMIT $start, $limit; ");
      
    
         return $query->result_array();
@@ -58,12 +60,11 @@ class M_Alumno extends CI_Model{
      * @param Array $data Datos del Alumno
      */
     public function addalumno($data) {
-        
-        
-        print_r($data);
+
         $this->db->insert('alumno', $data);
     }
-        /**
+
+    /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
      * @param String $nombre_usu Nombre de usuario
      * @return Array
@@ -76,6 +77,19 @@ class M_Alumno extends CI_Model{
                    
         return $query->row_array();
     }
+            /**
+     * Consulta el numero total alumnos
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getNumAlumnos() {
+       
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno ");
+                   
+        return $query->num_rows();
+    }
+
 
     /**
      * Consulta la contraseña del Alumno
@@ -99,8 +113,6 @@ class M_Alumno extends CI_Model{
      
         $this->db->where('idAlumno',$id);
         $this->db->delete('alumno');
-//        $this->db->where('nombre_usu', $username);
-//        $this->db->delete('alumno', $data);
     }
     
     /**
