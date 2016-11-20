@@ -44,7 +44,7 @@ class AlumnoInsert extends CI_Controller {
         $provincias = $this->M_Provincias->getProvincias();
         $select = CreaSelect($provincias, 'cod_provincia');
 
-        $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+        $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
         //Establecemos los mensajes de errores
         $this->setMensajesErrores();

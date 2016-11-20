@@ -121,11 +121,11 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">AT. DIVERSIDAD<span class="caret"></span></a>
                                <ul class="dropdown-menu" role="menu">                            
                                     <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">NEAE<span class="caret"></span></a>
+<!-- NAE -->                             <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">NEAE<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu"> 
-                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
+                                            <li><a href="<?= base_url() . 'index.php/Trayectoria' ?>">Insertar</a></li>  
+                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar</a></li>                                    
+                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar</a></li>                                          
                                         </ul>
                                     </li>
                                     <li class="dropdown">
