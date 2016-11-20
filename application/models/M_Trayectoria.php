@@ -78,7 +78,20 @@ class M_Trayectoria extends CI_Model{
                    
         return $query->row_array();
     }
-            /**
+        /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosAlumno($id) {
+       
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$id'");
+                   
+        return $query->row_array();
+    }
+     /**
      * Consulta el numero total alumnos
      * @param String $nombre_usu Nombre de usuario
      * @return Array

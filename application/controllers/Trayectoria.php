@@ -25,7 +25,7 @@ class Trayectoria extends CI_Controller {
      */
     public function index() {
 
-        $cuerpo = $this->load->view('V_BuscarAlumno', array(), true);
+        $cuerpo = $this->load->view('V_BuscarAlumno_AD', array(), true);
 
         $this->load->view('V_Plantilla', Array(
             'cuerpo' => $cuerpo,
@@ -49,11 +49,21 @@ class Trayectoria extends CI_Controller {
                 'homeactive' => 'active'));
         } else {
             //Mostramo la ventana de modificación OK
-            $cuerpo = $this->load->view('V_MenuAlumno', array('alumnos' => $alumnos), TRUE);
+            $cuerpo = $this->load->view('V_MenuAT_Diver', array('alumnos' => $alumnos), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
         }
+    }
+    
+    public function alumno($idAlumno){
+       $alumnos= $this->M_Trayectoria-> getDatosAlumno($idAlumno);
+        print_r('El alumno es:');
+        print_r($alumnos);
+        $cuerpo = $this->load->view('V_nae', array('alumnos' => $alumnos), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+            'homeactive' => 'active'));
     }
 
     public function insertar($idAlumno){
