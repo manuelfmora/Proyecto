@@ -74,12 +74,12 @@ class Trayectoria extends CI_Controller {
             }
             
         }
-        print_r($data);
+        ;
          //Inserta en la tabla alumnado
         $this->M_Trayectoria->adTrayectoria($data);
 
         //Pantalla de Confirmación
-        $cuerpo = $this->load->view('V_AlumnoInsertok', array(), true);
+        $cuerpo = $this->load->view('V_neaeok', array(), true);
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
