@@ -6,7 +6,7 @@
           <div class="mu-reservation-area">
             <div class="mu-title">
               <span class="mu-subtitle">OK</span>
-              <h2>LOS DATOS NEAE SE HAN INTRODUCIDO CORRECTAMENTE.</h2>
+              <h2>N.E.A.E INSERTADO CORRECTAMENTE.</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>

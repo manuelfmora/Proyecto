@@ -89,7 +89,7 @@ class Trayectoria extends CI_Controller {
         $this->M_Trayectoria->adTrayectoria($data);
 
         //Pantalla de Confirmación
-        $cuerpo = $this->load->view('V_Neaeok', array(), true);
+        $cuerpo = $this->load->view('V_Necesidadesok', array(), true);
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
