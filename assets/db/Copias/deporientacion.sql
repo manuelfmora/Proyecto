@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2016 a las 14:43:22
+-- Tiempo de generación: 18-11-2016 a las 14:34:20
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -58,12 +58,8 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`idAlumno`, `apellidos`, `nombre`, `nie`, `fechaNacimiento`, `edad`, `fotoAlumnado`, `datos_medicos`, `datos_psicologicos`, `informe_medico`, `nombreT1`, `nombreT2`, `direccion`, `cp`, `poblacion`, `cod_provincia`, `telefono1`, `telefono2`, `tipo`, `situacion`, `implicacion_escolar`, `curso`, `grupo`, `Usuario_idUsuario`) VALUES
-(10, 'Mora Perez', 'Manuel', 12125, '1970-12-28', NULL, NULL, 'Ninguno', 'Nimguno', 'Sin insidencias', 'Manuel Mora', 'Inmaculada Ramos', 'Avda. Andalucia nº 85 2º', 21500, 'Gigraleón', '21', 959301125, 607535988, 'Monoparental', 'Estable', 'Estable', 2, 'B', 1),
-(11, 'Ramos Bebia', 'Inmaculada', 54321, '1971-12-25', NULL, NULL, 'Ninguno', 'Ninguno', 'Aceptado', 'Luis Ramos', 'Antónia Bebia', 'Avda. Andalucia nº 85 2º', 21500, 'Gigraleón', '21', 959301125, 607535544, 'Normal', 'Normal', 'Normal', 3, 'C', 1),
-(12, 'Mora Martin', 'Manuel Francisco', 12124, '1970-12-28', NULL, NULL, 'Ninguno', 'Ninguno', 'Ninguno', 'Inmaculada ', 'Pepe', 'Avda. Andalucía Nº85 2º', 21500, 'Gibraleón', '18', 959301156, 959301156, 'Ninguno', 'Ninguno', 'Ninguno', 2, 'A', 1),
-(13, 'Martín Rodriguez', 'Alicia', 11111, '1970-12-28', NULL, NULL, 'n', 'n', 'n', 'Manuel Francisco', 'Manuel Francisco', 'Avda. Andalucía Nº85 2º', 21500, 'Gibraleón', '18', 959301156, 959301156, 'ghjgh', 'ghjg', 'ghjg', 1, 'A', 1),
-(14, 'Perez', 'Alejandro', 22222, '1970-12-28', NULL, NULL, 'Ninguno', 'Ninguno', 'Ninguno', 'Manuel Francisco', 'Manuel Francisco', 'Avda. Andalucía Nº85 2º', 21500, 'Gibraleón', '03', 959301156, 959301156, 'Ninguno', 'Ninguno', 'Ninguno', 2, 'A', 1),
-(15, 'Ramos Bebia', 'Inmaculada', 44444, '1970-12-28', NULL, NULL, 'Ninguno', 'Ninguno', 'Ninguno', 'Pepe', 'Pepe', 'Avda. Andalucía Nº25', 21500, 'Gibraleón', '11', 959302254, 959302254, 'Ninguno', 'Ninguno', 'Ninguno', 3, 'A', 1);
+(10, 'Mora Perez', 'Manuel', 12125, '1970-12-28', NULL, NULL, 'Ninguno', 'Nimguno', 'Sin insidencias', 'Manuel Mora', 'Inmaculada Ramos', 'Avda. Andalucia nº 85 2º', 21500, 'Gigraleón', '21', 959301125, 607535988, 'Monoparental', 'Estable', 'Estable', NULL, NULL, 1),
+(11, 'Ramos Bebia', 'Inmaculada', 54321, '1971-12-25', NULL, NULL, 'Ninguno', 'Ninguno', 'Aceptado', 'Luis Ramos', 'Antónia Bebia', 'Avda. Andalucia nº 85 2º', 21500, 'Gigraleón', '21', 959301125, 607535544, 'Normal', 'Normal', 'Normal', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -75,6 +71,20 @@ CREATE TABLE `consejo_orientador` (
   `idConsejo_Orientador` int(11) NOT NULL,
   `opciones` varchar(45) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_salud`
+--
+
+CREATE TABLE `datos_salud` (
+  `idDatos_Salud` int(11) NOT NULL,
+  `datos_medicos` varchar(100) DEFAULT NULL,
+  `datos_psicologicos` varchar(100) DEFAULT NULL,
+  `informes` varchar(100) DEFAULT NULL,
+  `Alumnado_Familia_idFamilia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -119,14 +129,6 @@ CREATE TABLE `neae` (
   `dic_es` varchar(100) DEFAULT NULL COMMENT 'Dictamen de Escolarizacion PDF',
   `idAlumno` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `neae`
---
-
-INSERT INTO `neae` (`idNeae`, `censo`, `ev_ps`, `dic_es`, `idAlumno`) VALUES
-(1, 'Censo', 'Evaluación', 'Dictamen', 12),
-(2, 'Prueba con menu cambiado', 'Prueba con menu cambiado', 'Prueba con menu cambiado', 11);
 
 -- --------------------------------------------------------
 
@@ -293,6 +295,12 @@ ALTER TABLE `consejo_orientador`
   ADD PRIMARY KEY (`idConsejo_Orientador`);
 
 --
+-- Indices de la tabla `datos_salud`
+--
+ALTER TABLE `datos_salud`
+  ADD PRIMARY KEY (`idDatos_Salud`,`Alumnado_Familia_idFamilia`);
+
+--
 -- Indices de la tabla `entrevistas`
 --
 ALTER TABLE `entrevistas`
@@ -349,17 +357,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT de la tabla `datos_salud`
+--
+ALTER TABLE `datos_salud`
+  MODIFY `idDatos_Salud` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `entrevistas`
 --
 ALTER TABLE `entrevistas`
   MODIFY `idEntrevistas` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `neae`
---
-ALTER TABLE `neae`
-  MODIFY `idNeae` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Necesidades Especiales Apoyo Educativo', AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `transito`
 --
