@@ -58,9 +58,9 @@ class Trayectoria extends CI_Controller {
     
     public function alumno($idAlumno){
        $alumnos= $this->M_Trayectoria-> getDatosAlumno($idAlumno);
-        print_r('El alumno es:');
-        print_r($alumnos);
-        $cuerpo = $this->load->view('V_nae', array('alumnos' => $alumnos), TRUE);
+//        print_r('El alumno es:');
+//        print_r($alumnos);
+        $cuerpo = $this->load->view('V_Neae', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
@@ -84,12 +84,12 @@ class Trayectoria extends CI_Controller {
             }
             
         }
-        ;
+        
          //Inserta en la tabla alumnado
         $this->M_Trayectoria->adTrayectoria($data);
 
         //Pantalla de Confirmación
-        $cuerpo = $this->load->view('V_neaeok', array(), true);
+        $cuerpo = $this->load->view('V_Neaeok', array(), true);
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
