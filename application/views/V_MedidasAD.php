@@ -1,7 +1,4 @@
 <!-- Start Contact section -->
-
-
-<!-- Start Contact section -->
 <section id="mu-contact">
     <div class="container">
         <div class="row">
@@ -24,27 +21,23 @@
                                                 <th>NIE</th>
                                                 <th>Apellido</th>
                                                 <th>Nombre</th> 
-<!--                                                <th>NEAE</th>
-                                             <th>Medidas Atenc. Divers.</th>-->
                                                 <th>Insertar</th>
                                                 <th>Modificar</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
-                                            <?php // print_r('Entraaaaaaaaaaaaaaaaaaaaaaaaaaaaa'); print_r($alumnos);foreach ($alumnos as $alumno): ?>
-                                                <?php // print_r('UN ALUMNO---->'); print_r($alumno);?>
+
                                                 <tr>
                                                     <td><?= $alumnos['nie'] ?></td>  
                                                     <td><?= $alumnos['apellidos'] ?></td>
                                                     <td><?= $alumnos['nombre'] ?>  </td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
-    <!--                                                     <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumnos['nie'] ?>">Modificar</a></td>-->
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoRemove/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/insertar/".$alumnos['idAlumno'] ?>">Insertar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
 
                                                 </tr>
-                                            <?php // endforeach; ?>
+
                                             <!--/Creación tabla de alumno-->
                                         </tbody>
                                     </table>

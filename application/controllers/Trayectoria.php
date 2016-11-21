@@ -42,6 +42,8 @@ class Trayectoria extends CI_Controller {
         $result=$this->pagination->initialize($config);
         $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
         
+        //Si no existe alumnos con esos apellidos
+        //Mostramos un informe de lista vacia.
         if (empty($alumnos)) {
             $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
 
@@ -82,10 +84,8 @@ class Trayectoria extends CI_Controller {
             if ($key != 'aceptar') {
                 $data[$key] = $value;
             }
-            
         }
-        
-         //Inserta en la tabla alumnado
+        //Inserta en la tabla alumnado
         $this->M_Trayectoria->adTrayectoria($data);
 
         //Pantalla de Confirmación
