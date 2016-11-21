@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Trayectoria extends CI_Controller {
+class Medidasad extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -23,46 +23,46 @@ class Trayectoria extends CI_Controller {
     /**
      * Muestra el formulario de registro
      */
-    public function index() {
-
-        $cuerpo = $this->load->view('V_BuscarAlumno_AD', array(), true);
-
-        $this->load->view('V_Plantilla', Array(
-            'cuerpo' => $cuerpo,
-            'homeactive' => 'active'
-        ));
-    }
+//    public function index() {
+//
+//        $cuerpo = $this->load->view('V_BuscarAlumno_AD', array(), true);
+//
+//        $this->load->view('V_Plantilla', Array(
+//            'cuerpo' => $cuerpo,
+//            'homeactive' => 'active'
+//        ));
+//    }
     
-    public function Buscar($desde = 0){
-
-        $apellidos = $this->input->post('apellidos');     
-        //PAGINACÓN
-        $config = $this->getConfigPag();       
-
-        $result=$this->pagination->initialize($config);
-        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
-        
-        //Si no existe alumnos con esos apellidos
-        //Mostramos un informe de lista vacia.
-        if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        } else {
-            //Mostramo la ventana de modificación OK
-            $cuerpo = $this->load->view('V_MenuAT_Diver', array('alumnos' => $alumnos), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        }
-    }
+//    public function Buscar($desde = 0){
+//
+//        $apellidos = $this->input->post('apellidos');     
+//        //PAGINACÓN
+//        $config = $this->getConfigPag();       
+//
+//        $result=$this->pagination->initialize($config);
+//        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
+//        
+//        //Si no existe alumnos con esos apellidos
+//        //Mostramos un informe de lista vacia.
+//        if (empty($alumnos)) {
+//            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
+//
+//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//                'homeactive' => 'active'));
+//        } else {
+//            //Mostramo la ventana de modificación OK
+//            $cuerpo = $this->load->view('V_MenuAT_Diver', array('alumnos' => $alumnos), TRUE);
+//
+//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//                'homeactive' => 'active'));
+//        }
+//    }
     
     public function alumno($idAlumno){
        $alumnos= $this->M_Trayectoria-> getDatosAlumno($idAlumno);
 //        print_r('El alumno es:');
 //        print_r($alumnos);
-        $cuerpo = $this->load->view('V_Neae', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MedidasAD', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
@@ -70,9 +70,9 @@ class Trayectoria extends CI_Controller {
 
     public function insertar($idAlumno){
         
-            print_r('La id es:');
-            print_r($idAlumno);
-            $cuerpo = $this->load->view('V_TrayectoriaInsert', array('idAlumno' => $idAlumno), TRUE);
+//            print_r('La id es:');
+//            print_r($idAlumno);
+            $cuerpo = $this->load->view('V_MedidasInsert', array('idAlumno' => $idAlumno), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));

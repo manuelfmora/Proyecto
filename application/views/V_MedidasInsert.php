@@ -16,26 +16,29 @@
             </div>              
             <div class="mu-reservation-content">
                <!-- Formulario sin PDF -->  
-              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/MedidasAD/insertaDatos'?>" method="post">
+              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Medidasad/insertaDatos'?>" method="post">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('censo') ?>" placeholder="Censo" name="censo" >
-                        <?= form_error('censo'); ?>
+                        <input type="text" class="form-control" value="<?= set_value('nombre') ?>" placeholder="Nombre" name="nombre" >
+                        <?= form_error('nombre'); ?>
                     </div>
                   </div>
                   <div class="col-md-12">
-                    <div class="form-group">
-                        <?php print_r('La  id essssssssss:'.$idAlumno)?>"
-                        <input type="text" class="form-control" value="<?= set_value('ev_ps') ?>" placeholder="Evaluación Psicopeda" name="ev_ps">
-                        <?= form_error('ev_ps'); ?>
+                    <div class="form-group">                        
+                        <input type="text" class="form-control" value="<?= set_value('fecha_ini') ?>" placeholder="Fecha de Inicio (dd/mm/aaaa)" name="fecha_ini">
+                        <?= form_error('fecha_ini'); ?>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">                        
+                        <input type="text" class="form-control" value="<?= set_value('fecha_fin') ?>" placeholder="Fecha de Fin (dd/mm/aaaa)" name="fecha_fin">
+                        <?= form_error('fecha_fin'); ?>
                     </div>
                   </div> 
                   <div class="col-md-12">
-                    <div class="form-group">
-                        
-                        <input type="text" class="form-control" value="<?= set_value('dic_es') ?>" placeholder="Dictamen Escolarización" name="dic_es" >
-                        <?= form_error('dic_es'); ?>
+                    <div class="form-group">                
+                      <textarea class="form-control" rows="5" value="<?= set_value('observaciones') ?>"  placeholder="Observaciones" name="observaciones"></textarea>                        
                     </div>
                   </div> 
                     <center>
