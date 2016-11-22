@@ -13,86 +13,94 @@ class Medidasad extends CI_Controller {
         parent::__construct();
 
         $this->load->helper('Formulario');
-        $this->load->model('M_Provincias');
-        $this->load->model('M_Alumno');
+        $this->load->model('M_Provincias');        
         $this->load->library('form_validation');
-        $this->load->model('M_Trayectoria');
-        $this->load->library('pagination');
+        $this->load->model('M_Medidasad');
+
     }
 
-    /**
-     * Muestra el formulario de registro
-     */
-//    public function index() {
-//
-//        $cuerpo = $this->load->view('V_BuscarAlumno_AD', array(), true);
-//
-//        $this->load->view('V_Plantilla', Array(
-//            'cuerpo' => $cuerpo,
-//            'homeactive' => 'active'
-//        ));
-//    }
-    
-//    public function Buscar($desde = 0){
-//
-//        $apellidos = $this->input->post('apellidos');     
-//        //PAGINACÓN
-//        $config = $this->getConfigPag();       
-//
-//        $result=$this->pagination->initialize($config);
-//        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
-//        
-//        //Si no existe alumnos con esos apellidos
-//        //Mostramos un informe de lista vacia.
-//        if (empty($alumnos)) {
-//            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
-//
-//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-//                'homeactive' => 'active'));
-//        } else {
-//            //Mostramo la ventana de modificación OK
-//            $cuerpo = $this->load->view('V_MenuAT_Diver', array('alumnos' => $alumnos), TRUE);
-//
-//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-//                'homeactive' => 'active'));
-//        }
-//    }
     
     public function alumno($idAlumno){
-       $alumnos= $this->M_Trayectoria-> getDatosAlumno($idAlumno);
-//        print_r('El alumno es:');
-//        print_r($alumnos);
+       $alumnos= $this->M_Medidasad-> getDatosAlumno($idAlumno);
+
         $cuerpo = $this->load->view('V_MedidasAD', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
 
+    
     public function insertar($idAlumno){
-        
-//            print_r('La id es:');
-//            print_r($idAlumno);
-            $cuerpo = $this->load->view('V_MedidasInsert', array('idAlumno' => $idAlumno), TRUE);
+        print_r('Entra en insertar..................');
+        $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
+        //Establecemos los mensajes de errores
+        $this->setMensajesErrores();
+
+        //Establecemos reglas de validación para el formulario
+        $this->setReglasValidacion();
+
+        if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+        
+            $cuerpo = $this->load->view('V_MedidasInsert', array(
+                                                                  'idAlumno' => $idAlumno), TRUE);
+
+            $this->load->view('V_Plantilla', Array( 
+                                                    'cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
+            
+        } else {
+            
+                print_r('Entra en la funcion añadir');
+                 foreach ($this->input->post() as $key => $value) {
+                     
+                     
+                        if ($key == 'fecha_ini') {
+
+                            $fecha = $this->formato_mysql($value);
+                            $data[$key] =$fecha;
+
+                        }elseif ($key == 'fecha_fin') {
+
+                            $fecha = $this->formato_mysql($value);
+                            $data[$key] =$fecha;
+
+                        }else if( $key != 'aceptar'){
+                            $data[$key] = $value;
+                        }                     
+//                    
+                 }
+                 //Inserta en la tabla alumnado
+                 $this->M_Medidasad->adMedidas($data);
+
+                 //Pantalla de Confirmación
+                 $cuerpo = $this->load->view('V_Medidasadok', array(), true);
+                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                     'homeactive' => 'active'));            
+            
+        }         
+        
+
+
+            
+            
     }
      //Crea el array de los datos a insertar en la tabla usuario       
-    public function insertaDatos() {
-        print_r('Entra en la funcion añadir');
-        foreach ($this->input->post() as $key => $value) {
-            if ($key != 'aceptar') {
-                $data[$key] = $value;
-            }
-        }
-        //Inserta en la tabla alumnado
-        $this->M_Trayectoria->adTrayectoria($data);
-
-        //Pantalla de Confirmación
-        $cuerpo = $this->load->view('V_Neaeok', array(), true);
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-            'homeactive' => 'active'));
-    }
+//    public function insertaDatos() {
+//        print_r('Entra en la funcion añadir');
+//        foreach ($this->input->post() as $key => $value) {
+//            if ($key != 'aceptar') {
+//                $data[$key] = $value;
+//            }
+//        }
+//        //Inserta en la tabla alumnado
+//        $this->M_Trayectoria->adTrayectoria($data);
+//
+//        //Pantalla de Confirmación
+//        $cuerpo = $this->load->view('V_Neaeok', array(), true);
+//        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//            'homeactive' => 'active'));
+//    }
 
 //            $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
 //            $data['idAlumno']=$idAlumno;
@@ -220,83 +228,54 @@ class Medidasad extends CI_Controller {
 //            return FALSE;
 //        }
 //    }
-//
-//    function formato_americano($date) {
-//
-//        if (!empty($date)) {
-//            $var = explode('/', str_replace('-', '/', $date));
-//            return "$var[2]/$var[1]/$var[0]";
-//        }
-//    }
-//
-//    function formato_mysql($date) {
-//
-//        if (!empty($date)) {
-//            $var = explode('/', str_replace('-', '/', $date));
-//            return "$var[2]-$var[1]-$var[0]";
-//        }
-//    }
-//
-//    function validar_fecha($str) {
-//        $date = $this->formato_americano($str);
-//
-//        return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
-//    }
-//
-//    function validar_telefono($tel) {
-//        $patron = " /^((\+?34([ \t|\-])?)?[9|6|7]((\d{1}([ \t|\-])?[0-9]{3})|(\d{2}([ \t|\-])?[0-9]{2}))([ \t|\-])?[0-9]{2}([ \t|\-])?[0-9]{2})$/ ";
-//        if (preg_match($patron, $tel)) {
-//            return TRUE;
-//        } else {
-//
-//            return FALSE;
-//        }
-//    }
-//    
-//    function vaildar_curso($curso){
-//
-//        if($curso>0&&$curso<5){
-//          
-//            return TRUE;
-//            
-//        } else {
-//           
-//            return FALSE;
-//        }
-//    }
-//      function vaildar_grupo($grupo){
-//        if($grupo=='A'||$grupo=='B'||$grupo=='C'||$grupo=='D'){
-//            return TRUE;
-//            
-//        } else {
-//            return FALSE;
-//        }
-//    }
-//
-//    /**
-//     * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
-//     */
-//    function setMensajesErrores() {
+
+    function formato_americano($date) {
+
+        if (!empty($date)) {
+            $var = explode('/', str_replace('-', '/', $date));
+            return "$var[2]/$var[1]/$var[0]";
+        }
+    }
+
+    function formato_mysql($date) {
+
+        if (!empty($date)) {
+            $var = explode('/', str_replace('-', '/', $date));
+            return "$var[2]-$var[1]-$var[0]";
+        }
+    }
+
+    function validar_fecha($str) {
+        $date = $this->formato_americano($str);
+
+        return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
+    }
+
+    /**
+     * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
+     */
+    function setMensajesErrores() {
 //        $this->form_validation->set_message('required', 'El campo %s está vacío');
 //        $this->form_validation->set_message('valid_email', 'Formato de correo electrónico incorrecto');
 //        $this->form_validation->set_message('integer', 'El campo %s debe ser un número de 5 dígitos');
 //        $this->form_validation->set_message('exact_length', 'El campo %s debe tener %s caracteres');
 //        $this->form_validation->set_message('integer', 'El campo %s debe ser númerico');
 //        $this->form_validation->set_message('numeroNieRepetido_chek', 'El campo %s ya existe');
-//        $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
+        $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
 //        $this->form_validation->set_message('validar_telefono', 'El campo %s debe ser númerico');
 //        $this->form_validation->set_message('vaildar_curso', 'El campo %s debe ser númerico y comprendido entre 1 y 4');
 //        $this->form_validation->set_message('vaildar_grupo', 'El campo %s debe ser texto en mayuscula y comprendido entre la A y la D');
-//    }
-//
-//    /**
-//     * Establece las reglas que deben seguir cada campo del formulario
-//     */
-//    function setReglasValidacion() {
+    }
+
+    /**
+     * Establece las reglas que deben seguir cada campo del formulario
+     */
+    function setReglasValidacion() {
 //        $this->form_validation->set_rules('apellidos', 'apellidos', 'required');
 //        $this->form_validation->set_rules('nombre', 'nombre', 'required');
 //        $this->form_validation->set_rules('nie', 'NIE', 'required|exact_length[5]|callback_numeroNieRepetido_chek');
-//        $this->form_validation->set_rules('fechaNacimiento', 'fecha nacimiento', 'required|callback_validar_fecha');
+          $this->form_validation->set_rules('fecha_ini', 'fecha inicio', 'required|callback_validar_fecha');
+          $this->form_validation->set_rules('fecha_fin', 'fecha final', 'required|callback_validar_fecha');
 //        $this->form_validation->set_rules('nombreT1', 'nombre titular 1', 'required');
 //        $this->form_validation->set_rules('nombreT2', 'nombre titular 2', 'required');
 //        $this->form_validation->set_rules('direccion', 'dirección', 'required');
@@ -311,11 +290,11 @@ class Medidasad extends CI_Controller {
 //        $this->form_validation->set_rules('implicacion_escolar', 'Implicación Escolar', 'required');
 //        $this->form_validation->set_rules('curso', 'Curso', 'required|integer|max_length[1]|callback_vaildar_curso');
 //        $this->form_validation->set_rules('grupo', 'Grupo', 'required|max_length[1]|callback_vaildar_grupo');
-//
-//    }
+
+    }
     
     
-            /**
+     /**
      * Establece y devuelve la configuración de la paginación
      * @return Array Configuración
      */

@@ -54,12 +54,12 @@ class AlumnoInsert extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
         
-            $cuerpo = $this->load->view('V_AlumnoInsert', array(
-                'select' => $select), true);
+                $cuerpo = $this->load->view('V_AlumnoInsert', array(
+                                                                    'select' => $select), true);
 
             $this->load->view('V_Plantilla', Array(
-                'cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
+                                                    'cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
         } else {//Validación de datos correcta
            
             //Crea el array de los datos a insertar en la tabla usuario
