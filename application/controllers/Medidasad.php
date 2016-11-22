@@ -68,7 +68,7 @@ class Medidasad extends CI_Controller {
                             
                             $data[$key] = $value;
                         }                     
-//                    
+                   
                  }
                  //Inserta en la tabla alumnado
                  $this->M_Medidasad->adMedidas($data);
@@ -99,10 +99,28 @@ class Medidasad extends CI_Controller {
     }
 
     function validar_fecha($str) {
-        print_r('Entra en validar fecha');
+     
         $date = $this->formato_americano($str);
 
         return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
+    }
+    
+    function fecha_mayor(){
+        
+       $datos= $this->input->post();
+       
+       $fechini=$datos['fecha_ini'];
+       
+       $fechfin=$datos['fecha_fin'];
+       
+       if($fechini<=$fechfin){
+               
+           return TRUE;
+           
+       }else{
+           
+           return FALSE;
+       }
     }
 
     /**
@@ -111,6 +129,7 @@ class Medidasad extends CI_Controller {
     function setMensajesErrores() {
 
         $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
+        $this->form_validation->set_message('fecha_mayor', 'La fecha final no puede ser Menor que la de inicio');
 
     }
 
@@ -120,7 +139,7 @@ class Medidasad extends CI_Controller {
     function setReglasValidacion() {
         
           $this->form_validation->set_rules('fecha_ini', 'fecha inicio', 'required|callback_validar_fecha');
-          $this->form_validation->set_rules('fecha_fin', 'fecha final', 'required|callback_validar_fecha');
+          $this->form_validation->set_rules('fecha_fin', 'fecha final', 'required|callback_validar_fecha|callback_fecha_mayor');
     }
     
 
