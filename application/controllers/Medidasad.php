@@ -51,10 +51,23 @@ class Medidasad extends CI_Controller {
             
         } else {
             
-              
+//            print_r($this->input->post());
                  foreach ($this->input->post() as $key => $value) {
                      
-                        if ($key == 'fecha_ini') {
+                        if($key == 'nombre'){
+                             $nombre='';
+                            for ($i=0;$i<count($value);$i++){
+                                if($i<count($value)-1){
+                                   $nombre.=$value[$i].',';   
+                                }  else {
+                                    $nombre.=$value[$i]; 
+                                }
+                                                              
+                            }
+                          
+                            $data['nombre']=$nombre;
+  
+                        }elseif ($key == 'fecha_ini') {
 
                             $fecha = $this->formato_mysql($value);
                             $data[$key] =$fecha;
@@ -70,6 +83,7 @@ class Medidasad extends CI_Controller {
                         }                     
                    
                  }
+                 print_r($data);
                  //Inserta en la tabla alumnado
                  $this->M_Medidasad->adMedidas($data);
                  //Pantalla de Confirmación

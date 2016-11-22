@@ -30,19 +30,19 @@
                     <div class="form-group">
                         <div class="checkbox" style="color: White; text-align: left; ">
                             <label>
-                              <input type="checkbox" value="<?= set_value('apoyo educativo') ?>" name="nombre">
+                              <input type="checkbox" value="apoyo educativo" name="nombre[]">
                               APOYO EDUCATIVO
                             </label><br>
                             <label>
-                              <input type="checkbox" value="<?= set_value('compensatoria') ?>" name="nombre">
+                              <input type="checkbox" value="compensatoria" name="nombre[]">
                               COMPENSATORIA
                             </label><br>
                             <label>
-                              <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                              <input type="checkbox" value="A.T.A.L." name="nombre[]">
                               A.T.A.L.
                             </label><br>
                             <label>
-                              <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                              <input type="checkbox" value="G.F." name="nombre[]">
                               G.F.
                             </label>
                           </div>
@@ -52,19 +52,19 @@
                     <div class="form-group">
                     <div class="checkbox" style="color: White; text-align: left; ">
                         <label>
-                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          <input type="checkbox" value="P.M.A.R." name="nombre[]">
                           P.M.A.R.
                         </label><br>
                         <label>
-                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          <input type="checkbox" value="P.E." name="nombre[]">
                           P.E.
                         </label><br>
                         <label>
-                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          <input type="checkbox" value="ACNS" name="nombre[]">
                           ACNS
                         </label><br>
                         <label>
-                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          <input type="checkbox" value="ACI" name="nombre[]">
                           ACI
                         </label>
                       </div>
