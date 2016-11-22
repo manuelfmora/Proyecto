@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2016 a las 14:44:16
+-- Tiempo de generación: 21-11-2016 a las 14:43:22
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -99,21 +99,12 @@ CREATE TABLE `entrevistas` (
 --
 
 CREATE TABLE `medidasad` (
-  `idMedidasad` int(11) NOT NULL,
+  `idMedidasAD` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `fecha_ini` date DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL,
-  `observaciones` varchar(100) DEFAULT NULL,
-  `idAlumno` int(11) DEFAULT NULL
+  `fecha_ini` datetime DEFAULT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `observaciones` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `medidasad`
---
-
-INSERT INTO `medidasad` (`idMedidasad`, `nombre`, `fecha_ini`, `fecha_fin`, `observaciones`, `idAlumno`) VALUES
-(8, 'Nombre medidas de atención a la diversidad', '1970-12-28', '1970-12-28', 'OBserva', 10),
-(9, 'sdgdf', '1970-12-28', '1970-12-29', '', 10);
 
 -- --------------------------------------------------------
 
@@ -311,8 +302,7 @@ ALTER TABLE `entrevistas`
 -- Indices de la tabla `medidasad`
 --
 ALTER TABLE `medidasad`
-  ADD PRIMARY KEY (`idMedidasad`),
-  ADD KEY `FK_alumnos_medidasad` (`idAlumno`);
+  ADD PRIMARY KEY (`idMedidasAD`);
 
 --
 -- Indices de la tabla `neae`
@@ -366,11 +356,6 @@ ALTER TABLE `alumno`
 ALTER TABLE `entrevistas`
   MODIFY `idEntrevistas` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `medidasad`
---
-ALTER TABLE `medidasad`
-  MODIFY `idMedidasad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
 -- AUTO_INCREMENT de la tabla `neae`
 --
 ALTER TABLE `neae`
@@ -397,16 +382,10 @@ ALTER TABLE `alumno`
   ADD CONSTRAINT `fk_Alumno_provincias` FOREIGN KEY (`cod_provincia`) REFERENCES `provincias` (`cod`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `medidasad`
---
-ALTER TABLE `medidasad`
-  ADD CONSTRAINT `FK_alumnos_medidasad` FOREIGN KEY (`idAlumno`) REFERENCES `alumno` (`idAlumno`) ON DELETE CASCADE;
-
---
 -- Filtros para la tabla `neae`
 --
 ALTER TABLE `neae`
-  ADD CONSTRAINT `FK_alumnos_neae` FOREIGN KEY (`idAlumno`) REFERENCES `alumno` (`idAlumno`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_alumnos_neae` FOREIGN KEY (`idAlumno`) REFERENCES `alumno` (`idAlumno`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
