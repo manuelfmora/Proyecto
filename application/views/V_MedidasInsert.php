@@ -20,9 +20,56 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('nombre') ?>" placeholder="Nombre" name="nombre" >
-                        <?= form_error('nombre'); ?>
+                        <center>
+                            <div style="color: White"><h3>Modalidades</h3></div>
+                        </center>
+                            
                     </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="checkbox" style="color: White; text-align: left; ">
+                            <label>
+                              <input type="checkbox" value="<?= set_value('apoyo educativo') ?>" name="nombre">
+                              APOYO EDUCATIVO
+                            </label><br>
+                            <label>
+                              <input type="checkbox" value="<?= set_value('compensatoria') ?>" name="nombre">
+                              COMPENSATORIA
+                            </label><br>
+                            <label>
+                              <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                              A.T.A.L.
+                            </label><br>
+                            <label>
+                              <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                              G.F.
+                            </label>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    <div class="checkbox" style="color: White; text-align: left; ">
+                        <label>
+                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          P.M.A.R.
+                        </label><br>
+                        <label>
+                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          P.E.
+                        </label><br>
+                        <label>
+                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          ACNS
+                        </label><br>
+                        <label>
+                          <input type="checkbox" value="<?= set_value('nombre') ?>" name="nombre">
+                          ACI
+                        </label>
+                      </div>
+                    
+                  </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">                        

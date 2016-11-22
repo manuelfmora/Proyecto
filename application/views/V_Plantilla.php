@@ -102,21 +102,21 @@
                                     </ul>
                             </li>
 
-                        <!-- Menú Opciones usuario-->
-                       
+                        <!-- /Menú Opciones usuario-->
+<!------ ALUMNADO ----------------------------------------------------------------------------------------------------------------------------------------->              
                             <!-- /Menú Opciones usuario-->
                             <!-- Menú Opciones Alumnos-->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ALUMNADO<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu"> 
-  <!----------------------------------------------------------------------------------------------------------------------------------------------->
+  
 
                                     <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
                                     <li><a href="<?= base_url() . 'index.php/AlumnoModify' ?>">Modificar Eliminar Alumno</a></li>                         
                                 </ul>
                             </li>
                             
-                            
+<!----- ATENCIÓN A LA DIVERSIDAD ------------------------------------------------------------------------------------------------------------------------------------------>                                          
                             <li class="dropdown">
                                 <a class="dropdown-toggle"  href="<?= base_url() . 'index.php/Trayectoria' ?>">AT. DIVERSIDAD</span></a>
 <!--                            <a class="dropdown-toggle" data-toggle="dropdown" href="<?= base_url() . 'index.php/Trayectoria' ?>">AT. DIVERSIDAD<span class="caret"></span></a>-->
@@ -139,9 +139,9 @@
                                     </li>
                                </ul>    -->
                             </li>
-                            
-                                                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">ACC. TUTORIAL<span class="caret"></span></a>
+<!-------------- ACCIÓN TUTORIAL --------------------------------------------------------------------------------------------------------------------------------->                                          
+                            <li class="dropdown">
+                            <a class="dropdown-toggle" href="<?= base_url() . 'index.php/AccionTutorial' ?>">ACC. TUTORIAL</span></a>
                                <ul class="dropdown-menu" role="menu"> 
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">PROTOCOLOS<span class="caret"></span></a>
