@@ -94,6 +94,73 @@ class Medidasad extends CI_Controller {
         }          
             
     }
+    
+     /**
+     * Modifica un usuario si se han introducido correctamente los datos
+     */
+    public function Modificar($idAlumno) {        
+
+        
+
+        if (SesionIniciadaCheck()) {
+            
+
+            //Optenemos los datos del alumno.
+            $datos = $this->M_Medidasad->getDatosModificar($idAlumno);
+
+            print_r($datos);
+          $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+            //Establecemos los mensajes de errores
+            $this->setMensajesErrores();
+            //Establecemos reglas de validación para el formulario
+            $this->setReglasValidacion();
+
+            if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+                $fecha_ini=$this->formato_americano($datos['fecha_ini']);
+                $fecha_fin=$this->formato_americano($datos['fecha_fin']);
+                $cuerpo = $this->load->view('V_MedidasModify', array(                                            
+                                               'fecha_ini'=>$fecha_ini,
+                                               'fecha_fin'=>$fecha_fin,
+                                               'datos' => $datos), true);
+                                           
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                        'homeactive' => 'active'));
+
+
+            
+            } else {
+           
+               
+                 $config['apellidos'] =  $this->input->post('apellidos');
+                 $config['nombre'] =  $this->input->post('nombre');
+                 $config['nie'] =  $this->input->post('nie');
+                 $config['fechaNacimiento'] = $this->formato_mysql($this->input->post('fechaNacimiento')) ;
+                 $config['datos_medicos'] =  $this->input->post('datos_medicos');
+                 $config['datos_psicologicos'] =  $this->input->post('datos_psicologicos');
+                 $config['informe_medico'] =  $this->input->post('informe_medico');
+                 $config['nombreT1'] =  $this->input->post('nombreT1');
+                 $config['nombreT2'] =  $this->input->post('nombreT2');
+                 $config['direccion'] =  $this->input->post('direccion');
+                 $config['cp'] =  $this->input->post('cp');
+                 $config['poblacion'] =  $this->input->post('poblacion');
+                 $config['cod_provincia'] =  $this->input->post('cod_provincia');
+                 $config['telefono1'] =  $this->input->post('telefono1');
+                 $config['telefono2'] =  $this->input->post('telefono2');
+                 $config['tipo'] =  $this->input->post('tipo');
+                 $config['situacion'] =  $this->input->post('situacion');
+                 $config['implicacion_escolar'] =  $this->input->post('implicacion_escolar');
+                 $config['Usuario_idUsuario'] = $this->session->userdata('logged_in');
+                 $id=$this->M_Alumno->getId($this->input->post('nie'));
+                 $this->M_Alumno->updateAlumno($id,$config);
+                 
+                 //Pantalla de Confirmación
+                 $cuerpo = $this->load->view('V_AlumnoModifyok', array(), true);
+                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                        'homeactive' => 'active'));
+            }
+        }
+    }
+    
 
 
     function formato_americano($date) {
@@ -121,20 +188,20 @@ class Medidasad extends CI_Controller {
     
     function fecha_mayor(){
         
-       $datos= $this->input->post();
-       
-       $fechini=$datos['fecha_ini'];
-       
-       $fechfin=$datos['fecha_fin'];
-       
-       if($fechini<=$fechfin){
-               
-           return TRUE;
-           
-       }else{
-           
-           return FALSE;
-       }
+        $datos= $this->input->post();
+
+        $fechini=$datos['fecha_ini'];
+
+        $fechfin=$datos['fecha_fin'];
+
+        if($fechini<=$fechfin){
+
+            return TRUE;
+
+        }else{
+
+            return FALSE;
+        }
     }
 
     /**

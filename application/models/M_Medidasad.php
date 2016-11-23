@@ -70,11 +70,11 @@ class M_Medidasad extends CI_Model{
      * @param String $nombre_usu Nombre de usuario
      * @return Array
      */
-    public function getDatosModificar($nie) {
+    public function getDatosModificar($idAlumno) {
        
         $query = $this->db->query("SELECT * "
-                . "FROM alumno "
-                . "WHERE nie = '$nie'");
+                . "FROM medidasad "
+                . "WHERE idAlumno = '$idAlumno'");
                    
         return $query->row_array();
     }
