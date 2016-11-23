@@ -58,41 +58,41 @@ class AccionTutorial extends CI_Controller {
         }
     }
     
-    public function alumno($idAlumno){
-       $alumnos= $this->M_Acc-> getDatosAlumno($idAlumno);
-//        print_r('El alumno es:');
-//        print_r($alumnos);
-        $cuerpo = $this->load->view('V_Neae', array('alumnos' => $alumnos), TRUE);
-
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-            'homeactive' => 'active'));
-    }
-
-    public function insertar($idAlumno){
-        
-            print_r('La id es:');
-            print_r($idAlumno);
-            $cuerpo = $this->load->view('V_TrayectoriaInsert', array('idAlumno' => $idAlumno), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-    }
-     //Crea el array de los datos a insertar en la tabla usuario       
-    public function insertaDatos() {
-        print_r('Entra en la funcion añadir');
-        foreach ($this->input->post() as $key => $value) {
-            if ($key != 'aceptar') {
-                $data[$key] = $value;
-            }
-        }
-        //Inserta en la tabla alumnado
-        $this->M_Trayectoria->adTrayectoria($data);
-
-        //Pantalla de Confirmación
-        $cuerpo = $this->load->view('V_Necesidadesok', array(), true);
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-            'homeactive' => 'active'));
-    }
+//    public function alumno($idAlumno){
+//       $alumnos= $this->M_Acc-> getDatosAlumno($idAlumno);
+////        print_r('El alumno es:');
+////        print_r($alumnos);
+//        $cuerpo = $this->load->view('V_Neae', array('alumnos' => $alumnos), TRUE);
+//
+//        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//            'homeactive' => 'active'));
+//    }
+//
+//    public function insertar($idAlumno){
+//        
+//            print_r('La id es:');
+//            print_r($idAlumno);
+//            $cuerpo = $this->load->view('V_TrayectoriaInsert', array('idAlumno' => $idAlumno), TRUE);
+//
+//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//                'homeactive' => 'active'));
+//    }
+//     //Crea el array de los datos a insertar en la tabla usuario       
+//    public function insertaDatos() {
+//        print_r('Entra en la funcion añadir');
+//        foreach ($this->input->post() as $key => $value) {
+//            if ($key != 'aceptar') {
+//                $data[$key] = $value;
+//            }
+//        }
+//        //Inserta en la tabla alumnado
+//        $this->M_Trayectoria->adTrayectoria($data);
+//
+//        //Pantalla de Confirmación
+//        $cuerpo = $this->load->view('V_Necesidadesok', array(), true);
+//        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//            'homeactive' => 'active'));
+//    }
 
 //            $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
 //            $data['idAlumno']=$idAlumno;
