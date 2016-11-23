@@ -142,8 +142,8 @@
 <!-------------- ACCIÓN TUTORIAL --------------------------------------------------------------------------------------------------------------------------------->                                          
                             <li class="dropdown">
                             <a class="dropdown-toggle" href="<?= base_url() . 'index.php/AccionTutorial' ?>">ACC. TUTORIAL</span></a>
-                               <ul class="dropdown-menu" role="menu"> 
-                                    <li class="dropdown">
+<!--                               <ul class="dropdown-menu" role="menu"> -->
+<!--                                    <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">PROTOCOLOS<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu"> 
                                             <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
@@ -174,9 +174,9 @@
                                             <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
                                             <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
                                         </ul>
-                                    </li>
+                                    </li>-->
                           
-                               </ul>    
+<!--                               </ul>    -->
                             </li>
 
                              <!----->

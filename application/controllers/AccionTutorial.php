@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Trayectoria extends CI_Controller {
+class AccionTutorial extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -45,13 +45,13 @@ class Trayectoria extends CI_Controller {
         //Si no existe alumnos con esos apellidos
         //Mostramos un informe de lista vacia.
         if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
+            $cuerpo = $this->load->view('V_AlumnoAcctuto', array(), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
         } else {
-            //Mostramo la ventana de modificación OK
-            $cuerpo = $this->load->view('V_MenuAT_Diver', array('alumnos' => $alumnos), TRUE);
+              //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
+            $cuerpo = $this->load->view('V_MenuAcctuto', array('alumnos' => $alumnos), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
@@ -59,7 +59,7 @@ class Trayectoria extends CI_Controller {
     }
     
     public function alumno($idAlumno){
-       $alumnos= $this->M_Trayectoria-> getDatosAlumno($idAlumno);
+       $alumnos= $this->M_Acc-> getDatosAlumno($idAlumno);
 //        print_r('El alumno es:');
 //        print_r($alumnos);
         $cuerpo = $this->load->view('V_Neae', array('alumnos' => $alumnos), TRUE);
