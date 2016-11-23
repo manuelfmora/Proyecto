@@ -30,7 +30,7 @@ class Medidasad extends CI_Controller {
     }
 
     
-    public function insertar($idAlumno){
+    public function insertar(){
         
         $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
