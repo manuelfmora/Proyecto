@@ -79,8 +79,8 @@ class M_Trayectoria extends CI_Model{
         return $query->row_array();
     }
         /**
-     * Consulta los datos que se van a modificar para mostrarlos en el formualario
-     * @param String $nombre_usu Nombre de usuario
+     * Consulta los datos de un alumno por su id
+     * @param String $id id usuario
      * @return Array
      */
     public function getDatosAlumno($id) {

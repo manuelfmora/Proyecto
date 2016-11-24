@@ -12,7 +12,8 @@
             </div>
             <div class="mu-reservation-content">
                 <center>
-                <a class="mu-readmore-btn" href="<?= base_url().'index.php/AccionTutorial/Buscar'?>"> Ir a la página de inicio.</a>    
+                   
+                <a class="mu-readmore-btn" href="<?= base_url().'index.php/AccionTutorial/MenuAccUno/'. $idAlumno?>"> Ir a Acción Tutorial.</a>    
                 </center>
             </div>
           </div>

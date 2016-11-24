@@ -77,7 +77,7 @@ class M_Alumno extends CI_Model{
                    
         return $query->row_array();
     }
-            /**
+     /**
      * Consulta el numero total alumnos
      * @param String $nombre_usu Nombre de usuario
      * @return Array

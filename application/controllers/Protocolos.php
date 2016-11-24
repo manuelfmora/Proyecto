@@ -31,7 +31,8 @@ class Protocolos extends CI_Controller {
     }
 
     public function insertar($idAlumno){
-        printf('ENTRA EN INSERTAR'.$idAlumno);
+        
+    
        //VISTA DE LA OPCIÓN INSERTAR
         $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
@@ -42,189 +43,43 @@ class Protocolos extends CI_Controller {
         $this->setReglasValidacion();
 
         if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-        
             $cuerpo = $this->load->view('V_ProtocolosInsert', array(
-                                                                  'idAlumno' => $idAlumno), TRUE);
+                                                                    'idAlumno' => $idAlumno), TRUE);
 
-            $this->load->view('V_Plantilla', Array( 
+            $this->load->view('V_Plantilla', Array(
                                                     'cuerpo' => $cuerpo,
                                                     'homeactive' => 'active'));
-            
         } else {
-            print_r('EEEEEEEEEEEEEEEEEEEEEEEta en el EEEEEEEEEEEEElse');
 
-                 foreach ($this->input->post() as $key => $value) {
-                     
-                  if ($key == 'fecha_ini') {
+            foreach ($this->input->post() as $key => $value) {
 
-                            $fecha = $this->formato_mysql($value);
-                            $data[$key] =$fecha;
+                if ($key == 'fecha_ini') {
 
-                        }elseif ($key == 'fecha_fin') {
+                    $fecha = $this->formato_mysql($value);
+                    $data[$key] = $fecha;
+                } elseif ($key == 'fecha_fin') {
 
-                            $fecha = $this->formato_mysql($value);
-                            $data[$key] =$fecha;
+                    $fecha = $this->formato_mysql($value);
+                    $data[$key] = $fecha;
+                } else if ($key != 'aceptar') {
 
-                        }else if( $key != 'aceptar'){
-                            
-                            $data[$key] = $value;
-                        }                     
-                   
-                 }
-                 print_r($data);
-                 //Inserta en la tabla alumnado
-                 $this->M_Medidasad->adMedidas($data);
-                 //Pantalla de Confirmación
-                 $cuerpo = $this->load->view('V_Medidasadok', array(), true);
-                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                     'homeactive' => 'active')); 
-            
-        } 
-    }
-     //Crea el array de los datos a insertar en la tabla usuario       
-    public function insertaDatos() {
-        print_r('Entra en la funcion añadir');
-        print_r($this->input->post());
-        foreach ($this->input->post() as $key => $value) {
-            if ($key != 'aceptar') {
-                $data[$key] = $value;
+                    $data[$key] = $value;
+                }
             }
+              
+                //Inserta en la tabla alumnado
+                $this->M_Protocolos->adProtocolos($data);
+                //Pantalla de Confirmación
+                
+//                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
+//                print_r($alumnos);
+                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                    'homeactive' => 'active'));
         }
-        //Inserta en la tabla alumnado
-        $this->M_Protocolos->adProtocolo($data);
-
-        //Pantalla de Confirmación
-        $cuerpo = $this->load->view('V_Necesidadesok', array(), true);
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-            'homeactive' => 'active'));
     }
 
-//            $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
-//            $data['idAlumno']=$idAlumno;
-            
-//            //Inserta en la tabla alumnado
-//            $this->M_Alumno->addalumno($data); 
-//            
-//            //Pantalla de Confirmación
-//            $cuerpo = $this->load->view('V_AlumnoInsertok', array(), true);
-//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-//                                                   'homeactive' => 'active'));
-//    }
 
-
-//    //////////////////////////////////////////////////////////////////////////////////////
-//    /**
-//     * Inicia la subida del archivo PDF
-//     */
-//    
-//       public function subir(){
-//           print_r('Entra en subir');
-//       //Ruta donde se guardan los ficheros
-//        $config['upload_path'] = './subidas/';
-//        
-//       //Tipos de ficheros permitidos
-//        $config['allowed_types'] = 'gif|jpg|png';
-//         
-//       //Se pueden configurar aun mas parámetros.
-//       //Cargamos la librería de subida y le pasamos la configuración 
-//        $this->load->library('upload', $config);
-// print_r( $this->load->library('upload', $config));
-//        if(!$this->upload->do_upload()){
-//            print_r('Entra en if');
-//            /*Si al subirse hay algún error lo meto en un array para pasárselo a la vista*/
-//                $error=array('error' => $this->upload->display_errors());
-//                $this->load->view('subir_view', $error);
-//        }else{
-//            print_r('Entra en Else');
-//            //Datos del fichero subido
-//            $datos["img"]=$this->upload->data();
-// 
-//            // Podemos acceder a todas las propiedades del fichero subido 
-//            // $datos["img"]["file_name"]);
-// 
-//            //Cargamos la vista y le pasamos los datos
-//            $this->load->view('subir_view', $datos);
-//        }
-//    } 
- /////////////////////////////////////////////////////////////////////////////////////////////////////  
-
-//    /**
-//     * Comprueba que los datos introducidos en el formulario sean correctos
-//     */
-//    public function Alumno() {
-//
-//        $provincias = $this->M_Provincias->getProvincias();
-//        $select = CreaSelect($provincias, 'cod_provincia');
-//
-//        $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
-//
-//        //Establecemos los mensajes de errores
-//        $this->setMensajesErrores();
-//
-//        //Establecemos reglas de validación para el formulario
-//        $this->setReglasValidacion();
-//
-//        if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-//        
-//            $cuerpo = $this->load->view('V_AlumnoInsert', array(
-//                'select' => $select), true);
-//
-//            $this->load->view('V_Plantilla', Array(
-//                'cuerpo' => $cuerpo,
-//                'homeactive' => 'active'));
-//        } else {//Validación de datos correcta
-//           
-//            //Crea el array de los datos a insertar en la tabla usuario
-//            foreach ($this->input->post() as $key => $value) {
-//                if ($key == 'fechaNacimiento') {
-//                    $fecha = $this->formato_mysql($value);
-//                    $data[$key] =$fecha;
-//                } else if( $key != 'GuardarUsuario'){
-//                    $data[$key] = $value;
-//                }
-//            }
-//            $datos = $this->M_User->getDatosModificar($this->session->userdata('username'));
-//            $data['Usuario_idUsuario']=$datos['idUsuario'];
-//            //Inserta en la tabla alumnado
-//            $this->M_Alumno->addalumno($data); 
-//            
-//            //Pantalla de Confirmación
-//            $cuerpo = $this->load->view('V_AlumnoInsertok', array(), true);
-//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-//                                                   'homeactive' => 'active'));
-//
-//
-//        }
-//    }
-//    /**
-//     * Comprueba si un nombre de usuario está ya usado
-//     * @param String $nombre_usu Nombre del usuario a comprobar
-//     * @return boolean
-//    */
-//    function nombreUsuRepetido_check($nombre_usu) {
-//
-//        $countNomUsuario = $this->M_Alumno->getCount_NombreUsuario($nombre_usu);
-//
-//        if ($countNomUsuario == 0) {//No existen nombres guardados
-//            return TRUE;
-//        } else {
-//            return FALSE;
-//        }
-//    }
-//
-//    /**
-//     * Comprueba si un NIE de alumno está ya usado
-//     * @param String $nie Nie del alumno a comprobar
-//     * @return boolean
-//     */
-//    function numeroNieRepetido_chek($nie) {
-//        $cunetaNie = $this->M_Alumno->getCount_Nie($nie);
-//        if ($cunetaNie == 0) {
-//            return TRUE;
-//        } else {
-//            return FALSE;
-//        }
-//    }
 
     function formato_americano($date) {
 
@@ -247,28 +102,29 @@ class Protocolos extends CI_Controller {
 
         return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
     }
+    
+    /**
+     * Comprueba si una fechade inicio es menor o igula que la fecha final
+     * $datos['fecha_ini'] datos fecha inicio
+     * $datos['fecha_fin'] datos fecha fin
+     */
+    function fecha_mayor(){
+        
+        $datos= $this->input->post();
 
-//   /**
-//    * Cambia el formato de una fecha
-//    * @param Date $fecha Fecha a cambiar
-//    * @return Date Fecha cambiada
-//    */
-//    function cambiaFormatoFecha($fecha){
-//       $date = date_create($fecha);
-//
-//       return date_format($date, 'd/m/Y');
-//    }
-//    /**
-//    * Cambia el formato de una fecha
-//    * @param Date $fecha Fecha a cambiar
-//    * @return Date Fecha cambiada
-//    */
-//    function formatoFechaAmericano($fecha){
-//    //    print_r($fecha);
-//       $date = date_create($fecha);
-//
-//       return date_format($date, 'Y/m/d');
-//    }
+        $fechini=$datos['fecha_ini'];
+
+        $fechfin=$datos['fecha_fin'];
+
+        if($fechini<=$fechfin){
+
+            return TRUE;
+
+        }else{
+
+            return FALSE;
+        }
+    }
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario

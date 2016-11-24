@@ -61,8 +61,8 @@ class M_Protocolos extends CI_Model{
      */
     public function adProtocolos($data) {
 
-        $this->db->insert('neae', $data);
-        print_r('Impresion Correcta');
+        $this->db->insert('protocolos', $data);
+       
     }
 
     /**

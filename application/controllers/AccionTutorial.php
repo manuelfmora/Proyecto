@@ -13,7 +13,7 @@ class AccionTutorial extends CI_Controller {
         parent::__construct();
 
         $this->load->helper('Formulario');
-        $this->load->model('M_Provincias');
+        
         $this->load->model('M_Alumno');
         $this->load->library('form_validation');
         $this->load->model('M_Trayectoria');
@@ -25,7 +25,7 @@ class AccionTutorial extends CI_Controller {
      */
     public function index() {
 
-        $cuerpo = $this->load->view('V_BuscarAlumnoTy', array(), true);
+        $cuerpo = $this->load->view('V_BuscarAlumnoAcctuto', array(), true);
 
         $this->load->view('V_Plantilla', Array(
             'cuerpo' => $cuerpo,
@@ -44,13 +44,15 @@ class AccionTutorial extends CI_Controller {
         
         //Si no existe alumnos con esos apellidos
         //Mostramos un informe de lista vacia.
+        
+        
         if (empty($alumnos)) {
             $cuerpo = $this->load->view('V_AlumnoAcctuto', array(), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
         } else {
-              //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
+    //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
             $cuerpo = $this->load->view('V_MenuAcctuto', array('alumnos' => $alumnos), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
@@ -58,6 +60,19 @@ class AccionTutorial extends CI_Controller {
         }
     }
     
+    function MenuAccUno($idalumno){
+        //Devolvemos los datos del alumno cuya id mandamos
+        $alumno=  $this->M_Trayectoria->getDatosAlumno($idalumno);
+       //Para que se pueda mostrar en el foreach de V_menuAcctuto lo insertamos en otro array $alumno
+        $alumnos[0]=$alumno;
+        //le pasamos los datos a la vista 
+        $cuerpo = $this->load->view('V_MenuAcctuto', array('alumnos' => $alumnos), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+            'homeactive' => 'active'));
+    }
+
+
 //    public function alumno($idAlumno){
 //       $alumnos= $this->M_Acc-> getDatosAlumno($idAlumno);
 ////        print_r('El alumno es:');
