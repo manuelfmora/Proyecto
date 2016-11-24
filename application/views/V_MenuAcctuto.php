@@ -41,7 +41,7 @@
                                                     <td><?= $alumno['nombre'] ?>  </td>  <!--Craga todas las opciones del menu de alumnos-->
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/TrayAcd/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/TrayAcad/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Transito/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                              </tr>
                                             <?php endforeach; ?>

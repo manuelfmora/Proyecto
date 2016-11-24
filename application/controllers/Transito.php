@@ -14,7 +14,7 @@ class Transito extends CI_Controller {
 
         $this->load->helper('Formulario');
         $this->load->library('form_validation');
-        $this->load->model('M_Protocolos');
+        $this->load->model('M_AccionTutorial');
    
     }
            //Se Accede de las opciones de Acción Tutorial -- V_MenuAcctuto
@@ -22,9 +22,9 @@ class Transito extends CI_Controller {
         
  
         
-       $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
+        $alumnos= $this->M_AccionTutorial-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_MenuProtocolos', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuTransito', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));

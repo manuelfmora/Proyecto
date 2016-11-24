@@ -13,56 +13,16 @@ class Trayectoria extends CI_Controller {
         parent::__construct();
 
         $this->load->helper('Formulario');
-        $this->load->model('M_Provincias');
-        $this->load->model('M_Alumno');
         $this->load->library('form_validation');
-        $this->load->model('M_Trayectoria');
-        $this->load->library('pagination');
+        $this->load->model('M_AccionTutorial');
     }
 
-    /**
-     * Muestra el formulario de registro
-     */
-    public function index() {
 
-        $cuerpo = $this->load->view('V_BuscarAlumno_AD', array(), true);
-
-        $this->load->view('V_Plantilla', Array(
-            'cuerpo' => $cuerpo,
-            'homeactive' => 'active'
-        ));
-    }
-    
-    public function Buscar($desde = 0){
-
-        $apellidos = $this->input->post('apellidos');     
-        //PAGINACÓN
-        $config = $this->getConfigPag();       
-
-        $result=$this->pagination->initialize($config);
-        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
-        
-        //Si no existe alumnos con esos apellidos
-        //Mostramos un informe de lista vacia.
-        if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        } else {
-            //Mostramo la ventana de modificación OK
-            $cuerpo = $this->load->view('V_MenuAT_Diver', array('alumnos' => $alumnos), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        }
-    }
-    
     public function alumno($idAlumno){
-       $alumnos= $this->M_Trayectoria-> getDatosAlumno($idAlumno);
+       $alumnos= $this->M_AccionTutorial-> getDatosAlumno($idAlumno);
 //        print_r('El alumno es:');
 //        print_r($alumnos);
-        $cuerpo = $this->load->view('V_Neae', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuEntrevistas', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
