@@ -1,4 +1,4 @@
-<!-- Start Contact section -->
+f<!-- Start Contact section -->
 <section id="mu-contact">
     <div class="container">
         <div class="row">
@@ -32,9 +32,9 @@
                                                     <td><?= $alumnos['nie'] ?></td>  
                                                     <td><?= $alumnos['apellidos'] ?></td>
                                                     <td><?= $alumnos['nombre'] ?>  </td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/insertar/".$alumnos['idAlumno'] ?>">Insertar</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/insertar/".$alumnos['idAlumno'] ?>">Insertar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
 
                                                 </tr>
 

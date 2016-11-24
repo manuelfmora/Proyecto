@@ -17,25 +17,29 @@ class Protocolos extends CI_Controller {
         $this->load->model('M_Protocolos');
    
     }
-    
+           //Se Accede de las opciones de Acción Tutorial -- V_MenuAcctuto
     public function alumno($idAlumno){
+        
+ 
+        
        $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_Protocolos', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuProtocolos', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
 
-    public function insertar(){
-        
+    public function insertar($idAlumno){
+        printf('ENTRA EN INSERTAR'.$idAlumno);
+       //VISTA DE LA OPCIÓN INSERTAR
         $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
         //Establecemos los mensajes de errores
         $this->setMensajesErrores();
 
-//        //Establecemos reglas de validación para el formulario
-//        $this->setReglasValidacion();
+        //Establecemos reglas de validación para el formulario
+        $this->setReglasValidacion();
 
         if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
         
@@ -47,24 +51,11 @@ class Protocolos extends CI_Controller {
                                                     'homeactive' => 'active'));
             
         } else {
-            
-//            print_r($this->input->post());
+            print_r('EEEEEEEEEEEEEEEEEEEEEEEta en el EEEEEEEEEEEEElse');
+
                  foreach ($this->input->post() as $key => $value) {
                      
-                        if($key == 'nombre'){
-                             $nombre='';
-                            for ($i=0;$i<count($value);$i++){
-                                if($i<count($value)-1){
-                                   $nombre.=$value[$i].',';   
-                                }  else {
-                                    $nombre.=$value[$i]; 
-                                }
-                                                              
-                            }
-                          
-                            $data['nombre']=$nombre;
-  
-                        }elseif ($key == 'fecha_ini') {
+                  if ($key == 'fecha_ini') {
 
                             $fecha = $this->formato_mysql($value);
                             $data[$key] =$fecha;

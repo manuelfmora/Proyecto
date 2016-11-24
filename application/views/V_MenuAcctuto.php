@@ -38,7 +38,7 @@
                                                 <tr>
                                                     <td><?= $alumno['nie'] ?></td>  
                                                     <td><?= $alumno['apellidos'] ?></td>
-                                                    <td><?= $alumno['nombre'] ?>  </td>
+                                                    <td><?= $alumno['nombre'] ?>  </td>  <!--Craga todas las opciones del menu de alumnos-->
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/TrayAcd/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>

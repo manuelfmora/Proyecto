@@ -12,7 +12,7 @@
             </div>              
             <div class="mu-reservation-content">
                <!-- Formulario sin PDF -->  
-              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Protocolos/insertar'?>" method="post">
+              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Protocolos/insertar/'.$idAlumno?>" method="post">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group"> 
