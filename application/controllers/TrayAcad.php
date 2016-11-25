@@ -43,7 +43,7 @@ class TrayAcad extends CI_Controller {
         $this->setReglasValidacion();
 
         if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-            $cuerpo = $this->load->view('V_ProtocolosInsert', array(
+            $cuerpo = $this->load->view('V_TrayAcadInsert', array(
                                                                     'idAlumno' => $idAlumno), TRUE);
 
             $this->load->view('V_Plantilla', Array(
@@ -53,14 +53,11 @@ class TrayAcad extends CI_Controller {
 
             foreach ($this->input->post() as $key => $value) {
 
-                if ($key == 'fecha_ini') {
+                if ($key == 'fecha_ev') {
 
                     $fecha = $this->formato_mysql($value);
                     $data[$key] = $fecha;
-                } elseif ($key == 'fecha_fin') {
-
-                    $fecha = $this->formato_mysql($value);
-                    $data[$key] = $fecha;
+                
                 } else if ($key != 'aceptar') {
 
                     $data[$key] = $value;
@@ -68,7 +65,7 @@ class TrayAcad extends CI_Controller {
             }
               
                 //Inserta en la tabla alumnado
-                $this->M_Protocolos->adProtocolos($data);
+                $this->M_AccionTutorial->adTrayAcad($data);
                 //Pantalla de Confirmación
                 
 //                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
@@ -102,29 +99,7 @@ class TrayAcad extends CI_Controller {
 
         return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
     }
-    
-    /**
-     * Comprueba si una fechade inicio es menor o igula que la fecha final
-     * $datos['fecha_ini'] datos fecha inicio
-     * $datos['fecha_fin'] datos fecha fin
-     */
-    function fecha_mayor(){
-        
-        $datos= $this->input->post();
 
-        $fechini=$datos['fecha_ini'];
-
-        $fechfin=$datos['fecha_fin'];
-
-        if($fechini<=$fechfin){
-
-            return TRUE;
-
-        }else{
-
-            return FALSE;
-        }
-    }
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
@@ -132,8 +107,7 @@ class TrayAcad extends CI_Controller {
     function setMensajesErrores() {
         
         $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
-        $this->form_validation->set_message('fecha_mayor', 'La fecha final no puede ser Menor que la de inicio');        
-
+        
     }
 
     /**
@@ -141,8 +115,7 @@ class TrayAcad extends CI_Controller {
      */
     function setReglasValidacion() {
         
-          $this->form_validation->set_rules('fecha_ini', 'fecha inicio', 'required|callback_validar_fecha');
-          $this->form_validation->set_rules('fecha_fin', 'fecha final', 'required|callback_validar_fecha|callback_fecha_mayor');
+          $this->form_validation->set_rules('fecha_ev', 'fecha evaluacion', 'required|callback_validar_fecha');
 
     }
     

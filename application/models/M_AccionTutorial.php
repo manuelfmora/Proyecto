@@ -11,6 +11,36 @@ class M_AccionTutorial extends CI_Model{
     public function __construct() {
         $this->load->database();
     }
+    
+    
+    /**
+     * Añade un Alumno a la base de datos
+     * @param Array $data Datos del Alumno
+     */
+    public function adEntrevistas($data) {
+
+        $this->db->insert('entrevistas', $data);
+       
+    }
+    
+    /**
+     * Añade un Alumno a la base de datos
+     * @param Array $data Datos del Alumno
+     */
+    public function adTrayAcad($data) {
+
+        $this->db->insert('trayect_acad', $data);
+       
+    }
+    /**
+     * Añade un Alumno a la base de datos
+     * @param Array $data Datos del Alumno
+     */
+    public function adTransito($data) {
+
+        $this->db->insert('transito', $data);
+       
+    }      
 
     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro

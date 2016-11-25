@@ -5,7 +5,7 @@ f<!-- Start Contact section -->
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">ENTREVISTAS</span>
+                        <span class="mu-subtitle">TRAY.  ACADEMICA</span>
                         <h2>Acciones a Realizar</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
