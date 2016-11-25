@@ -36,11 +36,13 @@ class M_AccionTutorial extends CI_Model{
      * Añade un Alumno a la base de datos
      * @param Array $data Datos del Alumno
      */
+  
     public function adTransito($data) {
 
         $this->db->insert('transito', $data);
        
-    }      
+    }   
+
 
     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro

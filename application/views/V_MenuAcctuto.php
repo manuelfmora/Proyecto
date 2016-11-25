@@ -1,5 +1,5 @@
-<!-- Start Contact section -->
 
+<!-- MENÚ DE ACCION TUTORIAL-->
 
 <!-- Start Contact section -->
 <section id="mu-contact">
@@ -28,6 +28,7 @@
                                                 <th>ENTREVISTAS</th>
                                                 <th>TRAY. ACADEMICA</th>
                                                 <th>TRANSITO</th>
+                                                <th>SALIR</th>
 <!--                                                <th>Insertar</th>
                                                 <th>Modificar</th>
                                                 <th>Eliminar</th>-->
@@ -43,12 +44,15 @@
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/TrayAcad/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Transito/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= base_url().'index.php'?>">Salir</a></td>
+<!--                                                        <span>Top</span>-->
+                                                                                        
                                              </tr>
                                             <?php endforeach; ?>
-                                            <!--/Creación tabla de alumno-->
+                                           <!-- /Creación tabla de alumno -->
                                         </tbody>
                                     </table>
-                                </div><!--/Fin table responsive -->
+                                </div><!--/Fin table responsive-->
                             </div>
                         </div>
                     </div>
