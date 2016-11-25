@@ -53,7 +53,7 @@ class ConsejoOrien extends CI_Controller {
                 'homeactive' => 'active'));
         } else {
     //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
-            $cuerpo = $this->load->view('V_MenuAcctuto', array('alumnos' => $alumnos), TRUE);
+            $cuerpo = $this->load->view('V_MenuConsOrient', array('alumnos' => $alumnos), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
