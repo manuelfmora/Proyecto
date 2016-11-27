@@ -87,9 +87,9 @@ class Medidasad extends CI_Controller {
                  //Inserta en la tabla alumnado
                  $this->M_AtDiversidad->adMedidas($data);
                  //Pantalla de Confirmación
-                 $cuerpo = $this->load->view('V_Medidasadok', array(), true);
-                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                     'homeactive' => 'active')); 
+            $cuerpo = $this->load->view('V_DatosInsertadosOK', array('idAlumno' => $idAlumno), true);
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));; 
             
         }          
             

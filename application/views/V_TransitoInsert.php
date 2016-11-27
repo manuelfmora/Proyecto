@@ -45,7 +45,7 @@
                   </div> 
                   <div class="col-md-12">
                     <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('area_suspensa') ?>" placeholder="Area Suspensa" name="area_suspensa">
+                        <input type="text" class="form-control" value="<?= set_value('area_suspensa') ?>" placeholder="Areas Suspensas" name="area_suspensa">
                         <?= form_error('area_suspensa'); ?>
                     </div>
                   </div> 

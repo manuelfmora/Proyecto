@@ -16,7 +16,7 @@ class ConsejoOrien extends CI_Controller {
         
         $this->load->model('M_Alumno');
         $this->load->library('form_validation');
-        $this->load->model('M_Trayectoria');
+        $this->load->model('M_ConsejoOrien');
         $this->load->library('pagination');
     }
 

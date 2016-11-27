@@ -46,8 +46,9 @@
                               G.F.
                             </label>
                           </div>
-                    </div>
-                  </div>
+                    
+                 </div>
+                      </div>
                   <div class="col-md-6">
                     <div class="form-group">
                     <div class="checkbox" style="color: White; text-align: left; ">

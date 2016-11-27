@@ -40,7 +40,13 @@
                               <option value="Evaluación Extraordinaria">Evaluación Extraordinaria</option>
                           </select>
                      </div>
-                  </div>               
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">                        
+                        <input type="text" class="form-control" value="<?= set_value('fecha_ev') ?>" placeholder="Fecha Evaluación (dd/mm/aaaa)" name="fecha_ev">
+                        <?= form_error('fecha_ev'); ?>
+                    </div>
+                  </div>                    
                     <div class="col-md-12">
                         <div class="form-group">                        
                             <input type="text" class="form-control" value="<?= set_value('observaciones') ?>" placeholder="Observaciones" name="observaciones">
@@ -66,13 +72,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('fecha_ev') ?>" placeholder="Fecha Evaluación (dd/mm/aaaa)" name="fecha_ev">
-                        <?= form_error('fecha_ev'); ?>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
+                 <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= set_value('propuesta') ?>" placeholder="Propuesta" name="propuesta">
                         <?= form_error('propuesta'); ?>

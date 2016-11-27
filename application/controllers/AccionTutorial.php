@@ -15,7 +15,7 @@ class AccionTutorial extends CI_Controller {
         
         $this->load->model('M_Alumno');
         $this->load->library('form_validation');
-        $this->load->model('M_Trayectoria');
+        $this->load->model('M_AccionTutorial');
         $this->load->library('pagination');
     }
 
@@ -39,7 +39,7 @@ class AccionTutorial extends CI_Controller {
         $config = $this->getConfigPag();       
 
         $result=$this->pagination->initialize($config);
-        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
+        $alumnos = $this->M_AccionTutorial->getApellidosUsuario($apellidos,$config['per_page'], $desde);
         
         //Si no existe alumnos con esos apellidos
         //Mostramos un informe de lista vacia.
@@ -61,7 +61,7 @@ class AccionTutorial extends CI_Controller {
     
     function MenuAccUno($idalumno){
         //Devolvemos los datos del alumno cuya id mandamos
-        $alumno=  $this->M_Trayectoria->getDatosAlumno($idalumno);
+        $alumno=  $this->M_AccionTutorial->getDatosAlumno($idalumno);
        //Para que se pueda mostrar en el foreach de V_menuAcctuto lo insertamos en otro array $alumno
         $alumnos[0]=$alumno;
         //le pasamos los datos a la vista 
