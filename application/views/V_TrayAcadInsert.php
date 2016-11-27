@@ -14,30 +14,39 @@
                <!-- Formulario sin PDF -->  
               <form class="mu-reservation-form" action="<?= base_url() . 'index.php/TrayAcad/insertar/'.$idAlumno?>" method="post">
                 <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('ano_academico') ?>" placeholder="Año Académico" name="ano_academico">
-                        <?= form_error('ano_academico'); ?>
+               <div class="col-md-6">
+                  <div class="form-group"> 
+                        <select name="ano_academico">
+                            <option value="">Año Academico</option>
+                            <option value="2016/2017">2016/2017</option>
+                            <option value="2017/2018">2017/2018</option>
+                            <option value="ident">2018/2019</option>
+                            <option value="solicitud">2019/2020</option>
+                            <option value="solicitud">2020/2021</option>
+                            <option value="solicitud">2021/2022</option>
+                            <option value="solicitud">2022/2023</option>
+                            <option value="solicitud">2023/2024</option>
+                            <option value="solicitud">2024/2025</option>
+                        </select>
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('grupo') ?>" placeholder="Gurpo" name="grupo">
-                        <?= form_error('grupo'); ?>
-                    </div>
-                  </div>                    
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('evaluaciones') ?>" placeholder="Evaluaciones" name="evaluaciones">
-                        <?= form_error('evaluaciones'); ?>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('observaciones') ?>" placeholder="Observaciones" name="observaciones">
-                        <?= form_error('observaciones'); ?>
-                    </div>
-                  </div>                      
+                  <div class="col-md-6"> 
+                    <div class="form-group"> 
+                          <select name="evaluaciones">
+                              <option value="">Evaluaciones</option>
+                              <option value="Primera Evaluación">1ª Evaluación</option>
+                              <option value="Segunda Evaluación">2ª Evaluación</option>
+                              <option value="Evaluación Final">Evaluación Final</option>
+                              <option value="Evaluación Extraordinaria">Evaluación Extraordinaria</option>
+                          </select>
+                     </div>
+                  </div>               
+                    <div class="col-md-12">
+                        <div class="form-group">                        
+                            <input type="text" class="form-control" value="<?= set_value('observaciones') ?>" placeholder="Observaciones" name="observaciones">
+                            <?= form_error('observaciones'); ?>
+                        </div>
+                    </div>                      
                   <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= set_value('pendientes') ?>" placeholder="Asignaturas Pendientes" name="pendientes">

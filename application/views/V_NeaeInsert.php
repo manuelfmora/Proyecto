@@ -15,25 +15,8 @@
               <span class="mu-title-bar"></span>
             </div>              
             <div class="mu-reservation-content">
-                <!-- Formulario PDF --> 
-<!--                <h2>Subir ficheros en CodeIgniter</h2>
-                <form action="<?= base_url() . 'index.php/Trayectoria/subir' ?>" method="post" enctype="multipart/form-data">
-                    El name del campo tiene que ser si o si "userfile"
-                    Subir un fichero: <input type="file" name="userfile" value="fichero"/>
-                    <input type="submit" value="Enviar"/>
-                </form>
-                <?php
-//                if (isset($error)) {
-//                    echo "<strong style='color:red;'>" . $error . "</strong>";
-//                }
-//
-//                if (isset($img)) {
-//                    echo "<strong style='color:green;'>" . $img["orig_name"] . " subido satisfactoriamente </strong>";
-//                }
-                ?>
-                --><!-- /Fin Formulario PDF --> 
-               <!-- Formulario sin PDF -->  
-              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Trayectoria/insertaDatos'?>" method="post">
+
+              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Neae/insertar/'.$idAlumno?>" method="post">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -43,8 +26,7 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                        <?php print_r('La  id essssssssss:'.$idAlumno)?>"
-                        <input type="text" class="form-control" value="<?= set_value('ev_ps') ?>" placeholder="Evaluación Psicopeda" name="ev_ps">
+                     <input type="text" class="form-control" value="<?= set_value('ev_ps') ?>" placeholder="Evaluación Psicopeda" name="ev_ps">
                         <?= form_error('ev_ps'); ?>
                     </div>
                   </div> 

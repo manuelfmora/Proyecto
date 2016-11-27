@@ -8,8 +8,8 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Seleccione</span>
-                        <h2>Un Alumno/a</h2>
+                        <span class="mu-subtitle">Menú</span>
+                        <h2>Atención a la Diversidad</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
@@ -26,10 +26,7 @@
                                                 <th>Nombre</th> 
                                                 <th>NEAE</th>
                                                 <th>Medidas Atenc. Divers.</th>
-<!--                                                <th>Insertar</th>
-                                                <th>Modificar</th>
-                                                <th>Eliminar</th>-->
-                                            </tr>
+                                          </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
                                             <?php foreach ($alumnos as $alumno): ?>
@@ -37,8 +34,8 @@
                                                     <td><?= $alumno['nie'] ?></td>  
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Trayectoria/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                              </tr>
                                             <?php endforeach; ?>
                                             <!--/Creación tabla de alumno-->

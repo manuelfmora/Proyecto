@@ -27,13 +27,32 @@
                         <?= form_error('motivo'); ?>
                     </div>
                   </div> 
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('asistentes') ?>" placeholder="Asistentes" name="asistentes">
-                        <?= form_error('asistentes'); ?>
+              <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="checkbox" style="color: White; text-align: left; ">
+                            <label>
+                              <input type="checkbox" value="madre" name="nombre[]">
+                              Madre
+                            </label><br>
+                            <label>
+                              <input type="checkbox" value="padre" name="nombre[]">
+                              Padre
+                            </label><br>
+                            <label>
+                              <input type="checkbox" value="tutor" name="nombre[]">
+                              Tutor/a
+                            </label><br>
+                            <label>
+                              <input type="checkbox" value="alumno" name="nombre[]">
+                              Alumno/a
+                            </label>
+                            <label>
+                              <input type="checkbox" value="otros" name="nombre[]">
+                              Otros
+                            </label>
+                          </div>
                     </div>
-                  </div> 
-                    
+                  </div>                 
                   <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= set_value('temas') ?>" placeholder="Temas" name="temas">

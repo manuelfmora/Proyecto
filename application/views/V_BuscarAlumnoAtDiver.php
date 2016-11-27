@@ -5,8 +5,8 @@
         <div class="col-md-12">
           <div class="mu-contact-area">
             <div class="mu-title">
-              <span class="mu-subtitle">Seleccione</span>
-              <h2>Un Alumno/a</h2>
+              <span class="mu-subtitle">Seleccione Alumno/a</span>
+              <h2>Atención a la Diversidad</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>
@@ -14,7 +14,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="mu-contact-left">
-                    <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/Trayectoria/Buscar' ?>"  method="POST" >
+                    <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AtDiversidad/Buscar' ?>"  method="POST" >
                       <div class="form-group">
                         <label for="apellidos">Apellidos</label>
                         <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">

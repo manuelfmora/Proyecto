@@ -6,7 +6,7 @@
  * @author Manuel Mora
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-class M_Trayectoria extends CI_Model{
+class M_AtDiversidad extends CI_Model{
     
     public function __construct() {
         $this->load->database();
@@ -56,12 +56,17 @@ class M_Trayectoria extends CI_Model{
     }
 
     /**
-     * Añade un Alumno a la base de datos
-     * @param Array $data Datos del Alumno
+     * Añade un Alumno a NEAE
+     * @param Array $data Datos del NEAE
      */
-    public function adTrayectoria($data) {
+    public function adNeae($data) {
 
         $this->db->insert('neae', $data);
+      
+    }
+    public function adMedidas($data) {
+
+        $this->db->insert('medidasad', $data);
         print_r('Impresion Correcta');
     }
 

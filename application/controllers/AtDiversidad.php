@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of login
  *
@@ -7,16 +6,15 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ConsejoOrien extends CI_Controller {
+class AtDiversidad extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
 
-        $this->load->helper('Formulario');
-        
+        $this->load->helper('Formulario');       
         $this->load->model('M_Alumno');
         $this->load->library('form_validation');
-        $this->load->model('M_Trayectoria');
+        $this->load->model('M_AtDiversidad');
         $this->load->library('pagination');
     }
 
@@ -25,7 +23,7 @@ class ConsejoOrien extends CI_Controller {
      */
     public function index() {
 
-        $cuerpo = $this->load->view('V_BuscarAlumnoConsejoOrien', array(), true);
+        $cuerpo = $this->load->view('V_BuscarAlumnoAtDiver', array(), true);
 
         $this->load->view('V_Plantilla', Array(
             'cuerpo' => $cuerpo,
@@ -53,7 +51,7 @@ class ConsejoOrien extends CI_Controller {
                 'homeactive' => 'active'));
         } else {
     //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
-            $cuerpo = $this->load->view('V_MenuConsejoOrien', array('alumnos' => $alumnos), TRUE);
+            $cuerpo = $this->load->view('V_MenuAtDiver', array('alumnos' => $alumnos), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));

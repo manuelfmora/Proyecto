@@ -118,38 +118,19 @@
                             
 <!----- ATENCIÓN A LA DIVERSIDAD ------------------------------------------------------------------------------------------------------------------------------------------>                                          
                             <li class="dropdown">
-                                <a class="dropdown-toggle"  href="<?= base_url() . 'index.php/Trayectoria' ?>">AT. DIVERSIDAD</span></a>
-<!--                            <a class="dropdown-toggle" data-toggle="dropdown" href="<?= base_url() . 'index.php/Trayectoria' ?>">AT. DIVERSIDAD<span class="caret"></span></a>-->
-<!--                               <ul class="dropdown-menu" role="menu">                            
-                                    <li class="dropdown">
- NAE                              <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">NEAE<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu"> 
-                                            <li><a href="<?= base_url() . 'index.php/Trayectoria' ?>">Insertar</a></li>  
-                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar</a></li>                                    
-                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar</a></li>                                          
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">MEDIDAS EDUCATIVAS<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu"> 
-                                            <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                            <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Alumno</a></li>                                    
-                                            <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Alumno</a></li>                                          
-                                        </ul>
-                                    </li>
-                               </ul>    -->
-                            </li>
+                                <a class="dropdown-toggle"  href="<?= base_url() . 'index.php/AtDiversidad' ?>">AT. DIVERSIDAD</span></a>
+<!--       
+-->                         </li>
 <!-------------- ACCIÓN TUTORIAL --------------------------------------------------------------------------------------------------------------------------------->                                          
-                            <li class="dropdown">
+                           <li class="dropdown">
                             <a class="dropdown-toggle" href="<?= base_url() . 'index.php/AccionTutorial' ?>">ACC. TUTORIAL</span></a>
+                           </li>
+<!-------------- CONSEJO ORIENTADOR ------------------------------------------------------------>
 
-                             <!----->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="<?= base_url() . 'index.php/ConsejoOrien' ?>">CONSEJO ORIENTADOR</a>
-
                             </li>
-                            
-                            <!----->
+                         
 
 
 

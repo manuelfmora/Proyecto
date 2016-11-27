@@ -24,7 +24,7 @@ class ConsejoOrienUno extends CI_Controller {
         
        $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_MenuConsOrientUno', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuConsejoOrienUno', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
@@ -32,8 +32,7 @@ class ConsejoOrienUno extends CI_Controller {
 
     public function insertar($idAlumno){
         
-    
-       //VISTA DE LA OPCIÓN INSERTAR
+        //VISTA DE LA OPCIÓN INSERTAR
         $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
         //Establecemos los mensajes de errores
@@ -43,7 +42,7 @@ class ConsejoOrienUno extends CI_Controller {
         $this->setReglasValidacion();
 
         if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-            $cuerpo = $this->load->view('V_ProtocolosInsert', array(
+            $cuerpo = $this->load->view('V_ConsejoOrienUnoInsert', array(
                                                                     'idAlumno' => $idAlumno), TRUE);
 
             $this->load->view('V_Plantilla', Array(

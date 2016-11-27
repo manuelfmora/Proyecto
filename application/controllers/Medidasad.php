@@ -15,22 +15,22 @@ class Medidasad extends CI_Controller {
         $this->load->helper('Formulario');
         $this->load->model('M_Provincias');        
         $this->load->library('form_validation');
-        $this->load->model('M_Medidasad');
+        $this->load->model('M_AtDiversidad');
 
     }
 
     
     public function alumno($idAlumno){
-       $alumnos= $this->M_Medidasad-> getDatosAlumno($idAlumno);
+       $alumnos= $this->M_AtDiversidad-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_MedidasAD', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_Medidasad', array('alumnos' => $alumnos), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-            'homeactive' => 'active'));
+                                                'homeactive' => 'active'));
     }
 
     
-    public function insertar(){
+    public function insertar($idAlumno){
         
         $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
@@ -85,7 +85,7 @@ class Medidasad extends CI_Controller {
                  }
                  print_r($data);
                  //Inserta en la tabla alumnado
-                 $this->M_Medidasad->adMedidas($data);
+                 $this->M_AtDiversidad->adMedidas($data);
                  //Pantalla de Confirmación
                  $cuerpo = $this->load->view('V_Medidasadok', array(), true);
                  $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,

@@ -17,11 +17,11 @@
                   <div class="col-md-12">
                     <div class="form-group"> 
                         <select name="nombre">
-                            <option value="">Protocolos</option>
+                            <option value="">Opciones</option>
                             <option value="absentismo">Absentismo</option>
                             <option value="acoso">Acoso</option>
-                            <option value="ident">Ident</option>
-                            <option value="solicitud">Solicitud</option>
+                            <option value="ident">Identidad Genero</option>
+                            <option value="solicitud">Solicitud Atención Especif.</option>
                         </select>
 
                     </div>

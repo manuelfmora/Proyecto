@@ -38,7 +38,7 @@
                                                     <td><?= $alumno['nie'] ?></td>  
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>  <!--Craga todas las opciones del menu de alumnos-->
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/alumno/" . $alumno['idAlumno'] ?>">Aceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= base_url().'index.php'?>">Salir</a></td>
                                                       
                                                                                         
