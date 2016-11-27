@@ -107,6 +107,7 @@ class TrayAcad extends CI_Controller {
     function setMensajesErrores() {
         
         $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
+        $this->form_validation->set_message('required', 'Tienen que tener un valor');
         
     }
 
@@ -116,6 +117,8 @@ class TrayAcad extends CI_Controller {
     function setReglasValidacion() {
         
           $this->form_validation->set_rules('fecha_ev', 'fecha evaluacion', 'required|callback_validar_fecha');
+          $this->form_validation->set_rules('promocion','Radio Promocion','required');
+          $this->form_validation->set_rules('titulacion','Radio Titulacion','required');
 
     }
     

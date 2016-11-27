@@ -50,24 +50,34 @@
                     <div class="col-md-12">
                         <div class="form-group">                        
                             <input type="text" class="form-control" value="<?= set_value('observaciones') ?>" placeholder="Observaciones" name="observaciones">
-                            <?= form_error('observaciones'); ?>
+                          
                         </div>
                     </div>                      
                   <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= set_value('pendientes') ?>" placeholder="Asignaturas Pendientes" name="pendientes">
-                        <?= form_error('pendientes'); ?>
+                       
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('promocion') ?>" placeholder="Promocion" name="promocion">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <h3 style="color:White">Promoción:
+                             <input type="radio" name="promocion" value="si">Si
+                             <input type="radio" name="promocion"  value="no">No
+                         
+                         </h3> 
+                        
+<!--                        <input type="text" class="form-control" value="<?= set_value('promocion') ?>" placeholder="Promocion" name="promocion">-->
                         <?= form_error('promocion'); ?>
                     </div>
                   </div>   
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('Titulacion') ?>" placeholder="Titulación" name="titulacion">
+                        <h3 style="color:White">Titulación:
+                             <input type="radio" name="titulacion" value="<?= set_value('titulacion') ?>">Si
+                             <input type="radio" name="titulacion"  value="<?= set_value('titulacion') ?>">No
+                         
+                         </h3> 
                         <?= form_error('titulacion'); ?>
                     </div>
                   </div>
@@ -81,14 +91,14 @@
                   <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= set_value('inte_grup') ?>" placeholder="Integración Grupal" name="inte_grup">
-                        <?= form_error('inte_grup'); ?>
+                      
                     </div>
                   </div> 
                     
                   <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= set_value('tutor') ?>" placeholder="Tutor" name="tutor">
-                        <?= form_error('tutor'); ?>
+                        
                     </div>
                   </div>
 

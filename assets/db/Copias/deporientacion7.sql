@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2016 a las 22:21:35
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.8
+-- Tiempo de generación: 25-11-2016 a las 14:45:21
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -122,11 +122,7 @@ CREATE TABLE `medidasad` (
 
 INSERT INTO `medidasad` (`idMedidasad`, `nombre`, `fecha_ini`, `fecha_fin`, `observaciones`, `idAlumno`) VALUES
 (13, 'P.M.A.R.,P.E.', '1970-12-28', '1970-12-29', 'qwewr', 12),
-(14, 'apoyo educativo,ACI', '1970-12-28', '1970-12-29', 'waqfr', 12),
-(16, 'compensatoria,P.E.', '1970-12-28', '1970-12-29', 'otras', 12),
-(17, 'compensatoria,P.E.', '1970-12-28', '1970-12-29', 'otras', 12),
-(18, 'compensatoria,P.E.', '1970-12-28', '1970-12-29', 'otras', 12),
-(19, 'compensatoria,P.E.', '1970-12-28', '1970-12-29', 'otras', 12);
+(14, 'apoyo educativo,ACI', '1970-12-28', '1970-12-29', 'waqfr', 12);
 
 -- --------------------------------------------------------
 
@@ -148,8 +144,7 @@ CREATE TABLE `neae` (
 
 INSERT INTO `neae` (`idNeae`, `censo`, `ev_ps`, `dic_es`, `idAlumno`) VALUES
 (1, 'Censo', 'Evaluación', 'Dictamen', 12),
-(2, 'Prueba con menu cambiado', 'Prueba con menu cambiado', 'Prueba con menu cambiado', 11),
-(3, 'adsfas', 'dsfasf', 'asdgfsd', 12);
+(2, 'Prueba con menu cambiado', 'Prueba con menu cambiado', 'Prueba con menu cambiado', 11);
 
 -- --------------------------------------------------------
 
@@ -165,13 +160,6 @@ CREATE TABLE `protocolos` (
   `observaciones` varchar(100) DEFAULT NULL,
   `idAlumno` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `protocolos`
---
-
-INSERT INTO `protocolos` (`idProtocolos`, `nombre`, `fecha_ini`, `fecha_fin`, `observaciones`, `idAlumno`) VALUES
-(1, '', '1970-12-28 00:00:00', '1970-12-29 00:00:00', '', 12);
 
 -- --------------------------------------------------------
 
@@ -277,12 +265,13 @@ INSERT INTO `transito` (`idTransito`, `ceip`, `repeticiones`, `ncc`, `area_suspe
 CREATE TABLE `trayect_acad` (
   `idTrayect_Acad` int(11) NOT NULL,
   `ano_academico` varchar(9) NOT NULL,
+  `grupo` varchar(4) NOT NULL,
   `evaluaciones` varchar(30) NOT NULL,
-  `fecha_ev` date NOT NULL,
   `observaciones` varchar(100) NOT NULL,
   `pendientes` varchar(45) DEFAULT NULL COMMENT 'Asignaturas pendientes.',
   `promocion` varchar(15) NOT NULL,
   `titulacion` varchar(2) DEFAULT NULL,
+  `fecha_ev` date DEFAULT NULL,
   `propuesta` varchar(20) DEFAULT NULL,
   `inte_grup` varchar(45) DEFAULT NULL COMMENT 'Integracion Grupal',
   `tutor` varchar(45) DEFAULT NULL,
@@ -293,10 +282,8 @@ CREATE TABLE `trayect_acad` (
 -- Volcado de datos para la tabla `trayect_acad`
 --
 
-INSERT INTO `trayect_acad` (`idTrayect_Acad`, `ano_academico`, `evaluaciones`, `fecha_ev`, `observaciones`, `pendientes`, `promocion`, `titulacion`, `propuesta`, `inte_grup`, `tutor`, `idAlumno`) VALUES
-(1, '1970', '2', '1970-12-28', 'no', '1', 'no', 'ti', 'propuestas', 'Integración Grupal', 'Inmaculada Ramos', 12),
-(2, '2016/2017', 'Primera Evaluación', '1970-12-28', 'dDF', 'DSFADGAS', 'AFDSDSDS', 'FD', 'TREHT', 'TRHERT', 'ERTHETE', 12),
-(3, '', '', '1970-12-28', 'qew', 'fw', 'si', 'si', 'fw', 'retrhwy', 'tyjryrik', 12);
+INSERT INTO `trayect_acad` (`idTrayect_Acad`, `ano_academico`, `grupo`, `evaluaciones`, `observaciones`, `pendientes`, `promocion`, `titulacion`, `fecha_ev`, `propuesta`, `inte_grup`, `tutor`, `idAlumno`) VALUES
+(1, '1970', 'A', '2', 'no', '1', 'no', 'ti', '1970-12-28', 'propuestas', 'Integración Grupal', 'Inmaculada Ramos', 12);
 
 -- --------------------------------------------------------
 
@@ -420,17 +407,17 @@ ALTER TABLE `entrevistas`
 -- AUTO_INCREMENT de la tabla `medidasad`
 --
 ALTER TABLE `medidasad`
-  MODIFY `idMedidasad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idMedidasad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `neae`
 --
 ALTER TABLE `neae`
-  MODIFY `idNeae` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Necesidades Especiales Apoyo Educativo', AUTO_INCREMENT=4;
+  MODIFY `idNeae` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Necesidades Especiales Apoyo Educativo', AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `protocolos`
 --
 ALTER TABLE `protocolos`
-  MODIFY `idProtocolos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idProtocolos` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `transito`
 --
@@ -440,7 +427,7 @@ ALTER TABLE `transito`
 -- AUTO_INCREMENT de la tabla `trayect_acad`
 --
 ALTER TABLE `trayect_acad`
-  MODIFY `idTrayect_Acad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTrayect_Acad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -473,7 +460,7 @@ ALTER TABLE `entrevistas`
 -- Filtros para la tabla `medidasad`
 --
 ALTER TABLE `medidasad`
-  ADD CONSTRAINT `FK_Alumnos_Medidasad` FOREIGN KEY (`idAlumno`) REFERENCES `alumno` (`idAlumno`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_alumnos_medidasad` FOREIGN KEY (`idAlumno`) REFERENCES `alumno` (`idAlumno`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `neae`
