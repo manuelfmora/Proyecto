@@ -83,7 +83,7 @@ class Medidasad extends CI_Controller {
                         }                     
                    
                  }
-                 print_r($data);
+           
                  //Inserta en la tabla alumnado
                  $this->M_AtDiversidad->adMedidas($data);
                  //Pantalla de Confirmación
@@ -108,7 +108,7 @@ class Medidasad extends CI_Controller {
             //Optenemos los datos del alumno.
             $datos = $this->M_Medidasad->getDatosModificar($idAlumno);
 
-            print_r($datos);
+         
           $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
