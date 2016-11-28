@@ -31,8 +31,7 @@ class M_Alumno extends CI_Model{
      * @return Int Nº de Alumnos
      */
     public function getApellidosUsuario($apellido,$limit,$start) {
-        print_r('Start:'.$start.'<br>');
-        print_r('limit:'.$limit);
+
 
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
@@ -53,7 +52,7 @@ class M_Alumno extends CI_Model{
                 . "FROM alumno "
                 . "WHERE apellidos like '%$apellido%' ");
         print_r('Numero apellidos:');
-        print_r($query->num_rows());
+   
         return $query->num_rows();
     }
         /**

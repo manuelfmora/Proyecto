@@ -45,7 +45,7 @@ class AtDiversidad extends CI_Controller {
         
         
         if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoAcctuto', array(), TRUE);
+            $cuerpo = $this->load->view('V_AlNoADiver', array(), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));

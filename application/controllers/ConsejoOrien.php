@@ -40,6 +40,7 @@ class ConsejoOrien extends CI_Controller {
         $config = $this->getConfigPag($apellidos);       
 
         $result=$this->pagination->initialize($config);
+        
         $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
         
         //Si no existe alumnos con esos apellidos
@@ -47,7 +48,7 @@ class ConsejoOrien extends CI_Controller {
         
         
         if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoAcctuto', array(), TRUE);
+            $cuerpo = $this->load->view('V_AlnoConOrient', array(), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));

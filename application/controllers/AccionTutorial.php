@@ -36,7 +36,8 @@ class AccionTutorial extends CI_Controller {
 
         $apellidos = $this->input->post('apellidos');     
         //PAGINACÓN
-        $config = $this->getConfigPag($apellidos);       
+        $config = $this->getConfigPag($apellidos);
+      
 
         $result=$this->pagination->initialize($config);
         $alumnos = $this->M_AccionTutorial->getApellidosUsuario($apellidos,$config['per_page'], $desde);
@@ -46,7 +47,7 @@ class AccionTutorial extends CI_Controller {
         
         
         if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoAcctuto', array(), TRUE);
+            $cuerpo = $this->load->view('V_AlNoAccTut', array(), TRUE);
 
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
