@@ -44,16 +44,25 @@ class Neae extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
             $cuerpo = $this->load->view('V_NeaeInsert', array(
-                                                                    'idAlumno' => $idAlumno), TRUE);
+                                         'idAlumno' => $idAlumno), TRUE);
 
-            $this->load->view('V_Plantilla', Array(
-                                                    'cuerpo' => $cuerpo,
+            $this->load->view('V_Plantilla', Array( 'cuerpo' => $cuerpo,
                                                     'homeactive' => 'active'));
         } else {
 
             foreach ($this->input->post() as $key => $value) {
+                if ($key == 'nombre') {
+                    $nombre = '';
+                    for ($i = 0; $i < count($value); $i++) {
+                        if ($i < count($value) - 1) {
+                            $nombre .= $value[$i] . ',';
+                        } else {
+                            $nombre .= $value[$i];
+                        }
+                    }
 
-                if ($key != 'aceptar') {
+                    $data['censo'] = $nombre;
+                } elseif ($key != 'aceptar') {
 
                     $data[$key] = $value;
                 }
@@ -63,8 +72,9 @@ class Neae extends CI_Controller {
             $this->M_AtDiversidad->adNeae($data);
             //Pantalla de Confirmación
             $cuerpo = $this->load->view('V_DatosInsertadosOK', array('idAlumno' => $idAlumno), true);
+            
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
+                                                    'homeactive' => 'active'));
         }
     }
 
@@ -77,7 +87,7 @@ class Neae extends CI_Controller {
      */
     function setMensajesErrores() {
         
-        $this->form_validation->set_message('censo', 'Tienes que insertar un datos');
+        $this->form_validation->set_message('required', 'Tienes que insertar un datos');
                 
 
     }
@@ -87,7 +97,7 @@ class Neae extends CI_Controller {
      */
     function setReglasValidacion() {
         
-          $this->form_validation->set_rules('censo', 'Censo', 'required');
+          $this->form_validation->set_rules('ev_ps', 'Evaluación Psicopedagogica', 'required');
         
 
     }

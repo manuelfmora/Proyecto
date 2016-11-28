@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Menú</span>
+                        <span class="mu-subtitle">Opciones</span>
                         <h2>Atención a la Diversidad</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
@@ -26,6 +26,7 @@
                                                 <th>Nombre</th> 
                                                 <th>NEAE</th>
                                                 <th>Medidas Atenc. Divers.</th>
+                                                <th>Salir</th>
                                           </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -36,6 +37,7 @@
                                                     <td><?= $alumno['nombre'] ?>  </td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . 'index.php/AccionTutoria'?>"</a>Salir</td>
                                              </tr>
                                             <?php endforeach; ?>
                                             <!--/Creación tabla de alumno-->

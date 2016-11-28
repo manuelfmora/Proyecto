@@ -5,8 +5,8 @@
         <div class="col-md-12">
           <div class="mu-contact-area">
             <div class="mu-title">
-              <span class="mu-subtitle">Seleccione</span>
-              <h2>Un Alumno/a</h2>
+              <span class="mu-subtitle">Seleccione Un Alumno/a</span>
+              <h2>Consejo Orientador</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>

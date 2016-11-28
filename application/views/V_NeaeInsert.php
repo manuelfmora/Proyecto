@@ -18,26 +18,21 @@
 
               <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Neae/insertar/'.$idAlumno?>" method="post">
                 <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
-                    <div class="checkbox" style="color: White; text-align: left; ">
-                        <label>
-                          <input type="checkbox" value="DIS" name="nombre[]">
-                          DIS
-                        </label><br>
-                        <label>
-                          <input type="checkbox" value="DIA" name="nombre[]">
-                          DIA
-                        </label><br>
-                        <label>
-                          <input type="checkbox" value="Compensatoria" name="nombre[]">
-                          Compensatoria
-                        </label><br>
-                        <label>
-                          <input type="checkbox" value="AA.CC." name="nombre[]">
-                          AA.CC.
-                        </label>
-                      </div>
+                        <div class="checkbox" style="color: White;   ">
+                            
+                               <h3> Necesidades:</h3><br>
+                            <h4>
+                                <input type="checkbox" value="DIS" name="nombre[]">DIS<br>
+
+                                <input type="checkbox" value="DIA" name="nombre[]">DIA<br>
+
+                                <input type="checkbox" value="Compensatoria" name="nombre[]">Compensatoria<br>
+
+                                <input type="checkbox" value="AA.CC." name="nombre[]"> AA.CC.<br>
+                            </h4>
+                        </div>
                     
                   </div>
                   </div>
@@ -51,7 +46,7 @@
                     <div class="form-group">
                         
                         <input type="text" class="form-control" value="<?= set_value('dic_es') ?>" placeholder="Dictamen Escolarización" name="dic_es" >
-                        <?= form_error('dic_es'); ?>
+
                     </div>
                   </div> 
                     <center>

@@ -8,8 +8,8 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Seleccione CO</span>
-                        <h2>Un Alumno/a</h2>
+                        <span class="mu-subtitle">Opciones</span>
+                        <h2>Consejo Orientador</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
@@ -24,8 +24,7 @@
                                                 <th>NIE</th>
                                                 <th>Apellido</th>
                                                 <th>Nombre</th> 
-                                                <th>CONSEJO ORIENTADOR</th>
-                                          
+                                                <th>CONSEJO ORIENTADOR</th>                                          
                                                 <th>SALIR</th>
 <!--                                                <th>Insertar</th>
                                                 <th>Modificar</th>
@@ -39,7 +38,7 @@
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>  <!--Craga todas las opciones del menu de alumnos-->
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= base_url().'index.php'?>">Salir</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . '/ConsejoOrien'?>"</a>Salir</td>
                                                       
                                                                                         
                                              </tr>

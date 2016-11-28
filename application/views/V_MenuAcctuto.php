@@ -8,8 +8,8 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Seleccione</span>
-                        <h2>Un Alumno/a</h2>
+                        <span class="mu-subtitle">Opciones</span>
+                        <h2>Acción Tutorial</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
@@ -44,8 +44,8 @@
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/TrayAcad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Transito/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= base_url().'index.php'?>">Salir</a></td>
-<!--                                                        <span>Top</span>-->
+                                                    <td><a class="mu-readmore-btn" href="<?= base_url().'index.php/AccionTutorial'?>">Salir</a></td>
+                                                     
                                                                                         
                                              </tr>
                                             <?php endforeach; ?>
