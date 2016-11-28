@@ -31,15 +31,30 @@ class M_Alumno extends CI_Model{
      * @return Int Nº de Alumnos
      */
     public function getApellidosUsuario($apellido,$limit,$start) {
-//      $start=0;
-//      $limit=1;
+        print_r('Start:'.$start.'<br>');
+        print_r('limit:'.$limit);
+
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
                 . "WHERE apellidos like '%$apellido%' "
                 . "LIMIT $start, $limit; ");
      
-   
+       
         return $query->result_array();
+    }
+         /**
+     * Consulta el numero total alumnos
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getNumApellidos($apellido) {
+       
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE apellidos like '%$apellido%' ");
+        print_r('Numero apellidos:');
+        print_r($query->num_rows());
+        return $query->num_rows();
     }
         /**
      * Consulta el número de nie que tienen el mismo número que el pasado por parámetro

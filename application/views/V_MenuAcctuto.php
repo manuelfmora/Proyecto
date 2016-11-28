@@ -44,7 +44,7 @@
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/TrayAcad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Transito/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= base_url().'index.php/AccionTutorial'?>">Salir</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= base_url().'/AccionTutorial'?>">Salir</a></td>
                                                      
                                                                                         
                                              </tr>

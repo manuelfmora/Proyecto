@@ -37,7 +37,7 @@
                                                     <td><?= $alumno['nombre'] ?>  </td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . 'index.php/AccionTutoria'?>"</a>Salir</td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . '/AtDiversidad'?>"</a>Salir</td>
                                              </tr>
                                             <?php endforeach; ?>
                                             <!--/Creación tabla de alumno-->

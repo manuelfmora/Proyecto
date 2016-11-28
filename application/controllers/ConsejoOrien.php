@@ -37,7 +37,7 @@ class ConsejoOrien extends CI_Controller {
 
         $apellidos = $this->input->post('apellidos');     
         //PAGINACÓN
-        $config = $this->getConfigPag();       
+        $config = $this->getConfigPag($apellidos);       
 
         $result=$this->pagination->initialize($config);
         $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
@@ -334,10 +334,10 @@ class ConsejoOrien extends CI_Controller {
      * Establece y devuelve la configuración de la paginación
      * @return Array Configuración
      */
-    public function getConfigPag(){
+    public function getConfigPag($apellidos){
         //Configuración de Paginación
-        $config['base_url'] = site_url('/AlumnoModify/Buscar');
-        $config['total_rows'] = $this->M_Alumno->getNumAlumnos();
+        $config['base_url'] = site_url('/ConsejoOrien/Buscar');
+        $config['total_rows'] = $this->M_Alumno->M_Alumno->getNumApellidos($apellidos) ;//Total de número apellidos para paginar
         $config['per_page'] = $this->config->item('per_page_seleccionadas');
         $config['uri_segment'] = 3;
         $config['full_tag_open'] = '<ul class="pagination">';
