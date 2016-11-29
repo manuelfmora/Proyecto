@@ -87,7 +87,7 @@ class Neae extends CI_Controller {
      */
     function eliminar($idAlumno){
         
-            $cuerpo = $this->load->view('V_UserRemove', array('idAlumno' => $idAlumno), true);
+            $cuerpo = $this->load->view('V_NeaeRemove', array('idAlumno' => $idAlumno), true);
             
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                                                     'homeactive' => 'active'));

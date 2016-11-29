@@ -232,5 +232,122 @@ class M_AccionTutorial extends CI_Model{
         $this->db->where('idAlumno', $id);
         $this->db->update('alumno', $data);
     }
+    
+        
+
+    
+    
+    //--------------------------- Borrado y comprobacion de si existe id -------------------------------------------
+   
+    //--------------------------- Protocolos---------------------------------
+    /**
+    * Borramos los datos de NEAE de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    public function deleteProtocolos($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('protocolos');
+    }
+    
+    /**
+    * Consulta la id de medidasad que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID Medidasad
+    */
+    public function getidProtocolos($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idProtocolos "
+                . "FROM protocolos "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }
+    //--------------------------- Entrevistas ---------------------------------    
+    
+    /**
+    * Borramos los datos de Medidas Atención a la Diversidad de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    public function deleteEntrevistas($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('entrevistas');
+    }
+    
+    /**
+    * Consulta la id de NEAE que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID neae
+    */
+    public function getidEntrevistas($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idEntrevistas "
+                . "FROM entrevistas "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }
+    
+        /**
+    * Borramos los datos de Medidas Atención a la Diversidad de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    
+//--------------------------- TrayAcad --------------------------------- 
+    public function deleteTrayAcad($idAlumno) {
+
+
+        $this->db->where('idTrayect_Acad', $idAlumno);
+        $this->db->delete('entrevistas');
+    }
+    
+    /**
+    * Consulta la id de NEAE que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID neae
+    */
+    public function getidTrayAcad($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idTrayect_Acad "
+                . "FROM trayect_acad "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }    
+        /**
+    * Borramos los datos de Medidas Atención a la Diversidad de un alumno
+    * @param String $idAlumno idAlumno   
+    */
+
+//--------------------------- Transito ---------------------------------     
+    public function deleteTransito($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('transito');
+    }
+    
+    /**
+    * Consulta la id de NEAE que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID neae
+    */
+    public function getidTransito($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idTransito "
+                . "FROM transito "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }
+
+    
+    
+    
+    
+    
 }
 
