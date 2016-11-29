@@ -18,23 +18,24 @@
 
               <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Neae/insertar/'.$idAlumno?>" method="post">
                 <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <div class="checkbox" style="color: White;   ">
-                            
-                               <h3> Necesidades:</h3><br>
-                            <h4>
-                                <input type="checkbox" value="DIS" name="nombre[]">DIS<br>
+                    <div class="col-md-12">
+                        <div class="form-group">
 
-                                <input type="checkbox" value="DIA" name="nombre[]">DIA<br>
+                            <div class="checkbox" style="color: White;   ">
 
-                                <input type="checkbox" value="Compensatoria" name="nombre[]">Compensatoria<br>
+                                <h3> Necesidades:</h3><br>
+                                <h4>
+                                    <input type="checkbox" value="DIS" name="nombre[]">DIS<br>
 
-                                <input type="checkbox" value="AA.CC." name="nombre[]"> AA.CC.<br>
-                            </h4>
+                                    <input type="checkbox" value="DIA" name="nombre[]">DIA<br>
+
+                                    <input type="checkbox" value="Compensatoria" name="nombre[]">Compensatoria<br>
+
+                                    <input type="checkbox" value="AA.CC." name="nombre[]"> AA.CC.<br>
+                                </h4>
+                            </div>
+
                         </div>
-                    
-                  </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
