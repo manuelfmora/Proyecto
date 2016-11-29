@@ -129,6 +129,10 @@ class M_Alumno extends CI_Model{
         $this->db->delete('alumno');
     }
     
+    
+    
+  
+    
     /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
      * @param String $nombre_usu Nombre de Alumno

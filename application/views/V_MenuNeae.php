@@ -26,22 +26,24 @@
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
-                                        <tbody>  <!--Creación tabla de alumno-->
+                                        <tbody>  <!--Creación tabla NEAE-->
+                                         <tr>
+                                                <td><?= $alumnos['nie'] ?></td>  
+                                                <td><?= $alumnos['apellidos'] ?></td>
+                                                <td><?= $alumnos['nombre'] ?>  </td>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
 
-                                                <tr>
-                                                    <td><?= $alumnos['nie'] ?></td>  
-                                                    <td><?= $alumnos['apellidos'] ?></td>
-                                                    <td><?= $alumnos['nombre'] ?>  </td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                <?php if ($num_idneae!=0): //Sólo mostrar si tiene datos insertados ?>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                <?php endif;?>
 
-                                                </tr>
-                                          
-                                            <!--/Creación tabla de alumno-->
-                                        </tbody>
-                                    </table>
-                                </div><!--/Fin table responsive -->
+                                            </tr>
+
+                                            <!--/Creación tabla NEAE->
+-->                                        </tbody><!--
+-->                                    </table><!--
+-->                                </div><!--/Fin table responsive 
                             </div>
                         </div>
                     </div>

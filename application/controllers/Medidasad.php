@@ -21,9 +21,14 @@ class Medidasad extends CI_Controller {
 
     
     public function alumno($idAlumno){
+        //Comprobamos si este alumno tiene ya una insercion en la tabla
+        //Para mostrar los botones de modificar y eliminar
+       $num_id= $this->M_AtDiversidad->getidMedidasad($idAlumno);
+       
        $alumnos= $this->M_AtDiversidad-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_Medidasad', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_Medidasad', array('alumnos' => $alumnos,
+                                                         '$num_idneae' => $num_id), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                                                 'homeactive' => 'active'));
@@ -161,7 +166,33 @@ class Medidasad extends CI_Controller {
         }
     }
     
+    /**
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
+     */
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_UserRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
 
+    }
+     /**
+     * Eliminamos los datos MedidasAd correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
+
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
+
+        $cuerpo = $this->load->view('V_DeleteNeaeOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    }
+    
 
     function formato_americano($date) {
 

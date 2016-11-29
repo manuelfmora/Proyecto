@@ -182,6 +182,9 @@ class M_AtDiversidad extends CI_Model{
         return $query->num_rows();
     }
     
+ 
+
+
     /**
      * Consulta el id de Alumno a través de su NIE de Alumno
      * @param String $NIE Nombre de Alumno
@@ -205,4 +208,58 @@ class M_AtDiversidad extends CI_Model{
         $this->db->where('idAlumno', $id);
         $this->db->update('alumno', $data);
     }
+    
+    
+    /**
+    * Consulta la id de NEAE que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID neae
+    */
+    public function getidNeae($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idNeae "
+                . "FROM neae "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }
+   
+
+    /**
+    * Borramos los datos de NEAE de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    public function deleteNeae($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('neae');
+    }
+    
+    /**
+    * Consulta la id de medidasad que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID Medidasad
+    */
+    public function getidMedidasad($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idMedidasad "
+                . "FROM medidasad "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }
+    
+    /**
+    * Borramos los datos de Medidas Atención a la Diversidad de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    public function deleteMedidasad($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('medidasad');
+    }    
+    
+
 }

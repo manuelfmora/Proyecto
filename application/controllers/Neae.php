@@ -20,14 +20,18 @@ class Neae extends CI_Controller {
            //Se Accede de las opciones de Acción Tutorial -- V_MenuAcctuto
     public function alumno($idAlumno){
         
+        //Comprobamos si este alumno tiene ya una insercion en la tabla
+        //Para mostrar los botones de modificar y eliminar
  
-        
+       $num_idneae= $this->M_AtDiversidad->getidNeae($idAlumno);
+
        $alumnos= $this->M_AtDiversidad-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_MenuNeae', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuNeae', array('alumnos' => $alumnos,
+                                                        'num_idneae'=>$num_idneae), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-            'homeactive' => 'active'));
+                                                'homeactive' => 'active'));
     }
 
     public function insertar($idAlumno){
@@ -77,9 +81,32 @@ class Neae extends CI_Controller {
                                                     'homeactive' => 'active'));
         }
     }
+    /**
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
+     */
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_UserRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
 
+    }
+     /**
+     * Eliminamos los datos NEAE correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
 
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
 
+        $cuerpo = $this->load->view('V_DeleteNeaeOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    }
 
 
     /**
