@@ -1,18 +1,19 @@
-  <!-- Modificado OK -->
-  <section id="mu-reservation">
+ 
+ <section id="mu-reservation">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="mu-reservation-area">
             <div class="mu-title">
-              <span class="mu-subtitle">OK</span>
-              <h2>DATOS BORRADOS CORRECTAMENTE.</h2>
+              <span class="mu-subtitle">Eliminar Trayectoria</span>
+              <h2>¿Desea eliminar los datos de este alumno?</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>
             <div class="mu-reservation-content">
-                <center>                   
-                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/AtDiversidad'?>"> Ir a At. Diversidad</a>    
+                <center>
+                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/TrayecAcad/eliminado/'.$idAlumno ?>">SI</a>               
+                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/TrayecAcad/alumno/'.$idAlumno?>"> NO</a>    
                 </center>
             </div>
           </div>
@@ -20,4 +21,3 @@
       </div>
     </div>
   </section>  
-  <!-- / Modificado OK -->

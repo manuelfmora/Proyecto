@@ -12,7 +12,7 @@
             </div>
             <div class="mu-reservation-content">
                 <center>                   
-                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/AtDiversidad'?>"> Ir a At. Diversidad</a>    
+                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/ConsejoOrien'?>"> Ir a At. Diversidad</a>    
                 </center>
             </div>
           </div>

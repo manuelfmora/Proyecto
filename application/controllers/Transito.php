@@ -72,36 +72,35 @@ class Transito extends CI_Controller {
         }
     }
 
+    //-------------------------- Funciones para eliminar-----------------------------
 
-//
-//    function formato_americano($date) {
-//
-//        if (!empty($date)) {
-//            $var = explode('/', str_replace('-', '/', $date));
-//            return "$var[2]/$var[1]/$var[0]";
-//        }
-//    }
-//
-//    function formato_mysql($date) {
-//
-//        if (!empty($date)) {
-//            $var = explode('/', str_replace('-', '/', $date));
-//            return "$var[2]-$var[1]-$var[0]";
-//        }
-//    }
-//
-//    function validar_fecha($str) {
-//        $date = $this->formato_americano($str);
-//
-//        return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
-//    }
-    
     /**
-     * Comprueba si una fechade inicio es menor o igula que la fecha final
-     * $datos['fecha_ini'] datos fecha inicio
-     * $datos['fecha_fin'] datos fecha fin
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
      */
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_TransitoRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
 
+    }
+     /**
+     * Eliminamos los datos NEAE correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
+
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
+
+        $cuerpo = $this->load->view('V_DeleteTransitoOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    } 
+    //-------------------------- / Funciones para eliminar-----------------------------
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
      */

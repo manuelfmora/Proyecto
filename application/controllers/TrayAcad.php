@@ -67,17 +67,42 @@ class TrayAcad extends CI_Controller {
                 //Inserta en la tabla alumnado
                 $this->M_AccionTutorial->adTrayAcad($data);
                 //Pantalla de Confirmación
-                
-//                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
-//                print_r($alumnos);
+
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                     'homeactive' => 'active'));
         }
     }
+    //-------------------------- Funciones para eliminar-----------------------------
 
+    /**
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
+     */
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_TrayAcadRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
 
+    }
+     /**
+     * Eliminamos los datos NEAE correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
 
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
+
+        $cuerpo = $this->load->view('V_DeleteTrayAcadOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    } 
+    //-------------------------- / Funciones para eliminar-----------------------------
+    
     function formato_americano($date) {
 
         if (!empty($date)) {

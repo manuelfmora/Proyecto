@@ -79,6 +79,35 @@ class ConsejoOrienUno extends CI_Controller {
     }
 
 
+    //-------------------------- Funciones para eliminar-----------------------------
+
+    /**
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
+     */
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_ConsejoOrienUnoRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
+
+    }
+     /**
+     * Eliminamos los datos NEAE correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
+
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
+
+        $cuerpo = $this->load->view('V_DeleteConsejoOrienUnoOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    } 
+    //-------------------------- / Funciones para eliminar-----------------------------
 
     function formato_americano($date) {
 

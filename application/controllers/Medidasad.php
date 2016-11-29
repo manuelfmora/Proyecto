@@ -27,7 +27,7 @@ class Medidasad extends CI_Controller {
        
        $alumnos= $this->M_AtDiversidad-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_Medidasad', array('alumnos' => $alumnos,
+        $cuerpo = $this->load->view('V_MenuMedidasad', array('alumnos' => $alumnos,
                                                          '$num_idneae' => $num_id), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,

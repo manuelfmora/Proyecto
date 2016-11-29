@@ -21,9 +21,18 @@
                                                 <th>NIE</th>
                                                 <th>Apellido</th>
                                                 <th>Nombre</th>
-                                                <th>Insertar</th>
-                                                <th>Modificar</th>
-                                                <th>Eliminar</th>
+                                                <?php if ($num_idneae == 0)://Sólo mostrar si NO tiene datos insertados ?>
+
+                                                    <th>Insertar</th>
+
+                                                <?php endif; ?>
+
+                                                <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
+
+                                                    <th>Modificar</th>
+                                                    <th>Eliminar</th>
+
+                                                <?php endif; ?>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla NEAE-->
@@ -31,7 +40,9 @@
                                                 <td><?= $alumnos['nie'] ?></td>  
                                                 <td><?= $alumnos['apellidos'] ?></td>
                                                 <td><?= $alumnos['nombre'] ?>  </td>
+                                                <?php if ($num_idneae==0): //Sólo mostrar si NO tiene datos insertados ?>
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
+                                                <?php endif;?>
 
                                                 <?php if ($num_idneae!=0): //Sólo mostrar si tiene datos insertados ?>
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
