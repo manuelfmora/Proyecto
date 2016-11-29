@@ -103,49 +103,31 @@ class Entrevistas extends CI_Controller {
     }
     
     /**
-     * Comprueba si una fechade inicio es menor o igula que la fecha final
-     * $datos['fecha_ini'] datos fecha inicio
-     * $datos['fecha_fin'] datos fecha fin
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
      */
-//    function fecha_mayor(){
-//        
-//        $datos= $this->input->post();
-//
-//        $fechini=$datos['fecha_ini'];
-//
-//        $fechfin=$datos['fecha_fin'];
-//
-//        if($fechini<=$fechfin){
-//
-//            return TRUE;
-//
-//        }else{
-//
-//            return FALSE;
-//        }
-//    }
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_EntrevistasRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
 
-//   /**
-//    * Cambia el formato de una fecha
-//    * @param Date $fecha Fecha a cambiar
-//    * @return Date Fecha cambiada
-//    */
-//    function cambiaFormatoFecha($fecha){
-//       $date = date_create($fecha);
-//
-//       return date_format($date, 'd/m/Y');
-//    }
-//    /**
-//    * Cambia el formato de una fecha
-//    * @param Date $fecha Fecha a cambiar
-//    * @return Date Fecha cambiada
-//    */
-//    function formatoFechaAmericano($fecha){
-//    //    print_r($fecha);
-//       $date = date_create($fecha);
-//
-//       return date_format($date, 'Y/m/d');
-//    }
+    }
+     /**
+     * Eliminamos los datos NEAE correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
+
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
+
+        $cuerpo = $this->load->view('V_DeleteNeaeOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    }  
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario

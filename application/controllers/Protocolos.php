@@ -125,6 +125,32 @@ class Protocolos extends CI_Controller {
             return FALSE;
         }
     }
+    /**
+     * Preguntamos si realmente queremos eliminarlos.
+     *  @param type $idAlumno
+     */
+    function eliminar($idAlumno){
+        
+            $cuerpo = $this->load->view('V_NeaeRemove', array('idAlumno' => $idAlumno), true);
+            
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                    'homeactive' => 'active'));
+
+    }
+     /**
+     * Eliminamos los datos NEAE correspondientes al alumno.
+     *  @param type $idAlumno
+     */
+    function eliminado($idAlumno){
+
+        $this->M_AtDiversidad->deleteNeae($idAlumno);
+
+        $cuerpo = $this->load->view('V_DeleteAccionTutorialOK', array('idAlumno' => $idAlumno), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+ 
+    }    
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario

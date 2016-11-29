@@ -101,7 +101,7 @@ class Neae extends CI_Controller {
 
         $this->M_AtDiversidad->deleteNeae($idAlumno);
 
-        $cuerpo = $this->load->view('V_DeleteNeaeOK', array('idAlumno' => $idAlumno), true);
+        $cuerpo = $this->load->view('V_DeleteAccionTutorialOK', array('idAlumno' => $idAlumno), true);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                                                 'homeactive' => 'active'));
