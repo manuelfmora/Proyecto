@@ -28,6 +28,7 @@ f<!-- Start Contact section -->
                                                 <th>Modificar</th>
                                                 <th>Eliminar</th>
                                                 <?php endif; ?>
+                                                <th>Salir</th>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -43,6 +44,7 @@ f<!-- Start Contact section -->
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
                                                 <?php endif; ?>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial" ?>">Salir</a></td>
 
                                             </tr>
 

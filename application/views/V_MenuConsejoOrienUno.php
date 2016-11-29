@@ -28,6 +28,7 @@
                                                     <th>Modificar</th>
                                                     <th>Eliminar</th>
                                                 <?php endif; ?>
+                                                    <th>Salir</th>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -42,7 +43,7 @@
                                                 <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>                                              
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
-                                                <?php endif; ?>
+                                                <?php endif; ?><td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrien" ?>">Salir</a></td>
 
                                             </tr>
 

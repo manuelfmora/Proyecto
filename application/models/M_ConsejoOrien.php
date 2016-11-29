@@ -160,22 +160,7 @@ class M_ConsejoOrien extends CI_Model{
         $this->db->where('idAlumno',$id);
         $this->db->delete('alumno');
     }
-    
-    /**
-     * Consulta los datos que se van a modificar para mostrarlos en el formualario
-     * @param String $nombre_usu Nombre de Alumno
-     * @return Array
-     */
-//    public function getDatosModificar($nombre_usu) {
-//
-//        $query = $this->db->query("SELECT idAlumno,apellidos,nombre,nie,fechaNacimiento,edad,fotoAlumnado,datos_medicos,"
-//                ."datos_psicologicos,informe_medico,nombreT1,nombreT2,dirección,cp,poblacion,cod_provincia,telefono1,"
-//                ."telefono2,tipo,situacion,implicacion_escolar "
-//                . "FROM alumno "
-//                . "WHERE nombre_usu = '$nombre_usu'");
-//                   
-//        return $query->row_array();
-//    }
+
     
     /**
      * Consulta el número de Alumno que tienen el nombre de Alumno pasado por parámetro y no es el ID pasado por parámetro
@@ -231,6 +216,33 @@ class M_ConsejoOrien extends CI_Model{
     public function updateAlumno($id,$data) {
         $this->db->where('idAlumno', $id);
         $this->db->update('alumno', $data);
+    }
+     //--------------------------- Borrado y comprobacion de si existe id -------------------------------------------
+   
+    //--------------------------- Protocolos---------------------------------
+    /**
+    * Borramos los datos de NEAE de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    public function deleteConsejoOrienUno($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('protocolos');
+    }
+    
+    /**
+    * Consulta la id de medidasad que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID Medidasad
+    */
+    public function getidConsejoOrien($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idConsejo_Orientador "
+                . "FROM Consejo_Orientador "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
     }
 }
 
