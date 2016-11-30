@@ -90,11 +90,11 @@ class M_AtDiversidad extends CI_Model{
      * @param String $nombre_usu Nombre de usuario
      * @return Array
      */
-    public function getDatosModificar($nie) {
-       
+    public function getDatosModificar($idAlumno) {
+        print_r('Entra en getDatos'.$idAlumno);
         $query = $this->db->query("SELECT * "
-                . "FROM alumno "
-                . "WHERE nie = '$nie'");
+                . "FROM neae "
+                . "WHERE idAlumno = '$idAlumno'");
                    
         return $query->row_array();
     }
