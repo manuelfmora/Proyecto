@@ -28,7 +28,7 @@ class Medidasad extends CI_Controller {
        $alumnos= $this->M_AtDiversidad-> getDatosAlumno($idAlumno);
 
         $cuerpo = $this->load->view('V_MenuMedidasad', array('alumnos' => $alumnos,
-                                                         '$num_idneae' => $num_id), TRUE);
+                                                             'num_id' => $num_id), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                                                 'homeactive' => 'active'));
@@ -92,7 +92,7 @@ class Medidasad extends CI_Controller {
                     //Inserta en la tabla alumnado
                $this->M_AtDiversidad->adMedidas($data);
                //Pantalla de Confirmación
-               $cuerpo = $this->load->view('V_DatosInsertadosOK', array('idAlumno' => $idAlumno), true);
+               $cuerpo = $this->load->view('V_MedidasadInsertOK', array('idAlumno' => $idAlumno), true);
                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                    'homeactive' => 'active'));
                

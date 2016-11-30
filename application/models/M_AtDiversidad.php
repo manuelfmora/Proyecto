@@ -198,6 +198,7 @@ class M_AtDiversidad extends CI_Model{
 
         return $query->row_array()['idAlumno'];
     }
+
     
     /**
      * Actualiza los datos de un Alumno
@@ -209,7 +210,9 @@ class M_AtDiversidad extends CI_Model{
         $this->db->update('alumno', $data);
     }
     
-    
+     //--------------------------- Borrado y comprobacion de si existe id -------------------------------------------
+   
+    //--------------------------- NEAE---------------------------------    
     /**
     * Consulta la id de NEAE que le corresponde a la id del aLUMNO
     * @param String $IDaLUMNO id de Alumno
@@ -235,6 +238,7 @@ class M_AtDiversidad extends CI_Model{
         $this->db->where('idAlumno', $idAlumno);
         $this->db->delete('neae');
     }
+    //--------------------------- MEDIDASAD--------------------------------- 
     
     /**
     * Consulta la id de medidasad que le corresponde a la id del aLUMNO

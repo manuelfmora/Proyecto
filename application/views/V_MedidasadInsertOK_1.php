@@ -6,13 +6,13 @@
           <div class="mu-reservation-area">
             <div class="mu-title">
               <span class="mu-subtitle">OK</span>
-              <h2>Los datos se han insetado correctamente.</h2>
+              <h2>Los datos de Medidas Atenc. Diversidad se han insetado correctamente.</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>
             <div class="mu-reservation-content">
                 <center>
-                <a class="mu-readmore-btn" href="<?= base_url().'index.php'?>"> Ir a la página de inicio.</a>    
+                <a class="mu-readmore-btn" href="<?= base_url().'index.php/AtDiversidad'?>"> Ir a la página de inicio.</a>    
                 </center>
             </div>
           </div>

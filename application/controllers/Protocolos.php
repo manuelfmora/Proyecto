@@ -15,16 +15,20 @@ class Protocolos extends CI_Controller {
         $this->load->helper('Formulario');
         $this->load->library('form_validation');
         $this->load->model('M_Protocolos');
+        $this->load->model('M_AccionTutorial');
    
     }
            //Se Accede de las opciones de Acción Tutorial -- V_MenuAcctuto
     public function alumno($idAlumno){
         
- 
-        
+       //Comprobamos si este alumno tiene ya una insercion en la tabla
+       //Para mostrar los botones de modificar y eliminar
+       $num_idneae= $this->M_AccionTutorial->getidProtocolos($idAlumno);
+       
        $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
 
-        $cuerpo = $this->load->view('V_MenuProtocolos', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuProtocolos', array('alumnos' => $alumnos,
+                                                              'num_idneae' => $num_idneae), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));

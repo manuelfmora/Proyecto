@@ -20,13 +20,16 @@ class Entrevistas extends CI_Controller {
            //Se Accede de las opciones de Acción Tutorial -- V_MenuAcctuto
     public function alumno($idAlumno){
         
- 
+        //Comprobamos si este alumno tiene ya una insercion en la tabla
+       //Para mostrar los botones de modificar y eliminar
+       $num_idneae= $this->M_AccionTutorial->getidProtocolos($idAlumno);
         
        $alumnos= $this->M_AccionTutorial-> getDatosAlumno($idAlumno);
        
        //Opciones del menú de la entrevistas.
        
-        $cuerpo = $this->load->view('V_MenuEntrevistas', array('alumnos' => $alumnos), TRUE);
+        $cuerpo = $this->load->view('V_MenuEntrevistas', array('alumnos' => $alumnos,
+                                                               'num_idneae' => $num_idneae), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
