@@ -48,7 +48,7 @@ f<!-- Start Contact section -->
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>                                              
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
                                                 <?php endif; ?>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial" ?>">Salir</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial/BuscarUno/".$alumnos['idAlumno'] ?>Salir</a></td>
 
                                             </tr>
 

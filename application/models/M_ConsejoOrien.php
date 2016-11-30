@@ -57,7 +57,21 @@ class M_ConsejoOrien extends CI_Model{
       
         return $query->num_rows();
     }
-        /**
+    /**
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
+     */
+    public function getUnApellido($idAlumno) {
+
+        $query = $this->db->query("SELECT apellidos "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno' ");
+     
+   
+        return $query->result_array();
+    }    
+     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno
      * @return Int Nº de Alumnos

@@ -25,7 +25,22 @@ class M_AtDiversidad extends CI_Model{
       
         return $query->num_rows();
     }
-        /**
+    
+    /**
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
+     */
+    public function getUnApellido($idAlumno) {
+
+        $query = $this->db->query("SELECT apellidos "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno' ");
+     
+   
+        return $query->result_array();
+    }
+     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno
      * @return Int Nº de Alumnos
@@ -133,23 +148,7 @@ class M_AtDiversidad extends CI_Model{
         $this->db->where('idAlumno',$id);
         $this->db->delete('alumno');
     }
-    
-    /**
-     * Consulta los datos que se van a modificar para mostrarlos en el formualario
-     * @param String $nombre_usu Nombre de Alumno
-     * @return Array
-     */
-//    public function getDatosModificar($nombre_usu) {
-//
-//        $query = $this->db->query("SELECT idAlumno,apellidos,nombre,nie,fechaNacimiento,edad,fotoAlumnado,datos_medicos,"
-//                ."datos_psicologicos,informe_medico,nombreT1,nombreT2,dirección,cp,poblacion,cod_provincia,telefono1,"
-//                ."telefono2,tipo,situacion,implicacion_escolar "
-//                . "FROM alumno "
-//                . "WHERE nombre_usu = '$nombre_usu'");
-//                   
-//        return $query->row_array();
-//    }
-    
+
     /**
      * Consulta el número de Alumno que tienen el nombre de Alumno pasado por parámetro y no es el ID pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno

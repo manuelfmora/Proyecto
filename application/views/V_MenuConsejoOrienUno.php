@@ -43,7 +43,7 @@
                                                 <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>                                              
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
-                                                <?php endif; ?><td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrien" ?>">Salir</a></td>
+                                                <?php endif; ?><td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrien/BuscarUno/".$alumnos['idAlumno'] ?>">Salir</a></td>
 
                                             </tr>
 

@@ -57,14 +57,27 @@ class M_AccionTutorial extends CI_Model{
       
         return $query->num_rows();
     }
+    /**
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
+     */
+    public function getUnApellido($idAlumno) {
+
+        $query = $this->db->query("SELECT apellidos "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno' ");
+     
+   
+        return $query->result_array();
+    }
         /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno
      * @return Int Nº de Alumnos
      */
     public function getApellidosUsuario($apellido,$limit,$start) {
-//      $start=0;
-//      $limit=1;
+        
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
                 . "WHERE apellidos like '%$apellido%' "

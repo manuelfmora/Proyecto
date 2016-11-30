@@ -58,6 +58,43 @@ class AtDiversidad extends CI_Controller {
         }
     }
     
+        
+    //Función que busca un alumno y lo pagina tras pulsar la tecla salir del ultimo menú de opciones
+    public function BuscarUno($idAlumno) {
+
+        $apellidos=$this-> M_AtDiversidad->getUnApellido($idAlumno);
+        
+        $apellido=$apellidos[0]['apellidos'];
+         
+         print_r($apellido);
+         
+        //PAGINACÓN
+        $config = $this->getConfigPag($apellido);
+ 
+
+        $result=$this->pagination->initialize($config);
+        $alumnos = $this->M_Alumno->getApellidosUsuario($apellido,$config['per_page'], 0);
+        
+        //Si no existe alumnos con esos apellidos
+        //Mostramos un informe de lista vacia.
+        
+        
+        if (empty($alumnos)) {
+            $cuerpo = $this->load->view('V_AlNoADiver', array(), TRUE);
+
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        } else {
+    //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
+            $cuerpo = $this->load->view('V_MenuAtDiver', array('alumnos' => $alumnos), TRUE);
+
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        }
+    }
+    
+    
+    
     function MenuAccUno($idalumno){
         //Devolvemos los datos del alumno cuya id mandamos
         $alumno=  $this->M_Trayectoria->getDatosAlumno($idalumno);
