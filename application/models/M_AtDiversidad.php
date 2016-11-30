@@ -11,7 +11,46 @@ class M_AtDiversidad extends CI_Model{
     public function __construct() {
         $this->load->database();
     }
+    //-----Funciones creadas para la busqueda de alumnos por curso
+    /**
+     * Consulta todos los alumnos que estan en un curso
+     * @param type $curso Curso al que pertenece    
+     * @param type $grupo Grupo al que pertenece
+     * @return type Nº Alumnos
+     */
+    public function getAlumCurso($curso, $grupo) {
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE curso = '$curso'"
+                . "AND grupo = '$grupo' ");
 
+        return $query->result_array();
+    }
+    /**
+     * Consulta el curso de un alumno
+     * @param type $idAlumno
+     * @return type array
+     */
+    public function getCurso($idAlumno) {
+        $query = $this->db->query("SELECT curso "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno'");
+
+        return $query->result_array();
+    }
+    /**
+     * Consulta el grupo de un alumno
+     * @param type $idAlumno
+     * @return type
+     */
+    public function getGupo($idAlumno) {
+        $query = $this->db->query("SELECT grupo "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno'");
+
+        return $query->result_array();
+    }
+    //----- / Funciones creadas para la busqueda de alumnos por curso
     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno

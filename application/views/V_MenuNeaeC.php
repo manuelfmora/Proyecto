@@ -49,8 +49,8 @@
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
                                                 <?php endif;?>
-                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/AtDiversidad/BuscarUno/".$alumnos['idAlumno'] ?>">Sali</a></td>
-                                               
+                                          
+                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/AtDiversidad/VolverCurso/".$alumnos['idAlumno'] ?>">Salir</a></td>
 
                                             </tr>
 

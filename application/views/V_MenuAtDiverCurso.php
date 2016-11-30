@@ -8,9 +8,9 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Opciones</span>
-                        <h2>Atención a la Diversidad</h2><br>
-                        <h2>Curso:<?php print $cuso?></h2>
+                        <span class="mu-subtitle">Opciones de Curso</span>
+                        <h2>Atención a la Diversidad</h2>
+                        <h2>Curso: <?php echo($curso).'º'.($grupo)?></h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
@@ -36,7 +36,7 @@
                                                     <td><?= $alumno['nie'] ?></td>  
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/alumnoCurso/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . '/AtDiversidad'?>"</a>Salir</td>
                                              </tr>
@@ -56,11 +56,11 @@
 </section>
 <!-- End Contact section -->
 
-<!-- PAGINACIÓN -->
+<!-- PAGINACIÓN 
 <div class="product-pagination text-center">
     <nav>                              
-        <!-- PAGINATION CODEIGNITER -->
-        <?= $this->pagination->create_links(); ?>
+         PAGINATION CODEIGNITER 
+        <?//= $this->pagination->create_links(); ?>
 
     </nav>                        
-</div>
+</div>-->

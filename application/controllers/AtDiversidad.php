@@ -93,8 +93,37 @@ class AtDiversidad extends CI_Controller {
         }
     }
     
-    
-    
+    public function BuscarCurso() {
+        $curso = $this->input->post('cursos');
+        $grupo = $this->input->post('grupos');
+
+        $alumnos=  $this->M_AtDiversidad-> getAlumCurso($curso, $grupo);
+        
+           $cuerpo = $this->load->view('V_MenuAtDiverCurso', array('alumnos' => $alumnos,
+                                                                    'curso' => $curso,
+                                                                    'grupo' => $grupo), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        
+    }
+    public function VolverCurso($idAlumno) {
+        $cursos=  $this->M_AtDiversidad-> getCurso($idAlumno);
+        $grupos=  $this->M_AtDiversidad-> getGupo($idAlumno);
+        $curso=$cursos[0]['curso'];
+        $grupo=$grupos[0]['grupo'];
+        print_r('Grupoooooooooooooooooooooo'.$grupo);
+
+        $alumnos=  $this->M_AtDiversidad-> getAlumCurso($curso, $grupo);
+        
+           $cuerpo = $this->load->view('V_MenuAtDiverCurso', array('alumnos' => $alumnos,
+                                                                    'curso' => $curso,
+                                                                    'grupo' => $grupo), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        
+    }
     function MenuAccUno($idalumno){
         //Devolvemos los datos del alumno cuya id mandamos
         $alumno=  $this->M_Trayectoria->getDatosAlumno($idalumno);
