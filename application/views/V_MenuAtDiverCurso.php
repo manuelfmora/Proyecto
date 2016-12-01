@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="cart-view-table">
                                 <div class="table table-bordered">
-
+<!------------------------------------------------------------------------- MENÚ DE CUROSO------------------------------------------------------------------->
                                     <table class="table">
                                         <thead>
                                             <tr> 
@@ -37,7 +37,7 @@
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/alumnoCurso/" . $alumno['idAlumno'] ?>">Acceder</a></td>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/alumnoCurso/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . '/AtDiversidad'?>"</a>Salir</td>
                                              </tr>
                                             <?php endforeach; ?>

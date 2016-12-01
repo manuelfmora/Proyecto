@@ -33,22 +33,26 @@ class Medidasad extends CI_Controller {
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                                                 'homeactive' => 'active'));
     }
+    
+    //----------------------------------------ENTRA EN LA VISTA MED ATENCIÓN DIVERSIDAD CURSO-----------------------
+    ////----------------------------------------ENTRA EN LA VISTA MED ATENCIÓN DIVERSIDAD CURSO-----------------------
     //Hacemos la busqueda de los alumnos por curso
     public function alumnoCurso($idAlumno) {
 
         //Comprobamos si este alumno tiene ya una insercion en la tabla
         //Para mostrar los botones de modificar y eliminar
 
-        $num_idneae = $this->M_AtDiversidad->getidNeae($idAlumno);
+        $num_id = $this->M_AtDiversidad->getidNeae($idAlumno);
 
         $alumnos = $this->M_AtDiversidad->getDatosAlumno($idAlumno);
 
         $cuerpo = $this->load->view('V_MenuMedidasadC', array('alumnos' => $alumnos,
-                                                           'num_idneae' => $num_idneae), TRUE);
+                                                                'num_id' => $num_id), TRUE);
 
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
+    
     
     public function insertar($idAlumno){
         

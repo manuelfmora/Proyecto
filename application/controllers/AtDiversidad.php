@@ -93,13 +93,19 @@ class AtDiversidad extends CI_Controller {
         }
     }
     
+    //------------------------------------------------------------------------------------------------
+    //------------------------------- BUSCAMOS LOS ALUMNOS POR EL CURSO SELECIONADO -----------------
+    //------------------------------- /index.php/AtDiversidad/BuscarCurso -------------------------------
+    //-----------------------------------------------------------------------------------------------
     public function BuscarCurso() {
         $curso = $this->input->post('cursos');
         $grupo = $this->input->post('grupos');
 
         $alumnos=  $this->M_AtDiversidad-> getAlumCurso($curso, $grupo);
-        
-           $cuerpo = $this->load->view('V_MenuAtDiverCurso', array('alumnos' => $alumnos,
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        $cuerpo = $this->load->view('V_MenuAtDiverCurso', array('alumnos' => $alumnos,
                                                                     'curso' => $curso,
                                                                     'grupo' => $grupo), TRUE);
 
@@ -108,6 +114,7 @@ class AtDiversidad extends CI_Controller {
         
     }
     public function VolverCurso($idAlumno) {
+        
         $cursos=  $this->M_AtDiversidad-> getCurso($idAlumno);
         $grupos=  $this->M_AtDiversidad-> getGupo($idAlumno);
         $curso=$cursos[0]['curso'];

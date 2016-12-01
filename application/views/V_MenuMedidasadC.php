@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Med.Atención Diversidad</span>
+                        <span class="mu-subtitle">Med.Atención Diversidad Curso</span>
                         <h2>Acciones a Realizar</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
