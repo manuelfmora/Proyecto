@@ -109,7 +109,7 @@ class AccionTutorial extends CI_Controller {
         //----------------------------->>> IMPORTANTE <<<<------------------------------------
         //----------------------------->>> IMPORTANTE <<<<------------------------------------
         //----------------------------->>> IMPORTANTE <<<<------------------------------------
-        $cuerpo = $this->load->view('V_MenuAcctutoCuros', array('alumnos' => $alumnos,
+        $cuerpo = $this->load->view('V_MenuAcctutoCursos', array('alumnos' => $alumnos,
                                                                     'curso' => $curso,
                                                                     'grupo' => $grupo), TRUE);
 
