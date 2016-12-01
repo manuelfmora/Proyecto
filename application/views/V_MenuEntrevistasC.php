@@ -5,7 +5,7 @@ f<!-- Start Contact section -->
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Protocolos</span>
+                        <span class="mu-subtitle">Entrvistas Curso</span>
                         <h2>Acciones a Realizar</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
@@ -17,22 +17,18 @@ f<!-- Start Contact section -->
 
                                     <table class="table">
                                         <thead>
-                                            <tr>
+                                            <tr> 
                                                 <th>NIE</th>
                                                 <th>Apellido</th>
-                                                <th>Nombre</th>                                                
+                                                <th>Nombre</th>
                                                 <?php if ($num_idneae == 0)://Sólo mostrar si NO tiene datos insertados ?>
-
-                                                    <th>Insertar</th>
-
+                                                <th>Insertar</th>
                                                 <?php endif; ?>
-
                                                 <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
-
-                                                    <th>Modificar</th>
-                                                    <th>Eliminar</th>
-
+                                                <th>Modificar</th>
+                                                <th>Eliminar</th>
                                                 <?php endif; ?>
+                                                <th>Salir</th>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -42,13 +38,13 @@ f<!-- Start Contact section -->
                                                 <td><?= $alumnos['apellidos'] ?></td>
                                                 <td><?= $alumnos['nombre'] ?>  </td>
                                                 <?php if ($num_idneae == 0)://Sólo mostrar si NO tiene datos insertados ?>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/insertar/".$alumnos['idAlumno'] ?>">Insertar</a></td>
                                                 <?php endif; ?>
                                                 <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>                                              
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Protocolos/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Entrevistas/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
                                                 <?php endif; ?>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial/BuscarUno/".$alumnos['idAlumno'] ?>">Salir</a></td>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial/VolverCurso/".$alumnos['idAlumno'] ?>">Salir</a></td>
 
                                             </tr>
 

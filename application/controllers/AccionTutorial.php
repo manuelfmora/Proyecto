@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Description of login
@@ -12,7 +13,6 @@ class AccionTutorial extends CI_Controller {
         parent::__construct();
 
         $this->load->helper('Formulario');
-        
         $this->load->model('M_Alumno');
         $this->load->library('form_validation');
         $this->load->model('M_AccionTutorial');
@@ -97,7 +97,46 @@ class AccionTutorial extends CI_Controller {
         }
     }
     
-            
+    //------------------------------------------------------------------------------------------------
+    //------------------------------- BUSCAMOS LOS ALUMNOS POR EL CURSO SELECIONADO -----------------
+    //------------------------------- /index.php/AtDiversidad/BuscarCurso -------------------------------
+    //-----------------------------------------------------------------------------------------------
+    public function BuscarCurso() {
+        $curso = $this->input->post('cursos');
+        $grupo = $this->input->post('grupos');
+
+        $alumnos=  $this->M_AccionTutorial-> getAlumCurso($curso, $grupo);
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        $cuerpo = $this->load->view('V_MenuAcctutoCuros', array('alumnos' => $alumnos,
+                                                                    'curso' => $curso,
+                                                                    'grupo' => $grupo), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        
+    }
+    public function VolverCurso($idAlumno) {
+        
+        $cursos=  $this->M_AccionTutorial-> getCurso($idAlumno);
+        $grupos=  $this->M_AccionTutorial-> getGupo($idAlumno);
+        $curso=$cursos[0]['curso'];
+        $grupo=$grupos[0]['grupo'];
+
+        $alumnos=  $this->M_AccionTutorial-> getAlumCurso($curso, $grupo);
+        
+           $cuerpo = $this->load->view('V_MenuAcctutoCuros', array('alumnos' => $alumnos,
+                                                                    'curso' => $curso,
+                                                                    'grupo' => $grupo), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        
+    }
+    
+//------------------------------------------ FIN BUSQUEDA CURSO --------------------------------------------------    
+//------------------------------------------ FIN BUSQUEDA CURSO --------------------------------------------------          
     function MenuAccUno($idalumno){
         //Devolvemos los datos del alumno cuya id mandamos
         $alumno=  $this->M_AccionTutorial->getDatosAlumno($idalumno);

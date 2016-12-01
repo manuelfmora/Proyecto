@@ -131,6 +131,9 @@ class AtDiversidad extends CI_Controller {
                 'homeactive' => 'active'));
         
     }
+    
+//------------------------------------------ FIN BUSQUEDA CURSO --------------------------------------------------    
+//------------------------------------------ FIN BUSQUEDA CURSO --------------------------------------------------          
     function MenuAccUno($idalumno){
         //Devolvemos los datos del alumno cuya id mandamos
         $alumno=  $this->M_Trayectoria->getDatosAlumno($idalumno);

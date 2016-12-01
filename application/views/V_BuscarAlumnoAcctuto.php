@@ -23,6 +23,37 @@
                     </form>
                   </div>
                 </div>
+                  
+<!---------------------------------------------- MENÚ CURSOS --------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------------------------->
+                            <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AccionTutorial/BuscarCurso' ?>"  method="POST" >
+                            <div class="col-md-1">
+                                    
+                                        <select name="cursos">
+                                            <option value="">Curso</option>
+                                            <option value="1">1º</option>
+                                            <option value="2">2º</option>
+                                            <option value="3">3º</option>
+                                            <option value="4">4º</option>
+
+                                        </select>
+                                    
+                            </div>
+                            <div class="col-md-1">
+                              
+                                    <select name="grupos">
+                                        <option value="">Grupo</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+
+                                    </select>
+                                </div>
+                                <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
+                            </form>
+<!---------------------------------------------- / MENÚ CURSOS --------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------------------------->                  
 
               </div>
             </div>

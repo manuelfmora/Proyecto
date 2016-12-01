@@ -5,7 +5,7 @@ f<!-- Start Contact section -->
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Transito</span>
+                        <span class="mu-subtitle">Transito Curso</span>
                         <h2>Acciones a Realizar</h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
@@ -44,7 +44,7 @@ f<!-- Start Contact section -->
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Transito/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Transito/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
                                                     <?php endif; ?>
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial/BuscarUno/".$alumnos['idAlumno'] ?>">Salir</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AccionTutorial/VolverCurso/".$alumnos['idAlumno'] ?>">Salir</a></td>
 
                                                 </tr>
 

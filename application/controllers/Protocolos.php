@@ -33,6 +33,26 @@ class Protocolos extends CI_Controller {
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
+    //`<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    //----------------------------------- INSERTAMOS EL ALUMNO DE LA BUSQUEDA DEL CURSO ----------------------------
+    //--------------------------------------------------------------------------------------------------------------
+    public function alumnoCurso($idAlumno) {
+
+        //Comprobamos si este alumno tiene ya una insercion en la tabla
+        //Para mostrar los botones de modificar y eliminar
+
+        $num_idneae = $this->M_AccionTutorial->getidProtocolos($idAlumno);
+
+        $alumnos = $this->M_AccionTutorial->getDatosAlumno($idAlumno);
+
+        $cuerpo = $this->load->view('V_MenuProtocolosC', array('alumnos' => $alumnos,
+                                                               'num_idneae' => $num_idneae), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                 'homeactive' => 'active'));
+    }
+    //-----------------------------------/ INSERTAMOS EL ALUMNO DE LA BUSQUEDA DEL CURSO ----------------------------
+    //---------------------------------------------------------------------------------------------------------------      
 
     public function insertar($idAlumno){
         

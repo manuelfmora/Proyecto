@@ -11,7 +11,10 @@ class M_AtDiversidad extends CI_Model{
     public function __construct() {
         $this->load->database();
     }
-    //-----Funciones creadas para la busqueda de alumnos por curso
+    
+    
+    //--------------- Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------
     /**
      * Consulta todos los alumnos que estan en un curso
      * @param type $curso Curso al que pertenece    
@@ -50,7 +53,8 @@ class M_AtDiversidad extends CI_Model{
 
         return $query->result_array();
     }
-    //----- / Funciones creadas para la busqueda de alumnos por curso
+    //--------------- / Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------
     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno
