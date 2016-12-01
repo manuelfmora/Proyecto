@@ -1,7 +1,4 @@
 <!-- Start Contact section -->
-
-
-<!-- Start Contact section -->
 <section id="mu-contact">
     <div class="container">
         <div class="row">
@@ -9,8 +6,7 @@
                 <div class="mu-contact-area">
                     <div class="mu-title">
                         <span class="mu-subtitle">Opciones</span>
-                        <h2>Atención a la Diversidad</h2><br>
-                        <h2>Curso:<?php print $cuso?></h2>
+                        <h2>Atención a la Diversidad</h2><br>                        
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
