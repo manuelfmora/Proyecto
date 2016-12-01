@@ -33,6 +33,27 @@ class ConsejoOrienUno extends CI_Controller {
         $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
             'homeactive' => 'active'));
     }
+    
+         //`<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    //----------------------------------- INSERTAMOS EL ALUMNO DE LA BUSQUEDA DEL CURSO ----------------------------
+    //--------------------------------------------------------------------------------------------------------------
+    public function alumnoCurso($idAlumno) {
+
+        //Comprobamos si este alumno tiene ya una insercion en la tabla
+        //Para mostrar los botones de modificar y eliminar
+
+        $num_idneae = $this->M_ConsejoOrien->getidConsejoOrien($idAlumno);
+
+        $alumnos = $this->M_ConsejoOrien->getDatosAlumno($idAlumno);
+      //----------------------------- CAMBIAR -------------------
+        $cuerpo = $this->load->view('V_MenuConsejoOrienUnoC', array('alumnos' => $alumnos,
+                                                               'num_idneae' => $num_idneae), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                                                 'homeactive' => 'active'));
+    }
+    //-----------------------------------/ INSERTAMOS EL ALUMNO DE LA BUSQUEDA DEL CURSO ----------------------------
+    //---------------------------------------------------------------------------------------------------------------  
 
     public function insertar($idAlumno){
         

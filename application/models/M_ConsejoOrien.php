@@ -12,7 +12,8 @@ class M_ConsejoOrien extends CI_Model{
         $this->load->database();
     }
     
-    //-----Funciones creadas para la busqueda de alumnos por curso
+    //--------------- Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------
     /**
      * Consulta todos los alumnos que estan en un curso
      * @param type $curso Curso al que pertenece    
@@ -51,7 +52,8 @@ class M_ConsejoOrien extends CI_Model{
 
         return $query->result_array();
     }
-    //----- / Funciones creadas para la busqueda de alumnos por curso    
+    //--------------- / Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------    
     
     /**
      * Añade un Alumno a la base de datos

@@ -96,6 +96,46 @@ class ConsejoOrien extends CI_Controller {
                 'homeactive' => 'active'));
         }
     }
+    //------------------------------------------------------------------------------------------------
+    //------------------------------- BUSCAMOS LOS ALUMNOS POR EL CURSO SELECIONADO -----------------
+    //------------------------------- /index.php/AtDiversidad/BuscarCurso -------------------------------
+    //-----------------------------------------------------------------------------------------------
+    public function BuscarCurso() {
+        $curso = $this->input->post('cursos');
+        $grupo = $this->input->post('grupos');
+
+        $alumnos=  $this->M_ConsejoOrien-> getAlumCurso($curso, $grupo);
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        //----------------------------->>> IMPORTANTE <<<<------------------------------------
+        $cuerpo = $this->load->view('V_MenuConsejoOrienCurso', array('alumnos' => $alumnos,
+                                                                    'curso' => $curso,
+                                                                    'grupo' => $grupo), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        
+    }
+    public function VolverCurso($idAlumno) {
+        
+        $cursos=  $this->M_ConsejoOrien-> getCurso($idAlumno);
+        $grupos=  $this->M_ConsejoOrien-> getGupo($idAlumno);
+        $curso=$cursos[0]['curso'];
+        $grupo=$grupos[0]['grupo'];
+
+        $alumnos=  $this->M_ConsejoOrien-> getAlumCurso($curso, $grupo);
+        
+           $cuerpo = $this->load->view('V_MenuConsejoOrienCurso', array('alumnos' => $alumnos,
+                                                                    'curso' => $curso,
+                                                                    'grupo' => $grupo), TRUE);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));
+        
+    }
+    
+//------------------------------------------ FIN BUSQUEDA CURSO --------------------------------------------------    
+//------------------------------------------ FIN BUSQUEDA CURSO --------------------------------------------------       
     
     
     function MenuAccUno($idalumno){

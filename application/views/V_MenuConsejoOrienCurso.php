@@ -8,8 +8,9 @@
             <div class="col-md-12">
                 <div class="mu-contact-area">
                     <div class="mu-title">
-                        <span class="mu-subtitle">Opciones</span>
+                        <span class="mu-subtitle">Opciones de Curso</span>
                         <h2>Consejo Orientador</h2>
+                        <h2>Curso: <?php echo($curso).'º'.($grupo)?></h2>
                         <i class="fa fa-spoon"></i>              
                         <span class="mu-title-bar"></span>
                     </div>
@@ -17,7 +18,7 @@
                         <div class="row">
                             <div class="cart-view-table">
                                 <div class="table table-bordered">
-
+<!------------------------------------------------------------------------- MENÚ DE CURSO------------------------------------------------------------------->
                                     <table class="table">
                                         <thead>
                                             <tr> 
@@ -35,7 +36,7 @@
                                                     <td><?= $alumno['nie'] ?></td>  
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>  <!--Craga todas las opciones del menu de alumnos-->
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/alumno/" . $alumno['idAlumno'] ?>">Acceder</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/ConsejoOrienUno/alumnoCurso/" . $alumno['idAlumno'] ?>">Acceder</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . '/ConsejoOrien'?>"</a>Salir</td>
                                                       
                                                                                         
