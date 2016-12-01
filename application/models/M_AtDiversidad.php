@@ -133,10 +133,27 @@ class M_AtDiversidad extends CI_Model{
      * @param String $nombre_usu Nombre de usuario
      * @return Array
      */
+    
+    //++++++++++++++CAMBIAR+++++++++++++++++++++++++++++++++++++
     public function getDatosModificar($idAlumno) {
-        print_r('Entra en getDatos'.$idAlumno);
+   
         $query = $this->db->query("SELECT * "
                 . "FROM neae "
+                . "WHERE idAlumno = '$idAlumno'");
+                   
+        return $query->row_array();
+    }
+        /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    
+    //++++++++++++++CAMBIAR+++++++++++++++++++++++++++++++++++++
+    public function getDatosModifiMedidasad($idAlumno) {
+   
+        $query = $this->db->query("SELECT * "
+                . "FROM medidasad "
                 . "WHERE idAlumno = '$idAlumno'");
                    
         return $query->row_array();
@@ -247,9 +264,29 @@ class M_AtDiversidad extends CI_Model{
      * @param Int $id ID de Alumno
      * @param Array $data Datos de la actualización
      */
-    public function updateAlumno($id,$data) {
+//    public function updateAlumno($id,$data) {
+//        $this->db->where('idAlumno', $id);
+//        $this->db->update('alumno', $data);
+//    }
+    
+    /**
+     * Actualiza los datos Neae de un Alumno
+     * @param Int $id ID de Alumno
+     * @param Array $data Datos de la actualización
+     */
+    public function updateNeae($id,$data) {
         $this->db->where('idAlumno', $id);
-        $this->db->update('alumno', $data);
+        $this->db->update('neae', $data);
+    }
+    
+    /**
+    * Actualiza los datos Medidasad de un Alumno
+    * @param Int $id ID de Alumno
+    * @param Array $data Datos de la actualización
+    */
+    public function updateMedidasad($id,$data) {
+        $this->db->where('idAlumno', $id);
+        $this->db->update('medidasad', $data);
     }
     
      //--------------------------- Borrado y comprobacion de si existe id -------------------------------------------

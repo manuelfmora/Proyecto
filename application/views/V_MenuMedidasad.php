@@ -42,8 +42,8 @@
                                                     <?php endif; ?>
                                                     
                                                     <?php if ($num_id != 0): //Sólo mostrar si tiene datos insertados ?>
-                                                        <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
-                                                        <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                        <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
+                                                        <td><a class="mu-readmore-btn" href="<?= site_url() . "/Medidasad/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
                                                     <?php endif; ?>
                                                         <td><a class="mu-readmore-btn" href="<?= site_url() . "/AtDiversidad/BuscarUno/".$alumnos['idAlumno'] ?>">Salir</a></td>
 
