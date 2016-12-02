@@ -11,7 +11,52 @@ class M_AccionTutorial extends CI_Model{
     public function __construct() {
         $this->load->database();
     }
+       
     
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE NEAE Y MEDIDASAD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /**
+    * Actualiza los datos Medidasad de un Alumno
+    * @param Int $id ID de Alumno
+    * @param Array $data Datos de la actualización
+    */
+    public function updateProtocolos($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->update('protocolos', $data);
+    }
+    
+    /**
+    * Actualiza los datos Medidasad de un Alumno
+    * @param Int $id ID de Alumno
+    * @param Array $data Datos de la actualización
+    */
+    public function updateEntrevistas($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->update('entrevistas', $data);
+    }  
+    
+    /**
+    * Actualiza los datos Medidasad de un Alumno
+    * @param Int $id ID de Alumno
+    * @param Array $data Datos de la actualización
+    */
+    public function updateTrayAcad($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->update('trayect_acad', $data);
+    }
+    
+    /**
+    * Actualiza los datos Medidasad de un Alumno
+    * @param Int $id ID de Alumno
+    * @param Array $data Datos de la actualización
+    */
+    public function updateTransito($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->update('transito', $data);
+    }
+
+  
+    
+     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> / UPDATE NEAE Y MEDIDASAD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
     
     //--------------- Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
     //--------------------------------------------------------------------------------------------------------------------------
@@ -152,21 +197,67 @@ class M_AccionTutorial extends CI_Model{
         $this->db->insert('medidasad', $data);
         print_r('Impresion Correcta');
     }
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DATOS MODIFICAR MENÚ ACCIÓN TUTORIAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosModificarProtocolos($idAlumno) {
+   
+        $query = $this->db->query("SELECT * "
+                . "FROM protocolos "
+                . "WHERE idAlumno = '$idAlumno'");
+                   
+        return $query->row_array();
+    }
+    
+    /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosModificarEntrevistas($idAlumno) {
+   
+        $query = $this->db->query("SELECT * "
+                . "FROM entrevistas "
+                . "WHERE idAlumno = '$idAlumno'");
+                   
+        return $query->row_array();
+    }
 
     /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
      * @param String $nombre_usu Nombre de usuario
      * @return Array
      */
-    public function getDatosModificar($idAlumno) {
-       
+    public function getDatosModificarTrayAcad($idAlumno) {
+   
         $query = $this->db->query("SELECT * "
-                . "FROM medidasad "
+                . "FROM trayect_acad "
                 . "WHERE idAlumno = '$idAlumno'");
                    
         return $query->row_array();
-    }
-        /**
+    }  
+
+    /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosModificarTransito($idAlumno) {
+   
+        $query = $this->db->query("SELECT * "
+                . "FROM transito "
+                . "WHERE idAlumno = '$idAlumno'");
+                   
+        return $query->row_array();
+    }      
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> /DATOS MODIFICAR MENÚ ACCIÓN TUTORIAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    
+    /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
      * @param String $nombre_usu Nombre de usuario
      * @return Array
@@ -278,18 +369,7 @@ class M_AccionTutorial extends CI_Model{
 
         return $query->row_array()['idAlumno'];
     }
-    
-    /**
-     * Actualiza los datos de un Alumno
-     * @param Int $id ID de Alumno
-     * @param Array $data Datos de la actualización
-     */
-    public function updateAlumno($id,$data) {
-        $this->db->where('idAlumno', $id);
-        $this->db->update('alumno', $data);
-    }
-    
-        
+     
 
     
     

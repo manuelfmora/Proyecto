@@ -94,9 +94,7 @@ class Protocolos extends CI_Controller {
                 //Inserta en la tabla alumnado
                 $this->M_Protocolos->adProtocolos($data);
                 //Pantalla de Confirmación
-                
-//                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
-//                print_r($alumnos);
+
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                     'homeactive' => 'active'));
@@ -104,6 +102,83 @@ class Protocolos extends CI_Controller {
     }
 
 
+    
+    /**
+     * Modifica un usuario si se han introducido correctamente los datos
+     */
+    public function Modificar($idAlumno) {        
+
+        
+
+        if (SesionIniciadaCheck()) {
+                 
+            //Optenemos los datos del Medidasad
+            $datos = $this->M_AccionTutorial->getDatosModificarProtocolos($idAlumno);        
+            
+            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+            //Establecemos los mensajes de errores
+            $this->setMensajesErrores();
+            //Establecemos reglas de validación para el formulario
+            $this->setReglasValidacion();
+            if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+            
+              //MODIFICAR FECHA RECORRER CON FORECH
+            
+            foreach ($datos as $key => $value) {
+
+                    if ($key == 'fecha_ini') {
+
+                        $fecha = $this->formato_americano($value);
+                        $datos[$key] = $fecha;
+                    } elseif ($key == 'fecha_fin') {
+
+                        $fecha = $this->formato_americano($value);
+                        $datos[$key] = $fecha;
+                    } else if ($key != 'aceptar') {
+
+                        $datos[$key] = $value;
+                    }
+                }
+
+                $cuerpo = $this->load->view('V_ProtocolosModify', array(
+                                              'datos' => $datos), true);
+
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                        'homeactive' => 'active'));
+
+
+            
+            } else {
+           
+               
+                foreach ($this->input->post() as $key => $value) {
+
+                        if ($key == 'fecha_ini') {
+
+                            $fecha = $this->formato_mysql($value);
+                            $data[$key] = $fecha;
+                        } elseif ($key == 'fecha_fin') {
+
+                            $fecha = $this->formato_mysql($value);
+                            $data[$key] = $fecha;
+                        } else if ($key != 'aceptar') {
+
+                            $data[$key] = $value;
+                        }
+                }                    
+                   
+
+                
+                $this->M_AccionTutorial->updateProtocolos($idAlumno,$data);
+                 //Pantalla de Confirmación
+                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                    'homeactive' => 'active'));
+            }
+        }
+    }
+    
+    
 
     function formato_americano($date) {
 

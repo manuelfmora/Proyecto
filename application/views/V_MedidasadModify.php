@@ -16,7 +16,7 @@
             </div>              
             <div class="mu-reservation-content">
                <!-- Formulario sin PDF -->  
-              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Medidasad/modificar/'. $datos['idAlumno']?>" method="post">
+              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Medidasad/modificar/'.$datos['idAlumno']?>" method="post">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -110,7 +110,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                           <input type="hidden" name="idAlumno" value="<?= $datos['idAlumno'] ?>">
-                          <button type="submit" name="aceptar" value="aceptar"class="mu-readmore-btn">Aceptar</button>
+                          <button type="submit" name="aceptar" value="aceptar" class="mu-readmore-btn">Aceptar</button>
                       </div>
                     </div>
                   </center>

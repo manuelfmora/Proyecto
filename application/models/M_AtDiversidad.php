@@ -274,6 +274,8 @@ class M_AtDiversidad extends CI_Model{
      * @param Int $id ID de Alumno
      * @param Array $data Datos de la actualización
      */
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE NEAE Y MEDIDASAD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public function updateNeae($idAlumno,$data) {
         $this->db->where('idAlumno', $idAlumno);
         $this->db->update('neae', $data);
@@ -288,6 +290,8 @@ class M_AtDiversidad extends CI_Model{
         $this->db->where('idAlumno', $idAlumno);
         $this->db->update('medidasad', $data);
     }
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> / UPDATE NEAE Y MEDIDASAD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
      //--------------------------- Borrado y comprobacion de si existe id -------------------------------------------
    
