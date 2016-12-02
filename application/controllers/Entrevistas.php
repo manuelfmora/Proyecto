@@ -92,12 +92,77 @@ class Entrevistas extends CI_Controller {
                 //Inserta en la tabla alumnado
                 $this->M_AccionTutorial->adEntrevistas($data);
                 //Pantalla de Confirmación
-                
-//                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
-//                print_r($alumnos);
+
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                     'homeactive' => 'active'));
+        }
+    }
+    
+    
+    /**
+     * Modifica un usuario si se han introducido correctamente los datos
+     */
+    public function Modificar($idAlumno) {        
+
+        
+
+        if (SesionIniciadaCheck()) {
+                 
+            //Optenemos los datos del Medidasad
+            $datos = $this->M_AccionTutorial->getDatosModificarEntrevistas($idAlumno);        
+            
+            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+            //Establecemos los mensajes de errores
+            $this->setMensajesErrores();
+            //Establecemos reglas de validación para el formulario
+            $this->setReglasValidacion();
+            if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+            
+              //MODIFICAR FECHA RECORRER CON FORECH
+ 
+                foreach ($datos as $key => $value) {
+
+                    if ($key == 'fecha') {
+
+                        $fecha = $this->formato_americano($value);
+                        $data[$key] = $fecha;
+
+                    }else if ($key != 'aceptar') {
+
+                        $data[$key] = $value;
+                    }
+                }
+
+                $cuerpo = $this->load->view('V_EntrevistasModify', array(
+                                              'datos' => $datos), true);
+
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                        'homeactive' => 'active'));
+
+
+            
+            } else {
+                
+                foreach ($this->input->post() as $key => $value) {
+
+                    if ($key == 'fecha') {
+
+                        $fecha = $this->formato_mysql($value);
+                        $data[$key] = $fecha;
+
+                    }else if ($key != 'aceptar') {
+
+                        $data[$key] = $value;
+                    }
+                }                
+   
+                $this->M_AccionTutorial->updateProtocolos($idAlumno,$data);
+                 //Pantalla de Confirmación
+                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                    'homeactive' => 'active'));
+            }
         }
     }
 
