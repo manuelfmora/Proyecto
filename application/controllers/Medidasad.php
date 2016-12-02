@@ -136,9 +136,39 @@ class Medidasad extends CI_Controller {
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario
             $this->setReglasValidacion();
-//MODIFICAR FECHA RECORRER CO FORECH
+            
+              //MODIFICAR FECHA RECORRER CON FORECH
+            
             if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
-             
+                
+                foreach ($datos as $key => $value) {
+
+                    if ($key == 'fecha_ini') {
+                      
+                        $fecha = $this->formato_americano($value);
+                        $datos[$key] = $fecha;
+                    } elseif ($key == 'fecha_fin') {
+
+                        $fecha = $this->formato_americano($value);
+                        $datos[$key] = $fecha;
+                    } else if ($key != 'aceptar') {
+
+                        $datos[$key] = $value;
+                    }
+                }
+                
+                
+
+//                foreach ($datos as $key){
+//                    if($key=='fecha_ini'){
+//                        $dato= formato_americano(key['fecha_ini']);
+//                    } elseif ($valor=='fecha_fin') {
+//                        $dato=formato_americano(key['fecha_ini']);
+//                    }elseif ($key['aceptar']!='aceptar') {
+//                        $dato=
+//                        
+//                    }
+//                }
                 $cuerpo = $this->load->view('V_medidasadModify', array(
                                               'datos' => $datos), true);
                                            
@@ -149,8 +179,39 @@ class Medidasad extends CI_Controller {
             
             } else {
            
-   
-                 
+                 foreach ($this->input->post() as $key => $value) {
+                     
+                        if($key == 'nombre'){
+                             $nombre='';
+                            for ($i=0;$i<count($value);$i++){
+                                if($i<count($value)-1){
+                                   $nombre.=$value[$i].',';   
+                                }  else {
+                                    $nombre.=$value[$i]; 
+                                }
+                                                              
+                            }
+                          
+                            $data['nombre']=$nombre;
+  
+                        }elseif ($key == 'fecha_ini') {
+
+                            $fecha = $this->formato_mysql($value);
+                            $data[$key] =$fecha;
+
+                        }elseif ($key == 'fecha_fin') {
+
+                            $fecha = $this->formato_mysql($value);
+                            $data[$key] =$fecha;
+
+                        }else if( $key != 'aceptar'){
+                            
+                            $data[$key] = $value;
+                        }                     
+                   
+                 } 
+                
+                 $this->M_AtDiversidad-> updateMedidasad($idAlumno,$data);
                  //Pantalla de Confirmación
                  $cuerpo = $this->load->view('V_AlumnoModifyok', array(), true);
                  $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,

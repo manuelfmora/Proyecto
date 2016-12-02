@@ -274,8 +274,8 @@ class M_AtDiversidad extends CI_Model{
      * @param Int $id ID de Alumno
      * @param Array $data Datos de la actualización
      */
-    public function updateNeae($id,$data) {
-        $this->db->where('idAlumno', $id);
+    public function updateNeae($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
         $this->db->update('neae', $data);
     }
     
@@ -284,8 +284,8 @@ class M_AtDiversidad extends CI_Model{
     * @param Int $id ID de Alumno
     * @param Array $data Datos de la actualización
     */
-    public function updateMedidasad($id,$data) {
-        $this->db->where('idAlumno', $id);
+    public function updateMedidasad($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
         $this->db->update('medidasad', $data);
     }
     

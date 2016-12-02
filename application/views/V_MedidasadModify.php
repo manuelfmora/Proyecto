@@ -110,7 +110,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                           <input type="hidden" name="idAlumno" value="<?= $datos['idAlumno'] ?>">
-                          <button type="submit" name="aceptar" class="mu-readmore-btn">Aceptar</button>
+                          <button type="submit" name="aceptar" value="aceptar"class="mu-readmore-btn">Aceptar</button>
                       </div>
                     </div>
                   </center>
