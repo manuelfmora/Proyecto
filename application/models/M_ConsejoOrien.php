@@ -12,6 +12,49 @@ class M_ConsejoOrien extends CI_Model{
         $this->load->database();
     }
     
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INSERT CONSEJO ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    /**
+     * Añade un Alumno al Consejo Orinetador
+     * @param Array $data Datos del Alumno
+     */
+    public function adConsejoOrien($data) {
+
+        $this->db->insert('consejo_orientador', $data);
+       
+    }
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> /INSERT CONSEJO ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> UPDATE CONSEJO ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /**
+    * Actualiza los datos ConsejoOrien de un Alumno
+    * @param Int $id ID de Alumno
+    * @param Array $data Datos de la actualización
+    */
+    public function updateConsejoOrien($idAlumno,$data) {
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->update('consejo_orientador', $data);
+    }
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> / UPDATE CONSEJO ORIENTADOR>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+    
+   
+    /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosModificarConsejoOrien($idAlumno) {
+   
+        $query = $this->db->query("SELECT * "
+                . "FROM consejo_orientador "
+                . "WHERE idAlumno = '$idAlumno'");
+                   
+        return $query->row_array();
+    }  
     //--------------- Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
     //--------------------------------------------------------------------------------------------------------------------------
     /**
@@ -55,6 +98,42 @@ class M_ConsejoOrien extends CI_Model{
     //--------------- / Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------    
     
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>> Borrado y comprobacion de si existe id >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   
+  
+    /**
+    * Borramos los datos de NEAE de un alumno
+    * @param String $idAlumno idAlumno   
+    */    
+    public function deleteConsejoOrienUno($idAlumno) {
+
+
+        $this->db->where('idAlumno', $idAlumno);
+        $this->db->delete('protocolos');
+    }
+    
+  
+    
+    /**
+    * Consulta la id de medidasad que le corresponde a la id del aLUMNO
+    * @param String $IDaLUMNO id de Alumno
+    *  @return Int Nº de ID Medidasad
+    */
+    public function getidConsejoOrien($idAlumno) {
+        
+        
+        $query = $this->db->query("SELECT idConsejo_Orientador "
+                . "FROM Consejo_Orientador "
+                . "WHERE idAlumno = '$idAlumno' " );   
+        return $query->num_rows();
+    }
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> /BORRADO CONS. ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    
+    
+    
+    
     /**
      * Añade un Alumno a la base de datos
      * @param Array $data Datos del Alumno
@@ -64,16 +143,7 @@ class M_ConsejoOrien extends CI_Model{
         $this->db->insert('entrevistas', $data);
        
     }
-    
-    /**
-     * Añade un Alumno a la base de datos
-     * @param Array $data Datos del Alumno
-     */
-    public function adTrayAcad($data) {
 
-        $this->db->insert('trayect_acad', $data);
-       
-    }
     /**
      * Añade un Alumno a la base de datos
      * @param Array $data Datos del Alumno
@@ -273,32 +343,6 @@ class M_ConsejoOrien extends CI_Model{
         $this->db->where('idAlumno', $id);
         $this->db->update('alumno', $data);
     }
-     //--------------------------- Borrado y comprobacion de si existe id -------------------------------------------
-   
-    //--------------------------- Protocolos---------------------------------
-    /**
-    * Borramos los datos de NEAE de un alumno
-    * @param String $idAlumno idAlumno   
-    */    
-    public function deleteConsejoOrienUno($idAlumno) {
 
-
-        $this->db->where('idAlumno', $idAlumno);
-        $this->db->delete('protocolos');
-    }
-    
-    /**
-    * Consulta la id de medidasad que le corresponde a la id del aLUMNO
-    * @param String $IDaLUMNO id de Alumno
-    *  @return Int Nº de ID Medidasad
-    */
-    public function getidConsejoOrien($idAlumno) {
-        
-        
-        $query = $this->db->query("SELECT idConsejo_Orientador "
-                . "FROM Consejo_Orientador "
-                . "WHERE idAlumno = '$idAlumno' " );   
-        return $query->num_rows();
-    }
 }
 

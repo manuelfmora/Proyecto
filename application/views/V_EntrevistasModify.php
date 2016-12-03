@@ -27,10 +27,16 @@
                         <?= form_error('motivo'); ?>
                     </div>
                   </div>
-                  <?php $array = explode(',', $datos['asistentes']) ?>
+              <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="checkbox" style="color: White; text-align: left; ">                    
+                     <h3> Asisitentes:   <?php print_r(explode(',', $datos['asistentes'])); ?></h3><br>
+                     <?php $array = explode(',', $datos['asistentes']) ?>
+
+                     <h4>
                   <?php
                   $m = FALSE;$p = FALSE;$t = FALSE;$a = FALSE;$o = FALSE;
-
+               
                   foreach ($array as $valor) {
                       if ($valor == 'madre') {$m = true;}
                       if ($valor == 'padre') {$p = true;}
@@ -40,9 +46,7 @@
                   }
                   
                   ?>
-              <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="checkbox" style="color: White; text-align: left; ">
+
                             <label>
                               <input type="checkbox" value="madre" name="nombre[]" <?php if ($m == true) echo "checked" ?> >
                               Madre
@@ -63,25 +67,17 @@
                               <input type="checkbox" value="otros" name="nombre[]" <?php if ($o == true) echo "checked" ?> >
                               Otros
                             </label>
+                            </h4>
                           </div>
                     </div>
                   </div>                 
                   <div class="col-md-12">
                     <div class="form-group">                        
                         <input type="text" class="form-control" value="<?= $datos['temas'] ?>" placeholder="Temas" name="temas">
-                        <?= form_error('temas'); ?>
+                   
                     </div>
                   </div>
-<!--                  <div class="col-md-12">
-                    <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?/= $datos['fecha_ini'] ?>" placeholder="Acuerdos" name="acuerdos">
-                        <?/= form_error('acuerdos'); ?>
-                    </div>
-                  </div> -->
-                    <!--   ---------------------------  -->
 
-                  
-                    
                   <div class="col-md-12">
                     <div class="form-group">                
                       <textarea class="form-control" rows="5" value=""  placeholder="Acuerdos" name="acuerdos"><?= $datos['acuerdos'] ?></textarea>                        

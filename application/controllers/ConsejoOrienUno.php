@@ -56,7 +56,7 @@ class ConsejoOrienUno extends CI_Controller {
     //---------------------------------------------------------------------------------------------------------------  
 
     public function insertar($idAlumno){
-        
+       
         //VISTA DE LA OPCIÓN INSERTAR
         $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
@@ -77,31 +77,99 @@ class ConsejoOrienUno extends CI_Controller {
 
             foreach ($this->input->post() as $key => $value) {
 
-                if ($key == 'fecha_ini') {
+                if ($key == 'fecha') {
 
                     $fecha = $this->formato_mysql($value);
                     $data[$key] = $fecha;
-                } elseif ($key == 'fecha_fin') {
-
-                    $fecha = $this->formato_mysql($value);
-                    $data[$key] = $fecha;
+                
                 } else if ($key != 'aceptar') {
 
                     $data[$key] = $value;
                 }
             }
-              
+            
                 //Inserta en la tabla alumnado
-                $this->M_Protocolos->adProtocolos($data);
+                $this->M_ConsejoOrien->adConsejoOrien($data);
                 //Pantalla de Confirmación
-                
-//                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
-//                print_r($alumnos);
-                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+
+                $cuerpo = $this->load->view('V_ConsejoOrienok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                     'homeactive' => 'active'));
         }
     }
+    
+       /**>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  MODIFICAR ALUMNO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+     * Modifica un usuario si se han introducido correctamente los datos
+     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+     */
+    public function Modificar($idAlumno) {        
+
+        
+
+        if (SesionIniciadaCheck()) {
+                 
+            //Optenemos los datos del Medidasad
+            $datos = $this->M_ConsejoOrien->getDatosModificarConsejoOrien($idAlumno);        
+            print_r($datos);
+                        print_r('Datos de la bdatos:<br>');
+            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+            //Establecemos los mensajes de errores
+            $this->setMensajesErrores();
+            //Establecemos reglas de validación para el formulario
+            $this->setReglasValidacion();
+            
+            
+            if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+            
+              //MODIFICAR FECHA RECORRER CON FORECH
+ 
+                foreach ($datos as $key => $value) {
+
+                  if ($key == 'fecha') {
+                      
+                        $fecha = $this->formato_americano($value);
+                        $datos[$key] = $fecha;
+
+                    }else if ($key != 'aceptar') {
+
+                        $datos[$key] = $value;
+                    }
+                }
+
+                $cuerpo = $this->load->view('V_ConsejoOrienUnoModify', array(
+                                              'datos' => $datos), true);
+
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                        'homeactive' => 'active'));
+
+
+            
+            } else {
+                
+                foreach ($this->input->post() as $key => $value) {
+                    
+           
+                    if ($key == 'fecha') {
+
+                        $fecha = $this->formato_mysql($value);
+                        $datos[$key] = $fecha;
+
+                    }else if ($key != 'aceptar') {
+
+                        $datos[$key] = $value;
+                    }
+                }
+
+                $this->M_ConsejoOrien->updateConsejoOrien($idAlumno,$datos);
+                 //Pantalla de Confirmación
+                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                    'homeactive' => 'active'));
+            }
+        }
+    }
+    //**>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> / MODIFICAR ALUMNO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>     
 
 
     //-------------------------- Funciones para eliminar-----------------------------
@@ -156,28 +224,7 @@ class ConsejoOrienUno extends CI_Controller {
         return (!preg_match('/^(19|20)[0-9]{2}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/', $date)) ? FALSE : TRUE;
     }
     
-    /**
-     * Comprueba si una fechade inicio es menor o igula que la fecha final
-     * $datos['fecha_ini'] datos fecha inicio
-     * $datos['fecha_fin'] datos fecha fin
-     */
-    function fecha_mayor(){
-        
-        $datos= $this->input->post();
 
-        $fechini=$datos['fecha_ini'];
-
-        $fechfin=$datos['fecha_fin'];
-
-        if($fechini<=$fechfin){
-
-            return TRUE;
-
-        }else{
-
-            return FALSE;
-        }
-    }
 
     /**
      * Establece los mensajes de error que se mostrarán si no se valida correctamente el formulario
@@ -185,7 +232,7 @@ class ConsejoOrienUno extends CI_Controller {
     function setMensajesErrores() {
         
         $this->form_validation->set_message('validar_fecha', 'formato de fecha no v&aacute;lido');
-        $this->form_validation->set_message('fecha_mayor', 'La fecha final no puede ser Menor que la de inicio');        
+           
 
     }
 
@@ -194,8 +241,8 @@ class ConsejoOrienUno extends CI_Controller {
      */
     function setReglasValidacion() {
         
-          $this->form_validation->set_rules('fecha_ini', 'fecha inicio', 'required|callback_validar_fecha');
-          $this->form_validation->set_rules('fecha_fin', 'fecha final', 'required|callback_validar_fecha|callback_fecha_mayor');
+          $this->form_validation->set_rules('fecha', 'Fecha', 'required|callback_validar_fecha');
+        
 
     }
     

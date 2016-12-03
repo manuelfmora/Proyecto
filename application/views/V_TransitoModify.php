@@ -12,43 +12,53 @@
             </div>              
             <div class="mu-reservation-content">
                <!-- Formulario sin PDF -->  
-              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Transito/insertar/'.$idAlumno?>" method="post">
+              <form class="mu-reservation-form" action="<?= base_url() . 'index.php/Transito/modificar/'.$datos['idAlumno']?>" method="post">
                 <div class="row">
-                 
+<!--                  <div class="col-md-12">
+                    <div class="form-group"> 
+                        <select name="nombre">
+                            <option value="">Protocolos</option>
+                            <option value="absentismo">Absentismo</option>
+                            <option value="acoso">Acoso</option>
+                            <option value="ident">Ident</option>
+                            <option value="solicitud">Solicitud</option>
+                        </select>
+                    </div>
+                  </div>                    -->
                   <div class="col-md-12">
                     <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('ceip') ?>" placeholder="C.E.I.P" name="ceip">
+                        <input type="text" class="form-control" value="<?= $datos['ceip'] ?>" placeholder="C.E.I.P" name="ceip">
                         <?= form_error('ceip'); ?>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('repeticiones') ?>" placeholder="Repeticiones" name="repeticiones">
+                        <input type="text" class="form-control" value="<?= $datos['repeticiones'] ?>" placeholder="Repeticiones" name="repeticiones">
                         <?= form_error('repeticiones'); ?>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('ncc') ?>" placeholder="N.C.C." name="ncc">
+                        <input type="text" class="form-control" value="<?= $datos['ncc'] ?>" placeholder="N.C.C." name="ncc">
                         <?= form_error('ncc'); ?>
                     </div>
                   </div> 
                   <div class="col-md-12">
                     <div class="form-group">                        
-                        <input type="text" class="form-control" value="<?= set_value('area_suspensa') ?>" placeholder="Areas Suspensas" name="area_suspensa">
+                        <input type="text" class="form-control" value="<?= $datos['area_suspensa'] ?>" placeholder="Areas Suspensas" name="area_suspensa">
                         <?= form_error('area_suspensa'); ?>
                     </div>
                   </div> 
                   <div class="col-md-12">
                     <div class="form-group">                
-                      <textarea class="form-control" rows="5" value="<?= set_value('observaciones') ?>"  placeholder="Observaciones" name="observaciones"></textarea>                        
+                      <textarea class="form-control" rows="5" value="<?= $datos['observaciones'] ?>"  placeholder="Observaciones" name="observaciones"></textarea>                        
                     </div>
                   </div> 
                     <center>
                     <div class="col-md-12">
                       <div class="form-group">
-                          <input type="hidden" name="idAlumno" value="<?=$idAlumno?>">
-                          <button type="submit" name="aceptar" class="mu-readmore-btn">Aceptar</button>
+                          <input type="hidden" name="idAlumno" value="<?=$datos['idAlumno']?>">
+                          <button type="submit" name="aceptar" value="aceptar" class="mu-readmore-btn">Aceptar</button>
                       </div>
                     </div>
                   </center>

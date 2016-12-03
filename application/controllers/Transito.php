@@ -95,7 +95,64 @@ class Transito extends CI_Controller {
                     'homeactive' => 'active'));
         }
     }
+    
+    
+    
+    
+    /**>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  MODIFICAR ALUMNO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+     * Modifica un usuario si se han introducido correctamente los datos
+     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+     */
+    public function Modificar($idAlumno) {        
 
+        
+
+        if (SesionIniciadaCheck()) {
+                 
+            //Optenemos los datos del Medidasad
+            $datos = $this->M_AccionTutorial->getDatosModificarTransito($idAlumno);        
+//            print_r($datos);
+//                        print_r('Datos de la bdatos:<br>');
+            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+            //Establecemos los mensajes de errores
+            $this->setMensajesErrores();
+            //Establecemos reglas de validación para el formulario
+            $this->setReglasValidacion();
+            
+            
+            if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+            
+
+                $cuerpo = $this->load->view('V_TransitoModify', array(
+                                              'datos' => $datos), true);
+
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                        'homeactive' => 'active'));
+
+
+            
+            } else {
+                
+                foreach ($this->input->post() as $key => $value) {
+                    
+           
+                if ($key != 'aceptar') {
+
+                        $datos[$key] = $value;
+                    }
+                }
+                print_r('Los datos a insertar son:')                ;
+                print_r($datos);
+                $this->M_AccionTutorial->updateTransito($idAlumno,$datos);
+                 //Pantalla de Confirmación
+                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+                $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                    'homeactive' => 'active'));
+            }
+        }
+    }
+    //**>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> / MODIFICAR ALUMNO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
     //-------------------------- Funciones para eliminar-----------------------------
 
     /**

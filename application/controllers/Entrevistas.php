@@ -100,8 +100,9 @@ class Entrevistas extends CI_Controller {
     }
     
     
-    /**
+    /**>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  MODIFICAR ALUMNO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
      * Modifica un usuario si se han introducido correctamente los datos
+     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
      */
     public function Modificar($idAlumno) {        
 
@@ -111,26 +112,29 @@ class Entrevistas extends CI_Controller {
                  
             //Optenemos los datos del Medidasad
             $datos = $this->M_AccionTutorial->getDatosModificarEntrevistas($idAlumno);        
-            
+//            print_r($datos);
+//                        print_r('Datos de la bdatos:<br>');
             $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
             //Establecemos reglas de validación para el formulario
             $this->setReglasValidacion();
+            
+            
             if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
             
               //MODIFICAR FECHA RECORRER CON FORECH
  
                 foreach ($datos as $key => $value) {
 
-                    if ($key == 'fecha') {
-
+                  if ($key == 'fecha') {
+                      
                         $fecha = $this->formato_americano($value);
-                        $data[$key] = $fecha;
+                        $datos[$key] = $fecha;
 
                     }else if ($key != 'aceptar') {
 
-                        $data[$key] = $value;
+                        $datos[$key] = $value;
                     }
                 }
 
@@ -145,19 +149,34 @@ class Entrevistas extends CI_Controller {
             } else {
                 
                 foreach ($this->input->post() as $key => $value) {
-
-                    if ($key == 'fecha') {
+                    
+                        if($key == 'nombre'){
+                        
+                        $nombre = '';
+                        for ($i = 0; $i < count($value); $i++) {
+                            if ($i < count($value) - 1) {
+                                $nombre .= $value[$i] . ',';
+                            } else {
+                                $nombre .= $value[$i];
+                            }
+                        }
+                        print_r('Asistentes:'.$nombre);
+                        $datos['asistentes'] = $nombre;                        
+                        
+                        
+                    }  else if ($key == 'fecha') {
 
                         $fecha = $this->formato_mysql($value);
-                        $data[$key] = $fecha;
+                        $datos[$key] = $fecha;
 
                     }else if ($key != 'aceptar') {
 
-                        $data[$key] = $value;
+                        $datos[$key] = $value;
                     }
-                }                
-   
-                $this->M_AccionTutorial->updateProtocolos($idAlumno,$data);
+                }
+                print_r('Los datos a insertar son:')                ;
+                print_r($datos);
+                $this->M_AccionTutorial->updateEntrevistas($idAlumno,$datos);
                  //Pantalla de Confirmación
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
@@ -165,9 +184,11 @@ class Entrevistas extends CI_Controller {
             }
         }
     }
-
-
-
+    //**>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> / MODIFICAR ALUMNO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    
+    
     function formato_americano($date) {
 
         if (!empty($date)) {
