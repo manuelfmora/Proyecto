@@ -130,7 +130,7 @@ class M_AtDiversidad extends CI_Model{
 
     /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
-     * @param String $nombre_usu Nombre de usuario
+     * @param String $idAlimno ID Alumno
      * @return Array
      */
     

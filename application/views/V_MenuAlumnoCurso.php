@@ -36,7 +36,7 @@
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>
                                                     
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Mostrar/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
 
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Modificar</a></td>
                                          

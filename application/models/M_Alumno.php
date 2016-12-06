@@ -193,6 +193,19 @@ class M_Alumno extends CI_Model{
 
         return $query->row_array()['clave'];
     }
+   /**
+     * Consulta la provincia del Alumno
+     * @param String $cod Codigo Provincia
+     * @return String Nombre provincia
+     */
+    public function getNomProv($cod) {
+
+        $query = $this->db->query("SELECT nombre "
+                . "FROM provincias "
+                . "WHERE cod = '$cod'; ");
+
+        return $query->row_array()['nombre'];
+    }
 
     /**
      * Cambia el estado de un Alumno a 'B', baja

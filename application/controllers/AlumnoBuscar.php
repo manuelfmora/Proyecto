@@ -104,12 +104,22 @@ class AlumnoBuscar extends CI_Controller {
         //----------------------------->>> IMPORTANTE <<<<------------------------------------
         //----------------------------->>> IMPORTANTE <<<<------------------------------------
         //----------------------------->>> IMPORTANTE <<<<------------------------------------
-        $cuerpo = $this->load->view('V_MenuAlumnoCurso', array('alumnos' => $alumnos,
-                                                                    'curso' => $curso,
-                                                                    'grupo' => $grupo), TRUE);
+        if(empty($alumnos)){
+            //SI no existen alumnos
+            $cuerpo = $this->load->view('V_AlNoAlumno', array(), TRUE);
 
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+                'homeactive' => 'active'));            
+            
+        }  else {
+            $cuerpo = $this->load->view('V_MenuAlumnoCurso', array('alumnos' => $alumnos,
+                                                                        'curso' => $curso,
+                                                                        'grupo' => $grupo), TRUE);
+
+            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                 'homeactive' => 'active'));
+        }
+
         
     }
     public function VolverCurso($idAlumno) {

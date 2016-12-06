@@ -13,8 +13,119 @@ class AlumnoOpciones extends CI_Controller {
         $this->load->helper('Formulario');
         $this->load->model('M_Provincias');
         $this->load->model('M_Alumno');    
+        $this->load->model('M_AlumnoDatos'); 
         $this->load->library('form_validation');
-         $this->load->library('pagination');
+        $this->load->library('pagination');
+    }
+    
+    public function Mostrar ($idAlumno) {
+
+        //>>>>>>>>>>>>>>>>>>  ALUMNO/A >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
+        $datos['alu'] = $this->M_AlumnoDatos->getAlumno($idAlumno);
+
+        foreach ($datos['alu'] as $key => $value) {
+
+            if ($key == 'fechaNacimiento') {
+
+                $fecha = $this->formato_mysql($value);
+                $datos['alu'][$key] = $fecha;
+            } elseif ($key == 'cod_provincia') {
+                
+                $nombrepro=  $this->M_Alumno->getNomProv($value);
+                $datos['alu'][$key] = $nombrepro;
+            } elseif ($key != 'Usuario_idUsuario') {
+                $datos['alu'][$key] = $value;
+            }
+        }        
+
+        //>>>>>>>>>>>>>>>>>>  ATENC DIVERSIDAD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $datos['nea'] = $this->M_AlumnoDatos->getNeae($idAlumno);
+        $datos['mad'] = $this->M_AlumnoDatos->getMedidasad($idAlumno);
+        foreach ($datos['mad'] as $key => $value) {
+
+            if ($key == 'fecha_ini') {
+
+                $fecha = $this->formato_mysql($value);
+                $datos['mad'][$key] = $fecha;
+            } elseif ($key == 'fecha_fin') {
+                
+               $fecha = $this->formato_mysql($value);
+                $datos['mad'][$key] = $fecha;             
+                
+            } elseif ($key != 'idAlumno') {
+                $datos['mad'][$key] = $value;
+            }
+        } 
+        
+        //>>>>>>>>>>>>>>>>>>  ACCIÓN TUTORIAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $datos['pro'] = $this->M_AlumnoDatos->getProtocolos($idAlumno);
+            foreach ($datos['pro'] as $key => $value) {
+
+            if ($key == 'fecha_ini') {
+
+                $fecha = $this->formato_mysql($value);
+                $datos['pro'][$key] = $fecha;
+            } elseif ($key == 'fecha_fin') {
+                
+               $fecha = $this->formato_mysql($value);
+                $datos['pro'][$key] = $fecha;             
+                
+            } elseif ($key != 'idAlumno') {
+                $datos['pro'][$key] = $value;
+            }
+        }
+        $datos['ent'] = $this->M_AlumnoDatos->getEntrevistas($idAlumno);
+        
+        foreach ($datos['ent'] as $key => $value) {
+
+            if ($key == 'fecha_ev') {
+
+                $fecha = $this->formato_mysql($value);
+                $datos['ent'][$key] = $fecha;
+                
+            }  elseif ($key != 'idAlumno') {
+                $datos['ent'][$key] = $value;
+            }
+        }        
+        
+        $datos['tac'] = $this->M_AlumnoDatos->getTrayAcad($idAlumno);
+        
+        foreach ($datos['tac'] as $key => $value) {
+
+            if ($key == 'fecha') {
+
+                $fecha = $this->formato_mysql($value);
+                $datos['tac'][$key] = $fecha;
+                
+            }  elseif ($key != 'idAlumno') {
+                $datos['tac'][$key] = $value;
+            }
+        }        
+        $datos['tra'] = $this->M_AlumnoDatos->getTransito($idAlumno);
+        
+        //>>>>>>>>>>>>>>>>>>  CONSEJ ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $datos['cor'] = $this->M_AlumnoDatos->getConsejoOrien($idAlumno); 
+
+        foreach ($datos['cor'] as $key => $value) {
+
+            if ($key == 'fecha') {
+
+                $fecha = $this->formato_mysql($value);
+                $datos['cor'][$key] = $fecha;
+                
+            }  elseif ($key != 'idAlumno') {
+                $datos['cor'][$key] = $value;
+            }
+        }        
+        
+        
+        $cuerpo = $this->load->view('V_AlumnoMostrar', array(
+                                     'datos' => $datos), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                'homeactive' => 'active'));        
+        
+        
     }
 
 
