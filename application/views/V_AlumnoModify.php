@@ -11,7 +11,7 @@
               <span class="mu-title-bar"></span>
             </div>
             <div class="mu-reservation-content">
-              <form class="mu-reservation-form" action=" <?= site_url() . "/AlumnoModify/Modificar/" . $datos['nie'] ?>" method="post">
+              <form class="mu-reservation-form" action=" <?= site_url() . "/AlumnoOpciones/Modificar/"  .$datos['idAlumno']?>" method="post">
                 <div class="row">
                     <div class="mu-title">
                   <div class="col-md-6">
@@ -175,13 +175,15 @@
                   </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Modificar</button>
+                         <input type="hidden" name="idAlumno" value="<?=$datos['idAlumno']?>">
+                         <button type="submit" name="aceptar" value="aceptar" class="mu-readmore-btn">Aceptar</button>
                       </div>
                     </div>
                    <div class="col-md-6">
                       <div class="form-group">
                           <br>
-                        <a class="mu-readmore-btn" href="<?= base_url().'index.php'?>"> Cancelar</a> 
+                          <?php print_r($datos['idAlumno'])?>
+                        <a class="mu-readmore-btn" href="<?= base_url().'index.php/AlumnoBuscar/BuscarUno/'.$datos['idAlumno'] ?>"> Cancelar</a> 
                       </div>
                     </div>
                       </div>

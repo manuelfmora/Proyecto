@@ -11,7 +11,82 @@ class M_Alumno extends CI_Model{
     public function __construct() {
         $this->load->database();
     }
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    /**
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
+     */
+    public function getUnApellido($idAlumno) {
 
+        $query = $this->db->query("SELECT apellidos "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno' ");
+     
+   
+        return $query->result_array();
+    }
+    /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getDatosAlumno($id) {
+       
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$id'");
+                   
+        return $query->row_array();
+    }    
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //
+    //--------------- Funciones creadas para la busqueda de alumnos por curso --------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------
+    /**
+     * Consulta todos los alumnos que estan en un curso
+     * @param type $curso Curso al que pertenece    
+     * @param type $grupo Grupo al que pertenece
+     * @return type Nº Alumnos
+     */
+    public function getAlumCurso($curso, $grupo) {
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE curso = '$curso'"
+                . "AND grupo = '$grupo' ");
+
+        return $query->result_array();
+    }
+    /**
+     * Consulta el curso de un alumno
+     * @param type $idAlumno
+     * @return type array
+     */
+    public function getCurso($idAlumno) {
+        $query = $this->db->query("SELECT curso "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno'");
+
+        return $query->result_array();
+    }
+    /**
+     * Consulta el grupo de un alumno
+     * @param type $idAlumno
+     * @return type
+     */
+    public function getGupo($idAlumno) {
+        $query = $this->db->query("SELECT grupo "
+                . "FROM alumno "
+                . "WHERE idAlumno = '$idAlumno'");
+
+        return $query->result_array();
+    }
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>/ Funciones creadas para la busqueda de alumnos por curso  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
     /**
      * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
      * @param String $nombre_usu Nombre de Alumno
@@ -31,16 +106,16 @@ class M_Alumno extends CI_Model{
      * @return Int Nº de Alumnos
      */
     public function getApellidosUsuario($apellido,$limit,$start) {
-
-
+        
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
                 . "WHERE apellidos like '%$apellido%' "
                 . "LIMIT $start, $limit; ");
      
-       
+   
         return $query->result_array();
-    }
+    }    
+
          /**
      * Consulta el numero total alumnos
      * @param String $nombre_usu Nombre de usuario
@@ -83,11 +158,11 @@ class M_Alumno extends CI_Model{
      * @param String $nombre_usu Nombre de usuario
      * @return Array
      */
-    public function getDatosModificar($nie) {
+    public function getDatosModificar($idAlumno) {
        
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
-                . "WHERE nie = '$nie'");
+                . "WHERE idAlumno = '$idAlumno'");
                    
         return $query->row_array();
     }
@@ -123,9 +198,9 @@ class M_Alumno extends CI_Model{
      * Cambia el estado de un Alumno a 'B', baja
      * @param String $username Nombre de Alumno
      */
-    public function setBajaAlumno($id) {
+    public function setBajaAlumno($idAlumno) {
      
-        $this->db->where('idAlumno',$id);
+        $this->db->where('idAlumno',$idAlumno);
         $this->db->delete('alumno');
     }
     
@@ -200,8 +275,9 @@ class M_Alumno extends CI_Model{
      * @param Int $id ID de Alumno
      * @param Array $data Datos de la actualización
      */
-    public function updateAlumno($id,$data) {
-        $this->db->where('idAlumno', $id);
+    public function updateAlumno($idAlumno,$data) {
+       
+        $this->db->where('idAlumno', $idAlumno);
         $this->db->update('alumno', $data);
     }
 }

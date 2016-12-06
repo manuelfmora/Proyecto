@@ -110,8 +110,7 @@ class ConsejoOrienUno extends CI_Controller {
                  
             //Optenemos los datos del Medidasad
             $datos = $this->M_ConsejoOrien->getDatosModificarConsejoOrien($idAlumno);        
-            print_r($datos);
-                        print_r('Datos de la bdatos:<br>');
+
             $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();

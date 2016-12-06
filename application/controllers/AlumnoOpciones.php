@@ -5,7 +5,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AlumnoModify extends CI_Controller {
+class AlumnoOpciones extends CI_Controller {
 
     public function __construct() {
         parent::__construct();  
@@ -17,58 +17,20 @@ class AlumnoModify extends CI_Controller {
          $this->load->library('pagination');
     }
 
-    /**
-     * Muestra el formulario para modificar un usuario
-     */
-    public function index() {
-
-        if (!SesionIniciadaCheck()) {
-            redirect("404", 'Location', 301);
-            return; //Sale de la función
-        }
-
-        $cuerpo = $this->load->view('V_DateModify', array(), true);
-
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                              
-                                                'homeactive' => 'active'));
-    }
-    
-    public function Buscar($desde = 0){
-
-        $apellidos = $this->input->post('apellidos');     
-        //PAGINACÓN
-        $config = $this->getConfigPag();       
-
-        $result=$this->pagination->initialize($config);
-        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
-        
-        if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlumnoListaVacia', array(), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        } else {
-            //Mostramo la ventana de modificación OK
-            $cuerpo = $this->load->view('V_AlumnoAModify', array('alumnos' => $alumnos), TRUE);
-
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        }
-    }
 
     /**
      * Modifica un usuario si se han introducido correctamente los datos
      */
-    public function Modificar($nie) {        
+    public function Modificar($idAlumno) {        
 
-        
+     
 
         if (SesionIniciadaCheck()) {
             
 
             //Optenemos los datos del alumno.
-            $datos = $this->M_Alumno->getDatosModificar($nie);
-            
+            $datos = $this->M_Alumno->getDatosModificar($idAlumno);
+          
             $provincias = $this->M_Provincias->getProvincias();
 
             $select = CreaSelectMod($provincias, 'cod_provincia', $datos['cod_provincia']);
@@ -81,6 +43,8 @@ class AlumnoModify extends CI_Controller {
             $this->setReglasValidacion();
 
             if ($this->form_validation->run() == FALSE) {//Validación de datos incorrecta
+                
+                
                 $fecha=$this->formato_americano($datos['fechaNacimiento']);
                 $cuerpo = $this->load->view('V_AlumnoModify', array(
                                                'select'=>$select,
@@ -94,28 +58,43 @@ class AlumnoModify extends CI_Controller {
             
             } else {
            
-               
-                 $config['apellidos'] =  $this->input->post('apellidos');
-                 $config['nombre'] =  $this->input->post('nombre');
-                 $config['nie'] =  $this->input->post('nie');
-                 $config['fechaNacimiento'] = $this->formato_mysql($this->input->post('fechaNacimiento')) ;
-                 $config['datos_medicos'] =  $this->input->post('datos_medicos');
-                 $config['datos_psicologicos'] =  $this->input->post('datos_psicologicos');
-                 $config['informe_medico'] =  $this->input->post('informe_medico');
-                 $config['nombreT1'] =  $this->input->post('nombreT1');
-                 $config['nombreT2'] =  $this->input->post('nombreT2');
-                 $config['direccion'] =  $this->input->post('direccion');
-                 $config['cp'] =  $this->input->post('cp');
-                 $config['poblacion'] =  $this->input->post('poblacion');
-                 $config['cod_provincia'] =  $this->input->post('cod_provincia');
-                 $config['telefono1'] =  $this->input->post('telefono1');
-                 $config['telefono2'] =  $this->input->post('telefono2');
-                 $config['tipo'] =  $this->input->post('tipo');
-                 $config['situacion'] =  $this->input->post('situacion');
-                 $config['implicacion_escolar'] =  $this->input->post('implicacion_escolar');
-                 $config['Usuario_idUsuario'] = $this->session->userdata('logged_in');
-                 $id=$this->M_Alumno->getId($this->input->post('nie'));
-                 $this->M_Alumno->updateAlumno($id,$config);
+//               
+//                 $config['apellidos'] =  $this->input->post('apellidos');
+//                 $config['nombre'] =  $this->input->post('nombre');
+//                 $config['nie'] =  $this->input->post('nie');
+//                 $config['fechaNacimiento'] = $this->formato_mysql($this->input->post('fechaNacimiento')) ;
+//                 $config['datos_medicos'] =  $this->input->post('datos_medicos');
+//                 $config['datos_psicologicos'] =  $this->input->post('datos_psicologicos');
+//                 $config['informe_medico'] =  $this->input->post('informe_medico');
+//                 $config['nombreT1'] =  $this->input->post('nombreT1');
+//                 $config['nombreT2'] =  $this->input->post('nombreT2');
+//                 $config['direccion'] =  $this->input->post('direccion');
+//                 $config['cp'] =  $this->input->post('cp');
+//                 $config['poblacion'] =  $this->input->post('poblacion');
+//                 $config['cod_provincia'] =  $this->input->post('cod_provincia');
+//                 $config['telefono1'] =  $this->input->post('telefono1');
+//                 $config['telefono2'] =  $this->input->post('telefono2');
+//                 $config['tipo'] =  $this->input->post('tipo');
+//                 $config['situacion'] =  $this->input->post('situacion');
+//                 $config['implicacion_escolar'] =  $this->input->post('implicacion_escolar');
+////                 $config['Usuario_idUsuario'] = $this->session->userdata('logged_in');
+//                 $idAlumno=$this->M_Alumno->getId($this->input->post('idAlumno'));
+                foreach ($this->input->post() as $key => $value) {
+
+
+                    if ($key == 'fechaNacimiento') {
+
+                        $fecha = $this->formato_mysql($value);
+                        $datos[$key] = $fecha;
+                    } else if ($key != 'aceptar') {
+
+                        $datos[$key] = $value;
+                    }
+                }
+
+             
+                $this->M_Alumno->updateAlumno($idAlumno,$datos);
+          
                  
                  //Pantalla de Confirmación
                  $cuerpo = $this->load->view('V_AlumnoModifyok', array(), true);
@@ -124,10 +103,42 @@ class AlumnoModify extends CI_Controller {
             }
         }
     }
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FUNCIONES ELIMINAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     
+        /*
+     * Muestra una vista que pregunta si desea eliminar el usuario
+     */
+    public function eliminar($idAlumno) {
+
+        if (!SesionIniciadaCheck()) {
+            redirect("Error404", 'Location', 301);
+            return; //Sale de la función
+        }
+        $apellidos=  $this->M_Alumno->getUnApellido($idAlumno);
+        $apellido=$apellidos[0]['apellidos'];
+        $cuerpo = $this->load->view('V_AlumnoRemove', Array(
+                                                             'idAlumno' => $idAlumno,
+                                                             'apellido'=>$apellido), true); 
+        $this->load->view('V_Plantilla', Array( 'cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+    }
+
+    /**
+     * Da de baja al usuario logueado de la base de datos
+     */
+    public function eliminado($id) {
+
+        $this->M_Alumno->setBajaAlumno($id);
+        $cuerpo = $this->load->view('V_AlumnoRemoveOK', Array(), true); 
+        $this->load->view('V_Plantilla', Array( 'cuerpo' => $cuerpo,
+                                                'homeactive' => 'active'));
+    }
+
     
 
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     function formato_americano($date) {
 
         if (!empty($date)) {

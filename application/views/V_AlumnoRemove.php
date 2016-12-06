@@ -5,14 +5,14 @@
           <div class="mu-reservation-area">
             <div class="mu-title">
               <span class="mu-subtitle">BAJA  USUARIO</span>
-              <h2>¿Desea darse de baja?</h2>
+              <h2>¿Desea darle de baja a: <?= $apellido?> ?</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>
             <div class="mu-reservation-content">
                 <center>
-                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/AlumnoRemove/eliminado/'.$id?>">SI</a>               
-                    <a class="mu-readmore-btn" href="<?= base_url().'index.php'?>"> NO</a>    
+                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/AlumnoOpciones/eliminado/'.$idAlumno?>">SI</a>               
+                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/AlumnoBuscar/BuscarUno/'.$idAlumno?>"> NO</a>    
                 </center>
             </div>
           </div>

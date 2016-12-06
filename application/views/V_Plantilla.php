@@ -112,7 +112,7 @@
   
 
                                     <li><a href="<?= base_url() . 'index.php/AlumnoInsert' ?>">Insertar Alumno</a></li>  
-                                    <li><a href="<?= base_url() . 'index.php/AlumnoModify' ?>">Modificar Eliminar Alumno</a></li>                         
+                                    <li><a href="<?= base_url() . 'index.php/AlumnoBuscar' ?>">Opciones Alumno</a></li>                         
                                 </ul>
                             </li>
                             

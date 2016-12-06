@@ -23,9 +23,11 @@
                                             <tr> 
                                                 <th>NIE</th>
                                                 <th>Apellido</th>
-                                                <th>Nombre</th>                                             
+                                                <th>Nombre</th>
+                                                <th>Mostrar</th> 
                                                 <th>Modificar</th>
                                                 <th>Eliminar</th>
+                                                <th>Salir</th> 
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -34,10 +36,14 @@
                                                     <td><?= $alumno['nie'] ?></td>  
                                                     <td><?= $alumno['apellidos'] ?></td>
                                                     <td><?= $alumno['nombre'] ?>  </td>
+                                                    
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
 
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>
-    <!--                                                     <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumno['nie'] ?>">Modificar</a></td>-->
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoRemove/eliminar/" . $alumno['idAlumno'] ?>">Eliminar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Modificar</a></td>
+                                         
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/eliminar/" . $alumno['idAlumno'] ?>">Eliminar</a></td>
+                                                    
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoBuscar" ?>">Salir</a></td>
 
                                                 </tr>
                                             <?php endforeach; ?>

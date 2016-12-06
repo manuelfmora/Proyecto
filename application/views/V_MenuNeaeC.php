@@ -54,10 +54,10 @@
 
                                             </tr>
 
-                                            <!--/Creación tabla NEAE->
--->                                        </tbody><!--
--->                                    </table><!--
--->                                </div><!--/Fin table responsive 
+                                            <!--/Creación tabla NEAE-->
+                                       </tbody>
+                                  </table>
+                               </div>
                             </div>
                         </div>
                     </div>
