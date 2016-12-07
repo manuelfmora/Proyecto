@@ -1,4 +1,4 @@
-
+<!--
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -11,7 +11,34 @@
                     </div>
                     <div class="mu-reservation-content"> 
                         
-                        <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Modificar' ?>" method="post">
+                    
+                            </div>firn row
+                        </form>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+ Fin vista Modificar -->
+
+  <!-- Start Contact section -->
+  <section id="mu-contact">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="mu-contact-area">
+                      <div class="mu-title">
+                          <span class="mu-subtitle">Modificar los</span>
+                          <h2>Datos Usuario</h2>
+                          <i class="fa fa-spoon"></i>              
+                          <span class="mu-title-bar"></span>
+                      </div>
+                      <div class="mu-contact-content">
+                          <div class="row">
+                              <div class="cart-view-table"><!--Contenedor--->
+                                  
+                            <form class="mu-reservation-form" action="<?= base_url() . 'index.php/UserModify/Modificar' ?>" method="post">
                             <div class="row">
                                 <div class="mu-title">
                                     <div class="col-md-6">
@@ -67,16 +94,20 @@
                                             ?> 
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                         <button type="submit" class="mu-readmore-btn" name="GuardarUsuario" value="Guardar Usuario">Guardar Cambios</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div><!--firn row-->
-                        </form>      
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  
-<!-- Fin vista Modificar -->
+                                </div>                                  
+                             </div><!--/ Contenedor -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
+<!-- End Contact section -->

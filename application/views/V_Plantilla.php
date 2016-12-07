@@ -67,7 +67,7 @@
                         </button>
                         <!-- LOGO -->                                                        
                         <!--  Image based logo  -->
-                        <a class="navbar-brand" href="index.html"><img src="<?= base_url() ?>assets/img/logo.png" alt="Logo img"></a> 
+                        <a class="navbar-brand" href="index.html"><img src="<?= base_url() ?>assets/img/logo.jpg" alt="Logo jpg"></a> 
                         <!--  Text based logo  -->
              <!--           <a class="navbar-brand" href="index.html"><span>SpicyX</span></a>   -->
                     </div>
