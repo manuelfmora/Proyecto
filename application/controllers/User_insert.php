@@ -73,7 +73,7 @@ class User_insert extends CI_Controller{
             }
             
             //Inserta en la tabla usuario
-//            print_r($data);
+
             $this->M_User->addUsuario($data);
             
             redirect('Login/Login/'.$data['nombre_usu'], 'location', 301);
@@ -138,8 +138,6 @@ class User_insert extends CI_Controller{
         $this->form_validation->set_rules('nombre_persona', 'nombre', 'required');
         $this->form_validation->set_rules('apellidos_persona', 'apellidos', 'required');
         $this->form_validation->set_rules('dni', 'DNI', 'required|exact_length[9]|callback_dni_check');
-//        $this->form_validation->set_rules('direccion', 'dirección', 'required');
-//        $this->form_validation->set_rules('cp', 'CP', 'required|integer|exact_length[5]');
-//        $this->form_validation->set_rules('cod_provincia', 'provincia', 'required');
+
     }
 }

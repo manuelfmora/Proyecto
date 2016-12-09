@@ -218,7 +218,7 @@ class AlumnoOpciones extends CI_Controller {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     
-        /*
+    /*
      * Muestra una vista que pregunta si desea eliminar el usuario
      */
     public function eliminar($idAlumno) {

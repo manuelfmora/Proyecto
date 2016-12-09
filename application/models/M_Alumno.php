@@ -208,7 +208,7 @@ class M_Alumno extends CI_Model{
     }
 
     /**
-     * Cambia el estado de un Alumno a 'B', baja
+     * Elimina los datos del Alumno
      * @param String $username Nombre de Alumno
      */
     public function setBajaAlumno($idAlumno) {

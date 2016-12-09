@@ -32,7 +32,7 @@ class AtDiversidad extends CI_Controller {
     }
     
     public function Buscar($desde = 0){
-        print_r('ENTRAAAAAAAAAAAAAAAAAAAAAAAA..............................!');
+       
         $apellidos = $this->input->post('apellidos');     
         //PAGINACÓN
         $config = $this->getConfigPag($apellidos);       

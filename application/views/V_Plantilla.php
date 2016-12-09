@@ -67,7 +67,7 @@
                         </button>
                         <!-- LOGO -->                                                        
                         <!--  Image based logo  -->
-                        <a class="navbar-brand" href="index.html"><img src="<?= base_url() ?>assets/img/logo.jpg" alt="Logo jpg"></a> 
+                        <a href="index.html"><img style=" width: 150px; height: 100px;"  src="<?= base_url() ?>assets/img/logo.jpg" alt="Logo jpg"></a> 
                         <!--  Text based logo  -->
              <!--           <a class="navbar-brand" href="index.html"><span>SpicyX</span></a>   -->
                     </div>
@@ -95,8 +95,10 @@
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">MI CUENTA<span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">          
-                                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Usuario</a></li>                                    
-                                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Eliminar Usuario</a></li>                                          
+                                                    <li><a href="<?= base_url() . 'index.php/UserModify' ?>">Modificar Usuario</a></li> 
+                                                    <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?> 
+                                                    <li><a href="<?= base_url() . 'index.php/UserRemove' ?>">Menú Usuario</a></li> 
+                                                    <?php endif; ?> 
                                             </ul>
                                         </li>
                                     </ul>

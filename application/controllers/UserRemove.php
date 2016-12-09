@@ -22,15 +22,22 @@ class UserRemove extends CI_Controller {
             redirect("Error404", 'Location', 301);
             return; //Sale de la función
         }
+        
 
-        $cuerpo = $this->load->view('V_UserRemove', '', true); 
-        $this->load->view('V_Plantilla', Array('titulo' => 'Eliminar Usuario', 'cuerpo' => $cuerpo, 'homeactive' => 'active'));
+        $datos = $this->M_User->getUsuarios();
+     
+      
+        $cuerpo = $this->load->view('V_MenuUsuarioBaja', array('datos'=>$datos), true);
+        
+        $this->load->view('V_Plantilla', Array(   'cuerpo' => $cuerpo,
+                                                  'homeactive' => 'active'));
+
     }
 
     /**
      * Da de baja al usuario logueado de la base de datos
      */
-    public function eliminar() {
+    public function eliminar($idUsuario) {
         
         if (!SesionIniciadaCheck()) {
             
@@ -38,7 +45,52 @@ class UserRemove extends CI_Controller {
             return; //Sale de la función
         }
 
-        $this->M_User->setBajaUsuario($this->session->userdata('username')); //Damos de baja al usuario
+        $cuerpo = $this->load->view('V_UserRemove', array('idUsuario'=>$idUsuario), true);
+        
+        $this->load->view('V_Plantilla', Array(   'cuerpo' => $cuerpo,
+                                                  'homeactive' => 'active'));
+    }
+    
+    
+        public function eliminado($idUsuario) {
+        
+        if (!SesionIniciadaCheck()) {
+            
+            redirect("Error404", 'Location', 301);
+            return; //Sale de la función
+        }
+        
+        $this->M_User->setUsuarioRemove($idUsuario); //Damos de baja al usuario
+        redirect(site_url() . "/Login/logout", 'Location', 301); //Cerramos su sesión        
+
+  
+    }
+        /**
+     * Da de baja al usuario logueado de la base de datos
+     */
+    public function baja($idUsuario) {
+        
+        if (!SesionIniciadaCheck()) {
+            
+            redirect("Error404", 'Location', 301);
+            return; //Sale de la función
+        }
+
+       $cuerpo = $this->load->view('V_UserBaja', array('idUsuario'=>$idUsuario), true);
+        
+        $this->load->view('V_Plantilla', Array(   'cuerpo' => $cuerpo,
+                                                  'homeactive' => 'active'));
+    }
+    
+        public function dadoBaja($idUsuario) {
+        
+        if (!SesionIniciadaCheck()) {
+            
+            redirect("Error404", 'Location', 301);
+            return; //Sale de la función
+        }
+
+        $this->M_User->setBajaUsuario($idUsuario); //Damos de baja al usuario
         redirect(site_url() . "/Login/logout", 'Location', 301); //Cerramos su sesión
     }
 

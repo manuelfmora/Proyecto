@@ -53,11 +53,11 @@ class M_User extends CI_Model{
      * Cambia el estado de un usuario a 'B', baja
      * @param String $username Nombre de usuario
      */
-    public function setBajaUsuario($username) {
+    public function setBajaUsuario($idUsuario) {
         $data = array(
             'estado' => 'B'
         );
-        $this->db->where('nombre_usu', $username);
+        $this->db->where('idUsuario', $idUsuario);
         $this->db->update('usuario', $data);
     }
     
@@ -73,6 +73,19 @@ class M_User extends CI_Model{
                 . "WHERE nombre_usu = '$nombre_usu'");
                    
         return $query->row_array();
+    }
+    
+        /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getUsuarios() {
+
+        $query = $this->db->query("SELECT * "
+                . "FROM usuario " );
+                   
+        return $query->result_array();
     }
     
     /**
@@ -120,8 +133,17 @@ class M_User extends CI_Model{
 
         return $query->row_array()['idUsuario'];
     }
-    
     /**
+     * Elimina los datos del Usuario
+     * @param String $username Nombre de Alumno
+     */
+    public function setUsuarioRemove($idUsuario) {
+     
+        $this->db->where('idUsuario',$idUsuario);
+        $this->db->delete('usuario');
+    }
+
+        /**
      * Actualiza los datos de un usuario
      * @param Int $id ID de usuario
      * @param Array $data Datos de la actualización
