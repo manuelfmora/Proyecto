@@ -106,7 +106,7 @@ class RestaurarClave extends CI_Controller{
         
         print_r('Entra en RESTABLECERRRRRRRRRRRRRRRRRRRRRRRR');
         $datos = $this->M_RestaurarClave->getDatosFromId($id);
-       
+        print_r($datos);
         if (!$datos) {
             $cuerpo = $this->load->view('V_404', Array(), true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Error'));
@@ -114,8 +114,8 @@ class RestaurarClave extends CI_Controller{
             return;
         }
         
-        if ($this->getTonken($datos['id'], $datos['dni'], $datos['nombre']) == $token) {
-            $this->PideClaveRestablecer($datos['username']);
+        if ($this->getTonken($datos['idUsuario'], $datos['dni'], $datos['nombre_usu']) == $token) {
+            $this->PideClaveRestablecer($datos['nombre_usu']);
         } else {
             $cuerpo = $this->load->view('V_404', Array(), true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Error'));
