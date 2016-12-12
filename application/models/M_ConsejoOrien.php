@@ -220,7 +220,7 @@ class M_ConsejoOrien extends CI_Model{
     public function adMedidas($data) {
 
         $this->db->insert('medidasad', $data);
-        print_r('Impresion Correcta');
+      
     }
 
     /**

@@ -30,7 +30,7 @@
               <div class="col-md-6">
                     <div class="form-group">
                         <div class="checkbox" style="color: White; text-align: left; ">                    
-                     <h3> Asisitentes:   <?php print_r(explode(',', $datos['asistentes'])); ?></h3><br>
+                     <h3> Asisitentes:</h3><br>
                      <?php $array = explode(',', $datos['asistentes']) ?>
 
                      <h4>

@@ -66,7 +66,7 @@ class AtDiversidad extends CI_Controller {
         
         $apellido=$apellidos[0]['apellidos'];
          
-         print_r($apellido);
+       
          
         //PAGINACÓN
         $config = $this->getConfigPag($apellido);
@@ -119,7 +119,7 @@ class AtDiversidad extends CI_Controller {
         $grupos=  $this->M_AtDiversidad-> getGupo($idAlumno);
         $curso=$cursos[0]['curso'];
         $grupo=$grupos[0]['grupo'];
-        print_r('Grupoooooooooooooooooooooo'.$grupo);
+        
 
         $alumnos=  $this->M_AtDiversidad-> getAlumCurso($curso, $grupo);
         

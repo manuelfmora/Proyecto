@@ -31,7 +31,7 @@ class M_User extends CI_Model{
      * @param Array $data Datos del usuario
      */
     public function addUsuario($data) {
-//        print_r('Dotos Usuario'.$data);
+
         $this->db->insert('usuario', $data);
     }
 

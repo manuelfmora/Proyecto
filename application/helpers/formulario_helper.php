@@ -77,7 +77,7 @@ function cambiaFormatoFecha($fecha){
  * @return Date Fecha cambiada
  */
 function formatoFechaAmericano($fecha){
-//    print_r($fecha);
+
     $date = date_create($fecha);
     
     return date_format($date, 'Y/m/d');

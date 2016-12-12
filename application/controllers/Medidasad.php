@@ -75,7 +75,7 @@ class Medidasad extends CI_Controller {
             
         } else {
             
-//            print_r($this->input->post());
+
                  foreach ($this->input->post() as $key => $value) {
                      
                         if($key == 'nombre'){

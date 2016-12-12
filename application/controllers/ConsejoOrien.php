@@ -69,7 +69,7 @@ class ConsejoOrien extends CI_Controller {
         
         $apellido=$apellidos[0]['apellidos'];
          
-         print_r($apellido);
+      
          
         //PAGINACÓN
         $config = $this->getConfigPag($apellido);

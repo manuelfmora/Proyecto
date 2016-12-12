@@ -182,7 +182,7 @@
                    <div class="col-md-6">
                       <div class="form-group">
                           <br>
-                          <?php print_r($datos['idAlumno'])?>
+                         
                         <a class="mu-readmore-btn" href="<?= base_url().'index.php/AlumnoBuscar/BuscarUno/'.$datos['idAlumno'] ?>"> Cancelar</a> 
                       </div>
                     </div>

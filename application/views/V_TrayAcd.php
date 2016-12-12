@@ -30,8 +30,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
-                                            <?php // print_r('Entraaaaaaaaaaaaaaaaaaaaaaaaaaaaa'); print_r($alumnos);foreach ($alumnos as $alumno): ?>
-                                                <?php // print_r('UN ALUMNO---->'); print_r($alumno);?>
+
                                                 <tr>
                                                     <td><?= $alumnos['nie'] ?></td>  
                                                     <td><?= $alumnos['apellidos'] ?></td>

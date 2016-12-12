@@ -126,7 +126,7 @@ class M_Alumno extends CI_Model{
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
                 . "WHERE apellidos like '%$apellido%' ");
-        print_r('Numero apellidos:');
+      
    
         return $query->num_rows();
     }

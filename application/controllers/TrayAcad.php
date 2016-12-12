@@ -111,8 +111,7 @@ class TrayAcad extends CI_Controller {
                  
             //Optenemos los datos del Medidasad
             $datos = $this->M_AccionTutorial->getDatosModificarTrayAcad($idAlumno);        
-//            print_r($datos);
-//                        print_r('Datos de la bdatos:<br>');
+
             $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
@@ -160,8 +159,7 @@ class TrayAcad extends CI_Controller {
                         $datos[$key] = $value;
                     }
                 }
-                print_r('Los datos a insertar son:')                ;
-                print_r($datos);
+
                 $this->M_AccionTutorial->updateTrayAcad($idAlumno,$datos);
                  //Pantalla de Confirmación
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);

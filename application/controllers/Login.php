@@ -94,7 +94,7 @@ class Login extends CI_Controller{
      * Muestra un error si se ha introducido algún dato incorrecto
      */
     public function MuestraErrorEnVista() {
-//        print_r("Entra en error vista");
+
         $error = "<div class='alert alert-danger'><b>¡Error!</b> Usuario o contraseña incorrectos</div>";
         $cuerpo = $this->load->view('V_Login', array('error' => $error), true); //Generamos la vista
         $this->load->view('V_Plantilla', Array('titulo' => 'Login',

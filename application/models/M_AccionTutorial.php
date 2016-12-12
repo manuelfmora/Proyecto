@@ -189,13 +189,13 @@ class M_AccionTutorial extends CI_Model{
     }
 
     /**
-     * Añade un Alumno a la base de datos
+     * Añade una Medida a la base de datos
      * @param Array $data Datos del Alumno
      */
     public function adMedidas($data) {
 
         $this->db->insert('medidasad', $data);
-        print_r('Impresion Correcta');
+
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DATOS MODIFICAR MENÚ ACCIÓN TUTORIAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

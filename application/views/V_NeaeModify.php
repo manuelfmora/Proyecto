@@ -23,7 +23,7 @@
 
                                         <div class="checkbox" style="color: White; ">
 
-                                            <h3> Necesidades:   <?php print_r(explode(',', $datos['censo'])); ?></h3><br>
+                                            <h3> Necesidades:</h3><br>
                                             <?php $array = explode(',', $datos['censo']) ?>
 
                                             <h4>  

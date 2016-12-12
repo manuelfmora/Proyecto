@@ -88,8 +88,7 @@ class Transito extends CI_Controller {
                 $this->M_AccionTutorial->adTransito($data);
                 //Pantalla de Confirmación
                 
-//                $alumnos= $this->M_Protocolos-> getDatosAlumno($idAlumno);
-//                print_r($alumnos);
+
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                     'homeactive' => 'active'));
@@ -111,8 +110,7 @@ class Transito extends CI_Controller {
                  
             //Optenemos los datos del Medidasad
             $datos = $this->M_AccionTutorial->getDatosModificarTransito($idAlumno);        
-//            print_r($datos);
-//                        print_r('Datos de la bdatos:<br>');
+
             $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
             //Establecemos los mensajes de errores
             $this->setMensajesErrores();
@@ -141,8 +139,7 @@ class Transito extends CI_Controller {
                         $datos[$key] = $value;
                     }
                 }
-                print_r('Los datos a insertar son:')                ;
-                print_r($datos);
+
                 $this->M_AccionTutorial->updateTransito($idAlumno,$datos);
                  //Pantalla de Confirmación
                 $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
