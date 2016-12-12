@@ -13,7 +13,7 @@
             <div class="mu-reservation-content">
                 <center>
                    
-                <a class="mu-readmore-btn" href="<?= base_url().'index.php/ConsejoOrien/'?>"> Ir a Acción Tutorial.</a>    
+                <a class="mu-readmore-btn" href="<?= base_url().'index.php/ConsejoOrien/'?>"> Ir a Consejo Orientador.</a>    
                 </center>
             </div>
           </div>

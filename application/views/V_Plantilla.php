@@ -83,7 +83,7 @@
                              <!-- SESIÓN INCIADA -->   
                             <?php if (SesionIniciadaCheck()): //Sesión iniciada ?> 
                              <!--Menú Original -->  
-                            <li><a href="#mu-slider">HOME</a></li>
+                            <li><a href="#cuerpo">HOME</a></li>
                               <!-- Menú salir -->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">HOLA:  <?= $this->session->userdata('username'); ?><span class="caret"></span></a>
@@ -170,9 +170,7 @@
                         <!-- Top slider content -->
                         <div class="mu-top-slider-content">
                             <span class="mu-slider-small-title">DEPARTAMENTO </span>
-                            <h2 class="mu-slider-title">DE ORIENTACIÓN</h2><!--
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
-                            <a href="#" class="mu-readmore-btn">READ MORE</a>-->
+                            <h2 class="mu-slider-title">DE ORIENTACIÓN</h2>
                         </div>
                         <!-- / Top slider content -->
                     </div>
@@ -183,10 +181,7 @@
                         <!-- Top slider content -->
                         <div class="mu-top-slider-content">
                             <span class="mu-slider-small-title">DEPARTAMENTO </span>
-                            <h2 class="mu-slider-title">DE ORIENTACIÓN</h2><!--
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
-                            <a href="#" class="mu-readmore-btn">READ MORE</a>
-                        </div>-->
+                            <h2 class="mu-slider-title">DE ORIENTACIÓN</h2>
                         <!-- / Top slider content -->
                     </div>
                     <!-- / Top slider single slide -->    
@@ -195,6 +190,9 @@
         </section>
         
         <!-- End slider  -->
+       
+       
+        
 
         <!-- --------------------------------------------------------------------------------------- -->
         <!--Cargamos le vista home -->
@@ -205,40 +203,10 @@
         ?>
 
      <!-- --------------------------------------------------------------------------------------- -->
-
-        <!--    <div class="site-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-6">
-                            <span id="copyright">
-                                Copyright &copy; 2014 <a href="#">Company Name</a>
-                            </span>
-        
-                    </div>  /.col-md-6 
-                        <div class="col-md-4 col-sm-6">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-twitter"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                                <li><a href="#" class="fa fa-rss"></a></li>
-                            </ul>
-                        </div>  /.col-md-6 
-                    </div>  /.row 
-                </div>  /.container 
-            </div>  /.site-footer 
-        
-            
-            <script src="<?= base_url() ?>assets/js/vendor/jquery-1.10.1.min.js"></script>
-            <script>window.jQuery || document.write('<script src="<?= base_url() ?>assets/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-            <script src="<?= base_url() ?>assets/js/jquery.easing-1.3.js"></script>
-            <script src="<?= base_url() ?>assets/js/bootstrap.js"></script>
-            <script src="<?= base_url() ?>assets/js/plugins.js"></script>
-            <script src="<?= base_url() ?><?= base_url() ?>assets/js/main.js"></script>
-             templatemo 401 sprint 
-        </body>
-        </html>-->
-
+      
+      
+       <!--CREAMOS EL ID_CUERPO...............-->
+<section id="cuerpo">
         <!-- Start Footer -->
         <footer id="mu-footer">
             <div class="container">
@@ -276,6 +244,8 @@
 
         <!-- Custom js -->
         <script src="<?= base_url() ?>assets/js/custom.js"></script> 
+         </section>
+       <!-- // CREAMOS EL ID_CUERPO...............-->
 
     </body>
 </html>

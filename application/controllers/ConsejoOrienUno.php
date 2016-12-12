@@ -161,7 +161,7 @@ class ConsejoOrienUno extends CI_Controller {
 
                 $this->M_ConsejoOrien->updateConsejoOrien($idAlumno,$datos);
                  //Pantalla de Confirmación
-                $cuerpo = $this->load->view('V_AccTutorialok', array('idAlumno' => $idAlumno), true);
+                $cuerpo = $this->load->view('V_ConsejoOrienok', array('idAlumno' => $idAlumno), true);
                 $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
                     'homeactive' => 'active'));
             }

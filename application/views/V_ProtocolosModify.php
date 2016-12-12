@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="mu-reservation-area">
             <div class="mu-title">
-              <span class="mu-subtitle">INSERTAR</span>
+              <span class="mu-subtitle">MODIFICAR</span>
               <h2>Protocolos</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>

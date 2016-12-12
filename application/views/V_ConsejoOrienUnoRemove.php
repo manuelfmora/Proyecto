@@ -12,8 +12,8 @@
             </div>
             <div class="mu-reservation-content">
                 <center>
-                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/TrayecAcad/eliminado/'.$idAlumno ?>">SI</a>               
-                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/TrayecAcad/alumno/'.$idAlumno?>"> NO</a>    
+                    <a class="mu-readmore-btn" href="<?=base_url().'index.php/ConsejoOrienUno/eliminado/'.$idAlumno ?>">SI</a>               
+                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/ConsejoOrienUno/alumno/'.$idAlumno?>"> NO</a>    
                 </center>
             </div>
           </div>
