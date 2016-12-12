@@ -12,7 +12,7 @@
             <div class="mu-reservation-content">
                 <center>
                     <a class="mu-readmore-btn" href="<?=base_url().'index.php/UserRemove/eliminado/'.$idUsuario ?>">SI</a>               
-                    <a class="mu-readmore-btn" href="<?= base_url().'index.php'?>"> NO</a>    
+                    <a class="mu-readmore-btn" href="<?= base_url().'index.php/UserRemove'?>"> NO</a>    
                 </center>
             </div>
           </div>

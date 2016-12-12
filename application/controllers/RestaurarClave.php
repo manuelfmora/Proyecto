@@ -28,10 +28,15 @@ class RestaurarClave extends CI_Controller{
         $this->form_validation->set_rules('username', 'nombre de usuario', 'required|callback_ExisteUsuario_check');
 
         if ($this->form_validation->run() == FALSE) {
+            
             $cuerpo = $this->load->view('V_RestaurarC', Array(), true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Reestablecer Contraseña'));
+            
         } else {
+//            print_r('Entra en el else.....<br>');
             $datos = $this->M_RestaurarClave->getDatosFromUsername($this->input->post('username'));
+//            print_r('Datos:');
+//            print_r($datos);
             $this->EnviaCorreo($datos);
         }
     }
@@ -56,19 +61,25 @@ class RestaurarClave extends CI_Controller{
      */
     private function EnviaCorreo($datos) {
 
-        $this->email->from('mfmoradaw@gamil.com', 'OlontiaShop');
+        $this->email->from('mfmoradaw@gamil.com', 'Dep. Orientación');
         $this->email->to($datos['correo']);
 
-        $this->email->subject('Restablece la contraseña en OlontiaShop');
+        $this->email->subject('Restablece la contraseña en Dep. Orientación');
 
         $mensaje = "Restablece la contraseña accediendo a la siguiente dirección: ";
-        $mensaje.= site_url() . "/RestaurarClave/Restablece/" . $datos['id'] . "/" . $this->getTonken($datos['id'], $datos['dni'], $datos['nombre']);
-        $this->email->message($mensaje);
+        $mensaje.= site_url() . "/RestaurarClave/Restablece/" . $datos['idUsuario'] . "/" . $this->getTonken($datos['idUsuario'], $datos['dni'], $datos['nombre_usu']);
+        
+       $sms= $this->email->message($mensaje);
+       print_r($sms);
 
         if (!$this->email->send()) {
+            
             $cuerpo = $this->load->view('V_Mailerror', '', true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Mail incorrecto'));
+            
+            
         } else {
+            
             $cuerpo = $this->load->view('V_Mailok', '', true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Mail correcto'));
         }
@@ -92,6 +103,8 @@ class RestaurarClave extends CI_Controller{
      * @param String $token Token generado
      */
     public function Restablece($id, $token) {
+        
+        print_r('Entra en RESTABLECERRRRRRRRRRRRRRRRRRRRRRRR');
         $datos = $this->M_RestaurarClave->getDatosFromId($id);
        
         if (!$datos) {

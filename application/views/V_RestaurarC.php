@@ -1,12 +1,6 @@
-<?php //
-/*
- * VISTA que pide el nombre de usuario para restablecer la contraseña en la aplicación a tráves del correo.
- */
-?>
-<!-- CUERPO-->
 
 <!-- Start Contact section -->
-<section id="login" id="mu-contact">
+<section id="mu-contact">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -18,26 +12,31 @@
                         <span class="mu-title-bar"></span>
                     </div>
                     <!-- Contenedor -->
-                    <!-- Start Subscription section -->
-                    <section id="mu-subscription">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-subscription-area">
-                                        <form class="mu-subscription-form"  action="" method="POST">
-                                            <input type="text" placeholder="Nombre de Usuario" name="username"  autofocus>
+                    <div class="mu-contact-content">
+                        <div class="row">
+                            <!-- Start Subscription section -->
+                            <section id="mu-subscription">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mu-subscription-area">
+                                                <form class="mu-subscription-form"  action="" method="POST">
+                                                    <input type="text" placeholder="Nombre de Usuario" name="username"  autofocus>
 
-                                            <button type="submit" class="mu-readmore-btn" value="entrar" name="entrar">Enviar</button>
-                                            <div class="col-md-6">
-                                                <?= form_error('username'); ?>
+                                                    <button type="submit" class="mu-readmore-btn" value="entrar" name="entrar">Enviar</button>
+                                                    <div class="col-md-6">
+                                                        <?= form_error('username'); ?>
+                                                    </div>
+                                                </form>            
                                             </div>
-                                        </form>            
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </section>
-                    <!-- End Subscription section -->
+                                </div>    
+                            </section>
+                            <!-- End Subscription section -->
+                        </div>
+                    </div>
+
                 </div>
                 <!-- /Contenedor -->
             </div>
@@ -45,4 +44,3 @@
     </div>
 </section>
 <!-- End Contact section -->
-

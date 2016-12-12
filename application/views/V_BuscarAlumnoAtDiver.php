@@ -1,4 +1,5 @@
-<!-- Start Contact section -->
+  
+   <!-- Start Contact section -->
 <section id="mu-contact">
     <div class="container">
         <div class="row">
@@ -16,53 +17,64 @@
                                 <div class="mu-contact-left">
                                     <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AtDiversidad/Buscar' ?>"  method="POST" >
                                         <div class="form-group">
-                                            <label for="apellidos">Apellidos</label>
+                                            <label for="apellidos">Buscar por Apellidos</label><br><br>
                                             <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">
                                         </div>                                      
                                         <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
                                     </form>
-                                </div>
-                            </div>
-                            
-<!---------------------------------------------- MENÚ CURSOS --------------------------------------------------------------------------------------->
-<!--------------------------------------------------------------------------------------------------------------------------------------------------->
-                            <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AtDiversidad/BuscarCurso' ?>"  method="POST" >
-                            <div class="col-md-1">
-                                    
-                                        <select name="cursos">
-                                            <option value="">Curso</option>
-                                            <option value="1">1º</option>
-                                            <option value="2">2º</option>
-                                            <option value="3">3º</option>
-                                            <option value="4">4º</option>
+                                </div><!---->
+                            </div><!---->
 
-                                        </select>
-                                    
-                            </div>
-                            <div class="col-md-1">
-                              
-                                    <select name="grupos">
-                                        <option value="">Grupo</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
+                            <!---------------------------------------------- MENÚ CURSOS --------------------------------------------------------------------------------------->
+                            <!--------------------------------------------------------------------------------------------------------------------------------------------------->
+                            <div class="col-md-6">
+                                
+                                <div class="mu-contact-right">
+                                    <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AtDiversidad/BuscarCurso' ?>"  method="POST" >
+                                        <div class="form-group">
+                                          <label for="apellidos">Buscar por Curso</label><br><br>
+                                       
+                                        <div class="col-md-2">
 
-                                    </select>
-                                </div>
-                                <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
-                            </form>
-<!---------------------------------------------- / MENÚ CURSOS --------------------------------------------------------------------------------------->
-<!--------------------------------------------------------------------------------------------------------------------------------------------------->
-                            </div>
+                                            <select name="cursos">
+                                                <option value="">Curso</option>
+                                                <option value="1">1º</option>
+                                                <option value="2">2º</option>
+                                                <option value="3">3º</option>
+                                                <option value="4">4º</option>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="col-md-2">
+
+                                            <select name="grupos">
+                                                <option value="">Grupo</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+
+                                            </select>
+
+                                        </div> 
+                                        <div class="col-md-2">
+                                            <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
+                                        </div>
+                                     </div>
+                                    </form>
+                                </div><!---->
+                            </div><!---->
+                            <!---------------------------------------------- / MENÚ CURSOS --------------------------------------------------------------------------------------->
+                            <!--------------------------------------------------------------------------------------------------------------------------------------------------->
                         </div>
                     </div>
-                </div>  
-            </div>
+                </div>
+            </div>  
         </div>
     </div>
 </div>
 </div>
 </div>
+</div>
 </section>
-  <!-- End Contact section -->

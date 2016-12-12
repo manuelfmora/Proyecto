@@ -19,7 +19,7 @@ class M_RestaurarClave  extends CI_Model{
      */
     public function getDatosFromUserName($username) {
 
-        $query = $this->db->query("SELECT idUsuario 'id', dni, nombre_persona 'nombre', correo "
+        $query = $this->db->query("SELECT * "
                 . "FROM usuario "
                 . "WHERE nombre_usu LIKE '$username'; ");
 
