@@ -1,3 +1,6 @@
+
+////////////////////////
+
 DELIMITER $$
 CREATE TRIGGER `deporientacion`.`tr_creafecha` BEFORE INSERT ON `deporientacion`.`alumno`
     FOR EACH ROW BEGIN
