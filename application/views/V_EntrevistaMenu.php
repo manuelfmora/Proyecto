@@ -23,7 +23,10 @@
                                                 <th>Nombre</th> 
                                                 <th>Insertar</th>
                                                 <th>Modificar</th>
+                                                <?php if ($this->session->userdata('username')=='admin'): ?>
                                                 <th>Eliminar</th>
+                                                 <?php endif;?>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -34,7 +37,9 @@
                                                     <td><?= $alumnos['nombre'] ?>  </td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/insertar/".$alumnos['idAlumno'] ?>">Insertar</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/Modificar/".$alumnos['idAlumno'] ?>">Modificar</a></td>                                              
+                                                    <?php if ($this->session->userdata('username')=='admin'): ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/MedidasAD/eliminar/".$alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                    <?php endif;?>
 
                                                 </tr>
 

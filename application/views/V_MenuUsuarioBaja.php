@@ -24,7 +24,9 @@
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
                                                  <th>Baja Usuario</th>
+                                                 <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
                                                 <th>Eliminar</th>
+                                                 <?php endif;?>
                                                 <th>Salir</th> 
                                             </tr>
                                         </thead>
@@ -38,8 +40,9 @@
                                                     
                                                     
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/UserRemove/baja/" . $value['idUsuario'] ?>">Baja</a></td>
-                                         
+                                                     <?php if ($this->session->userdata('username')=='admin'): ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/UserRemove/eliminar/" . $value['idUsuario'] ?>">Eliminar</a></td>
+                                                    <?php endif;?>
                                                     
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() ?>">Salir</a></td>
                                                     <?php endif;?>

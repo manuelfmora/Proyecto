@@ -30,9 +30,7 @@
                                                 <th>TRAY. ACADEMICA</th>
                                                 <th>TRANSITO</th>
                                                 <th>SALIR</th>
-<!--                                                <th>Insertar</th>
-                                                <th>Modificar</th>
-                                                <th>Eliminar</th>-->
+
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->

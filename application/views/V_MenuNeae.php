@@ -30,7 +30,9 @@
                                                 <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
 
                                                     <th>Modificar</th>
-                                                    <th>Eliminar</th>
+                                                 <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
+                                                <th>Eliminar</th>
+                                                 <?php endif;?>
 
                                                 <?php endif; ?>
                                                     <th>Salir</th>
@@ -47,7 +49,9 @@
 
                                                 <?php if ($num_idneae!=0): //Sólo mostrar si tiene datos insertados ?>
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
+                                                <?php if ($this->session->userdata('username')=='admin'): ?>
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                <?php endif;?>
                                                 <?php endif;?>
                                                 <td><a class="mu-readmore-btn" href="<?= site_url() . "/AtDiversidad/BuscarUno/".$alumnos['idAlumno'] ?>">Sali</a></td>
                                                

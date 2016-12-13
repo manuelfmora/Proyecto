@@ -25,7 +25,9 @@
                                                 <th>Nombre</th>
                                                 <th>Mostrar</th> 
                                                 <th>Modificar</th>
+                                                 <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
                                                 <th>Eliminar</th>
+                                                 <?php endif;?>
                                                 <th>Salir</th> 
                                             </tr>
                                         </thead>
@@ -39,9 +41,9 @@
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Mostrar/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
 
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Modificar</a></td>
-                                         
+                                                    <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/eliminar/" . $alumno['idAlumno'] ?>">Eliminar</a></td>
-                                                    
+                                                    <?php endif;?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoBuscar" ?>">Salir</a></td>
 
                                                 </tr>

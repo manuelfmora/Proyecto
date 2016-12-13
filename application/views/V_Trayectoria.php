@@ -26,7 +26,9 @@
                                                 <th>Nombre</th>
                                                 <th>Insertar</th>
                                                 <th>Modificar</th>
+                                                 <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
                                                 <th>Eliminar</th>
+                                                 <?php endif;?>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla de alumno-->
@@ -37,8 +39,9 @@
                                                     <td><?= $alumnos['nombre'] ?>  </td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/Trayectoria/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
-    <!--                                                     <td><a href="<?= site_url() . "/AlumnoModify/Modificar/" . $alumnos['nie'] ?>">Modificar</a></td>-->
+                                                    <?php if ($this->session->userdata('username')=='admin'): ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoRemove/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                    <?php endif;?>
 
                                                 </tr>
                                             <?php // endforeach; ?>
