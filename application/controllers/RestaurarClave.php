@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class RestaurarClave extends CI_Controller{
     public function __construct() {
         parent::__construct();
-//        $this->load->library('L_Cart', 0, 'myCart');
+
         $this->load->library('form_validation');
         $this->load->model('M_User');
         $this->load->model('M_RestaurarClave');
@@ -33,10 +33,9 @@ class RestaurarClave extends CI_Controller{
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Reestablecer Contraseña'));
             
         } else {
-//            print_r('Entra en el else.....<br>');
+
             $datos = $this->M_RestaurarClave->getDatosFromUsername($this->input->post('username'));
-//            print_r('Datos:');
-//            print_r($datos);
+
             $this->EnviaCorreo($datos);
         }
     }
@@ -70,7 +69,7 @@ class RestaurarClave extends CI_Controller{
         $mensaje.= site_url() . "/RestaurarClave/Restablece/" . $datos['idUsuario'] . "/" . $this->getTonken($datos['idUsuario'], $datos['dni'], $datos['nombre_usu']);
         
        $sms= $this->email->message($mensaje);
-       print_r($sms);
+      
 
         if (!$this->email->send()) {
             

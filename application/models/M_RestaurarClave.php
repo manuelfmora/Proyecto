@@ -46,11 +46,10 @@ class M_RestaurarClave  extends CI_Model{
      * @param String $clave Contraseña encriptada
      */
     public function UpdateClave($username, $clave) {
-        $data = array(
-            'clave' => $clave
-        );
+ 
+
         $this->db->where('nombre_usu', $username);
-        $this->db->update('usuario', $data);
+        $this->db->update('clave', $clave);
     }
 
 }
