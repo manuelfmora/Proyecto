@@ -24,7 +24,8 @@
                                                 <th>NIE</th>
                                                 <th>Apellido</th>
                                                 <th>Nombre</th>
-                                                <th>Mostrar</th> 
+                                                <th>Mostrar</th>
+                                                <th>PDF</th>
                                                 <th>Modificar</th>
                                                 <?php if ($this->session->userdata('username')=='admin'): ?>
                                                 <th>Eliminar</th>
@@ -41,6 +42,10 @@
                                                     <td><?= $alumno['nombre'] ?>  </td>
                                                     
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Mostrar/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
+                                                    <!-- Mostrar PDF -->
+                                                    
+                                                    
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/CreaPDF/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
 
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Modificar</a></td>
                                                    <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  

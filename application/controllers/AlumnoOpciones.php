@@ -19,6 +19,20 @@ class AlumnoOpciones extends CI_Controller {
     }
     
     public function Mostrar ($idAlumno) {
+        
+        $datos= $this->DatoAlumno($idAlumno);
+        
+        $cuerpo = $this->load->view('V_AlumnoMostrar', array(
+                                     'datos' => $datos), true);
+
+        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
+                                                'homeactive' => 'active')); 
+        
+        
+    }
+    
+    
+    public function DatoAlumno($idAlumno){
 
         //>>>>>>>>>>>>>>>>>>  ALUMNO/A >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
         $datos['alu'] = $this->M_AlumnoDatos->getAlumno($idAlumno);
@@ -103,7 +117,7 @@ class AlumnoOpciones extends CI_Controller {
         }        
         $datos['tra'] = $this->M_AlumnoDatos->getTransito($idAlumno);
         
-        //>>>>>>>>>>>>>>>>>>  CONSEJ ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //>>>>>>>>>>>>>>>>>>  CONSEJO ORIENTADOR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         $datos['cor'] = $this->M_AlumnoDatos->getConsejoOrien($idAlumno); 
 
         foreach ($datos['cor'] as $key => $value) {
@@ -119,14 +133,100 @@ class AlumnoOpciones extends CI_Controller {
         }        
         
         
-        $cuerpo = $this->load->view('V_AlumnoMostrar', array(
-                                     'datos' => $datos), true);
-
-        $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,                                                      
-                                                'homeactive' => 'active'));        
+        return $datos;
         
         
     }
+    
+    /**
+     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  CREACIÓN DEL PDF  >>>>>>>>>>>>>>>>>>>>>>>>>
+     */
+    
+    
+     /**
+     * Crea un PDF de un pedido determinado con todos los datos del pedido y los productos comprados
+     * @param Int $idPedido ID del pedido
+     * @param Char $metodo I --> envía el fichero al navegador / D --> Fuerza la descarga
+     */
+     public function CreaPDF($idAlumno, $metodo = 'F') {
+        $this->load->library('Pdf', 0, 'myPDF');
+
+        $this->myPDF->AddPage();
+        $this->myPDF->AliasNbPages(); //nº de páginas
+        $this->myPDF->SetFont('Arial', '', 10);
+
+        //DATOS que ponemos al principio de la factura
+      
+//        $datos = $this->M_Pedidos->getDatosParaPDF($this->session->userdata('userid'));
+        $datos=$this->DatoAlumno($idAlumno);
+        print_r($datos);
+
+        $this->myPDF->Cell(0, 7, utf8_decode($datos['alu']['nombre'] . ' ' . $datos['alu']['apellidos']), 0, 1);
+        $this->myPDF->Cell(0, 7, utf8_decode("NIE: " . $datos['alu']['nie']), 0, 1);
+        $this->myPDF->Cell(0, 7, utf8_decode($datos['alu']['direccion'] . ', ' . $datos['alu']['cp'] . ' (' . $datos['alu']['cod_provincia'] . ')'), 0, 1);
+
+//        //TABLA LÍNEA DE PEDIDOS
+//        $lineas_pedidos = $this->M_Pedidos->getLineasPedidos($idPedido);
+//        foreach ($lineas_pedidos as $linea) {
+//            $data[] = $linea;
+//        }
+//
+        $this->myPDF->CreaTablaLineaPedidos($datos['nea']);
+//
+//        //TABLA PEDIDO
+//        $pedido = $this->M_Pedidos->getPedido($idPedido, $this->session->userdata('userid'));
+//        $this->myPDF->CreaTablaPedido($datos['nea']);
+
+        $this->myPDF->Output($metodo, 'assets/pdf/pedido.pdf', true);
+    }
+
+    /**
+     * Envia un correo con el PDF del pedido
+     * @param String $correo Dirección de mail donde se tiene que mandar el correo
+     * @param Int $idPedido ID del pedido
+     */
+    public function EnviaCorreo($correo, $idPedido) {
+
+        $this->CreaPDF_Pedido($idPedido);
+        
+        $this->email->from('aula4@iessansebastian.com', 'OlontiaShop');
+        
+        $this->email->to($correo);
+
+        $this->email->subject('Le enviamos el albarán de su pedido con fecha '.date("j-m-Y"));
+
+        $mensaje = "Aquí puede ver el albarán de su pedido para su conformidad.<br><br> Un saludo OlontiaShop";
+
+        $this->email->message($mensaje);
+
+        $this->email->attach('assets/pdf/pedido.pdf');
+
+        if (!$this->email->send())
+            echo "<pre>\n\nError ennviado mail\n</pre>";
+    }
+
+    /**
+     * Muestra un pedido en el navegador
+     * @param Int $idPedido ID del pedido
+     */
+    public function VerPDFPedido($idPedido) {
+        $this->CreaPDF_Pedido($idPedido, 'I');
+    }
+
+    /**
+     * Descarga un pedido en la carpeta 'Descargas'
+     * @param Int $idPedido ID del pedido
+     */
+    public function DescargarPDFPedido($idPedido) {
+        $this->CreaPDF_Pedido($idPedido, 'D');
+    }
+    
+    
+    
+    
+    /**
+     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> // CREACIÓN DEL PDF  >>>>>>>>>>>>>>>>>>>>>>>>>
+     */
 
 
     /**
@@ -169,27 +269,7 @@ class AlumnoOpciones extends CI_Controller {
             
             } else {
            
-//               
-//                 $config['apellidos'] =  $this->input->post('apellidos');
-//                 $config['nombre'] =  $this->input->post('nombre');
-//                 $config['nie'] =  $this->input->post('nie');
-//                 $config['fechaNacimiento'] = $this->formato_mysql($this->input->post('fechaNacimiento')) ;
-//                 $config['datos_medicos'] =  $this->input->post('datos_medicos');
-//                 $config['datos_psicologicos'] =  $this->input->post('datos_psicologicos');
-//                 $config['informe_medico'] =  $this->input->post('informe_medico');
-//                 $config['nombreT1'] =  $this->input->post('nombreT1');
-//                 $config['nombreT2'] =  $this->input->post('nombreT2');
-//                 $config['direccion'] =  $this->input->post('direccion');
-//                 $config['cp'] =  $this->input->post('cp');
-//                 $config['poblacion'] =  $this->input->post('poblacion');
-//                 $config['cod_provincia'] =  $this->input->post('cod_provincia');
-//                 $config['telefono1'] =  $this->input->post('telefono1');
-//                 $config['telefono2'] =  $this->input->post('telefono2');
-//                 $config['tipo'] =  $this->input->post('tipo');
-//                 $config['situacion'] =  $this->input->post('situacion');
-//                 $config['implicacion_escolar'] =  $this->input->post('implicacion_escolar');
-////                 $config['Usuario_idUsuario'] = $this->session->userdata('logged_in');
-//                 $idAlumno=$this->M_Alumno->getId($this->input->post('idAlumno'));
+
                 foreach ($this->input->post() as $key => $value) {
 
 
