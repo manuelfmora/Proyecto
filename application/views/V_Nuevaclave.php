@@ -45,7 +45,10 @@
                     <center>
                     <div class="col-md-12">
                       <div class="form-group">
-
+                          <input type="hidden" name="username" value="<?=$username?>">
+    
+    
+    
                           <button type="submit" name="entrar" class="mu-readmore-btn">Enviar</button>
                       </div>
                     </div>

@@ -103,9 +103,9 @@ class RestaurarClave extends CI_Controller{
      */
     public function Restablece($id, $token) {
         
-        print_r('Entra en RESTABLECERRRRRRRRRRRRRRRRRRRRRRRR');
+        
         $datos = $this->M_RestaurarClave->getDatosFromId($id);
-        print_r($datos);
+        
         if (!$datos) {
             $cuerpo = $this->load->view('V_404', Array(), true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Error'));
@@ -137,7 +137,7 @@ class RestaurarClave extends CI_Controller{
             $cuerpo = $this->load->view('V_Nuevaclave', Array('username' => $username), true);
             $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Restablecer Contraseña'));
         } else {
-
+      
             $this->M_RestaurarClave->UpdateClave($this->input->post('username'), password_hash($this->input->post('clave'), PASSWORD_DEFAULT));
 
             $cuerpo = $this->load->view('V_Claveok', Array(), true);

@@ -25,4 +25,6 @@ DELIMITER ;
 CREATE TRIGGER before_employee_update AFTER UPDATE ON alumno FOR EACH ROW BEGIN INSERT INTO alumno SET action = 'update', datos_medicos = "asd"; END
 
 
-DROP TRIGGER IF EXISTS `before_employee_update`;CREATE DEFINER=`root`@`localhost` TRIGGER `before_employee_update` BEFORE INSERT ON `alumno` FOR EACH ROW INSERT INTO alumno (nombre, apellidos, Usuario_idUsuario) VALUES ("2","2","1")
+DROP TRIGGER IF EXISTS `before_employee_update`;
+CREATE DEFINER=`root`@`localhost` TRIGGER `before_employee_update` BEFORE INSERT ON `alumno` 
+FOR EACH ROW INSERT INTO alumno (nombre, apellidos, Usuario_idUsuario) VALUES ("2","2","1")

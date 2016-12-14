@@ -47,9 +47,15 @@ class M_RestaurarClave  extends CI_Model{
      */
     public function UpdateClave($username, $clave) {
  
-
+          $data = array(
+            'clave' => $clave
+        );
         $this->db->where('nombre_usu', $username);
-        $this->db->update('clave', $clave);
+        $this->db->update('usuario',$data );
     }
+    
+       
+    
 
 }
+
