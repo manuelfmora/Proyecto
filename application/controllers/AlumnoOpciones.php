@@ -146,7 +146,7 @@ class AlumnoOpciones extends CI_Controller {
      /**
      * Crea un PDF de un pedido determinado con todos los datos del pedido y los productos comprados
      * @param Int $idPedido ID del pedido
-     * @param Char $metodo I --> envía el fichero al navegador / D --> Fuerza la descarga
+     * @param F Char $metodo I --> envía el fichero al navegador / D --> Fuerza la descarga
      */
      public function CreaPDF($idAlumno, $metodo = 'F') {
         $this->load->library('Pdf', 0, 'myPDF');
@@ -171,7 +171,7 @@ class AlumnoOpciones extends CI_Controller {
 //            $data[] = $linea;
 //        }
 //
-        $this->myPDF->CreaTablaLineaPedidos($datos['nea']);
+        $this->myPDF->CreaTablaLineaPedidos($datos);
 //
 //        //TABLA PEDIDO
 //        $pedido = $this->M_Pedidos->getPedido($idPedido, $this->session->userdata('userid'));
@@ -209,7 +209,7 @@ class AlumnoOpciones extends CI_Controller {
      * Muestra un pedido en el navegador
      * @param Int $idPedido ID del pedido
      */
-    public function VerPDFPedido($idPedido) {
+    public function VerPDFAlumno($idPedido) {
         $this->CreaPDF_Pedido($idPedido, 'I');
     }
 
@@ -217,7 +217,7 @@ class AlumnoOpciones extends CI_Controller {
      * Descarga un pedido en la carpeta 'Descargas'
      * @param Int $idPedido ID del pedido
      */
-    public function DescargarPDFPedido($idPedido) {
+    public function DescargarPDFAlumno($idPedido) {
         $this->CreaPDF_Pedido($idPedido, 'D');
     }
     

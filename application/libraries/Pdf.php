@@ -59,7 +59,7 @@ class Pdf extends FPDF {
         $this->SetFont('', 'B');
 
         //Datos
-        $header = array('CD', 'PRECIO', 'IVA', 'CANTIDAD', 'TOTAL');
+        $header = array('Alumno');
         $w = array(83, 25, 22, 35, 25);
         for ($i = 0; $i < count($header); $i++)
             $this->Cell($w[$i], 7, utf8_decode($header[$i]), 1, 0, 'C', true);
@@ -75,10 +75,10 @@ class Pdf extends FPDF {
         $fill = true; //Para que empiece en gris la fila
 //        [censo] => DIS,Compensatoria [ev_ps] => Evaluación [dic_es] => Dictamen [idAlumno] => 12
       
-        foreach ($data as $row) {
+        foreach ($data['alu'] as $key => $value) {
             print_r('<br><br>');
-              print_r($row);
-            $this->Cell($w[0], 6, utf8_decode( 'Hoooooooooooola'.$row), 'LR', 0, 'L', $fill);
+              print_r($value);
+            $this->Cell($w[0], 6, utf8_decode( '-'.$value), 'LR', 0, 'L', $fill);
 //            $this->Cell($w[1], 6, utf8_decode($row['ev_ps'] ), 'LR', 0, 'L', $fill);
 //            $this->Cell($w[2], 6, utf8_decode($row['dic_es']) . "%", 'LR', 0, 'L', $fill);
 //            $this->Cell($w[3], 6, utf8_decode($row['cantidad']), 'LR', 0, 'L', $fill);
