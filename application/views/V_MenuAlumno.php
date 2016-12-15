@@ -45,7 +45,7 @@
                                                     <!-- Mostrar PDF -->
                                                     
                                                     
-                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/CreaPDF/" . $alumno['idAlumno'] ?>">Mostrar</a></td>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/VerPDFAlumno/" . $alumno['idAlumno'] ?>" target="_blank>PDF"> PDF</a></td>
 
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/AlumnoOpciones/Modificar/" . $alumno['idAlumno'] ?>">Modificar</a></td>
                                                    <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  

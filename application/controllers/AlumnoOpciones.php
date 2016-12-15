@@ -159,7 +159,7 @@ class AlumnoOpciones extends CI_Controller {
       
 //        $datos = $this->M_Pedidos->getDatosParaPDF($this->session->userdata('userid'));
         $datos=$this->DatoAlumno($idAlumno);
-        print_r($datos);
+//        print_r($datos);
 
         $this->myPDF->Cell(0, 7, utf8_decode($datos['alu']['nombre'] . ' ' . $datos['alu']['apellidos']), 0, 1);
         $this->myPDF->Cell(0, 7, utf8_decode("NIE: " . $datos['alu']['nie']), 0, 1);
@@ -177,7 +177,7 @@ class AlumnoOpciones extends CI_Controller {
 //        $pedido = $this->M_Pedidos->getPedido($idPedido, $this->session->userdata('userid'));
 //        $this->myPDF->CreaTablaPedido($datos['nea']);
 
-        $this->myPDF->Output($metodo, 'assets/pdf/pedido.pdf', true);
+        $this->myPDF->Output($metodo, 'assets/pdf/Alumno.pdf', true);
     }
 
     /**
@@ -193,9 +193,9 @@ class AlumnoOpciones extends CI_Controller {
         
         $this->email->to($correo);
 
-        $this->email->subject('Le enviamos el albarán de su pedido con fecha '.date("j-m-Y"));
+        $this->email->subject('Le enviamos los Datos de Alumno con fecha '.date("j-m-Y"));
 
-        $mensaje = "Aquí puede ver el albarán de su pedido para su conformidad.<br><br> Un saludo OlontiaShop";
+        $mensaje = "Aquí puede ver los datos del Alumno.<br><br> Un saludo Departamento de Orientación";
 
         $this->email->message($mensaje);
 
@@ -209,8 +209,11 @@ class AlumnoOpciones extends CI_Controller {
      * Muestra un pedido en el navegador
      * @param Int $idPedido ID del pedido
      */
-    public function VerPDFAlumno($idPedido) {
-        $this->CreaPDF_Pedido($idPedido, 'I');
+    public function VerPDFAlumno($idAlumno) {
+        
+        $this->CreaPDF($idAlumno, 'I');
+        
+        
     }
 
     /**
@@ -218,7 +221,7 @@ class AlumnoOpciones extends CI_Controller {
      * @param Int $idPedido ID del pedido
      */
     public function DescargarPDFAlumno($idPedido) {
-        $this->CreaPDF_Pedido($idPedido, 'D');
+        $this->CreaPDF($idPedido, 'D');
     }
     
     
