@@ -47,7 +47,7 @@
             </div>
         </div>-->
         <!--START SCROLL TOP BUTTON -->
-        <a class="scrollToTop" href="#">
+        <a class="scrollToTop" href="#pie">
             <i class="fa fa-angle-up"></i>
             <span>Top</span>
         </a>
@@ -147,6 +147,7 @@
 
 
         <!-- Start slider  -->
+       
         <section id="mu-slider">
             <div class="mu-slider-area"> 
                 <!-- Top slider -->
@@ -208,6 +209,7 @@
        <!--CREAMOS EL ID_CUERPO...............-->
 <section id="cuerpo">
         <!-- Start Footer -->
+        <a name="pie"></a> 
         <footer id="mu-footer">
             <div class="container">
                 <div class="row">
