@@ -114,7 +114,23 @@ class M_Alumno extends CI_Model{
      
    
         return $query->result_array();
-    }    
+    }
+
+        /**
+     * Consulta el número de Alumnos que tienen el mismo apellido que el pasado por parámetro
+     * @param String $nombre_usu Nombre de Alumno
+     * @return Int Nº de Alumnos
+     */
+    public function getApellidoAlumno($apellido) {
+        
+        $query = $this->db->query("SELECT * "
+                . "FROM alumno "
+                . "WHERE apellidos like '%$apellido%' "
+                . "LIMIT $start, $limit; ");
+     
+   
+        return $query->result_array();
+    }     
 
          /**
      * Consulta el numero total alumnos

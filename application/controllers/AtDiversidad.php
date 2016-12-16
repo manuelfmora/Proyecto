@@ -30,33 +30,117 @@ class AtDiversidad extends CI_Controller {
             'homeactive' => 'active'
         ));
     }
-    
-    public function Buscar($desde = 0){
+   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//Archivo de conexión a la base de datos
+public function Buscar(){
+
        
+      
+        
+    print_r('Entra en buscar');
+        
         $apellidos = $this->input->post('apellidos');     
         //PAGINACÓN
         $config = $this->getConfigPag($apellidos);       
 
         $result=$this->pagination->initialize($config);
-        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
-        
-        //Si no existe alumnos con esos apellidos
-        //Mostramos un informe de lista vacia.
-        
-        
-        if (empty($alumnos)) {
-            $cuerpo = $this->load->view('V_AlNoADiver', array(), TRUE);
+    
 
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        } else {
-    //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
-            $cuerpo = $this->load->view('V_MenuAtDiver', array('alumnos' => $alumnos), TRUE);
+        //Filtro anti-XSS
+        $caracteres_malos = array("<", ">", "\"", "'", "/", "<", ">", "'", "/");
+        $caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;");
+        $alumnos = str_replace($caracteres_malos, $caracteres_buenos, $alumnos);
 
-            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
-                'homeactive' => 'active'));
-        }
-    }
+        //Variable vacía (para evitar los E_NOTICE)
+        $mensaje = "";
+
+
+        //Comprueba si $alumnos está seteado
+        if (isset($apellidos)) {
+//
+//                //Selecciona todo de la tabla mmv001 
+//                //donde el nombre sea igual a $alumnos, 
+//                //o el apellido sea igual a $alumnos, 
+//                //o $alumnos sea igual a nombre + (espacio) + apellido
+//                $consulta = mysqli_query($conexion, "SELECT * FROM mmv001
+//                WHERE nombre COLLATE UTF8_SPANISH_CI LIKE '%$alumnos%' 
+//                OR apellido COLLATE UTF8_SPANISH_CI LIKE '%$alumnos%'
+//                OR CONCAT(nombre,' ',apellido) COLLATE UTF8_SPANISH_CI LIKE '%$alumnos%'
+//                ");
+//
+//                //Obtiene la cantidad de filas que hay en la consulta
+//                $filas = mysqli_num_rows($consulta);
+            
+                         //Variable de búsqueda
+//                $alumnos = $this->M_Alumno->getApellidoAlumno($apellidos);
+               $filas = $this->M_Alumno-> getCount_NombreUsuario($apellidos);
+
+                //Si no existe ninguna fila que sea igual a $alumnos, entonces mostramos el siguiente mensaje
+                if ($filas === 0) {
+                        $mensaje = "<p>No hay ningún usuario con ese nombre y/o apellido</p>";
+                } else { 
+                    $consulta = $this->M_Alumno->getApellidoAlumno($apellidos);
+                        //Si existe alguna fila que sea igual a $alumnos, entonces mostramos el siguiente mensaje
+                        echo 'Resultados para <strong>'.$alumnos.'</strong>';
+
+                        //La variable $resultado contiene el array que se genera en la consulta, así que obtenemos los datos y los mostramos en un bucle
+                        while($resultados = mysqli_fetch_array($consulta)) {
+                                $nombre = $resultados['nombre'];
+                                $apellido = $resultados['apellido'];
+                                $edad = $resultados['edad'];
+
+                                //Output
+                                $mensaje .= '
+                                <p>
+                                <strong>Nombre:</strong> ' . $nombre . '<br>
+                                <strong>Apellido:</strong> ' . $apellido . '<br>
+                                <strong>Edad:</strong> ' . $edad . '<br>
+                                </p>';
+
+                        };//Fin while $resultados
+
+                }; //Fin else $filas
+
+        };//Fin isset $alumnos
+
+        //Devolvemos el mensaje que tomará jQuery
+        echo $mensaje;
+
+}
+    
+    
+    
+    
+   //
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//    
+//    public function Buscar($desde = 0){
+//       
+//        $apellidos = $this->input->post('apellidos');     
+//        //PAGINACÓN
+//        $config = $this->getConfigPag($apellidos);       
+//
+//        $result=$this->pagination->initialize($config);
+//        $alumnos = $this->M_Alumno->getApellidosUsuario($apellidos,$config['per_page'], $desde);
+//        
+//        //Si no existe alumnos con esos apellidos
+//        //Mostramos un informe de lista vacia.
+//        
+//        
+//        if (empty($alumnos)) {
+//            $cuerpo = $this->load->view('V_AlNoADiver', array(), TRUE);
+//
+//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//                'homeactive' => 'active'));
+//        } else {
+//    //------------------------>MOSTRAMOS LA VENTANA DEL MENU DE OPCIONES CON LOS ALUMNOS<-------------------------
+//            $cuerpo = $this->load->view('V_MenuAtDiver', array('alumnos' => $alumnos), TRUE);
+//
+//            $this->load->view('V_Plantilla', Array('cuerpo' => $cuerpo,
+//                'homeactive' => 'active'));
+//        }
+//    }
     
         
     //Función que busca un alumno y lo pagina tras pulsar la tecla salir del ultimo menú de opciones

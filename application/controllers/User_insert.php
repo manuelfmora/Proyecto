@@ -39,7 +39,7 @@ class User_insert extends CI_Controller{
      */
     public function Usuario() {
 
-        $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><b>¡Error! </b>', '</div>');
+        $this->form_validation->set_error_delimiters('<div style="color: White"><b>¡Error! </b>', '</div>');
 
         //Establecemos los mensajes de errores
         $this->setMensajesErrores();
@@ -55,10 +55,10 @@ class User_insert extends CI_Controller{
             }
             
             $cuerpo = $this->load->view('V_User_insert', array(                                       
-                                        'errorclave' => $errorclave), true);
+                                                                'errorclave' => $errorclave), true);
             $this->load->view('V_Plantilla', Array(
-                               'cuerpo' => $cuerpo,                                
-                               'homeactive' => 'active'));
+                                                    'cuerpo' => $cuerpo,                                
+                                                    'homeactive' => 'active'));
         } else {//Validación de datos correcta
             
             //Crea el array de los datos a insertar en la tabla usuario

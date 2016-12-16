@@ -8,7 +8,9 @@
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="<?= base_url() ?>assets/img/favicon.ico" type="image/x-icon">
-
+        
+        <!-- SELECT2 -->
+        <link href="<?= base_url() ?>assets/css/select2.css" rel="stylesheet">
         <!-- Font awesome -->
         <link href="<?= base_url() ?>assets/css/font-awesome.css" rel="stylesheet">
         <!-- Bootstrap -->
@@ -223,7 +225,10 @@
                                 <a href="#"><span class="fa fa-youtube"></span></a>
                             </div>
                             <div class="mu-footer-copyright">
+
                                 <p>Diseñado por Manuel Francisco Mora Martín</p>
+
+
                             </div>         
                         </div>
                     </div>
@@ -231,7 +236,9 @@
             </div>
         </footer>
         <!-- End Footer -->
-
+        
+        <!-- SELECT2  -->
+        <script src="<?= base_url() ?>assets/js/select2.js"></script>  
         <!-- jQuery library -->
         <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>  
         <!-- Include all compiled plugins (below), or include individual files as needed -->
