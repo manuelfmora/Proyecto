@@ -223,7 +223,7 @@
                                 <a href="#"><span class="fa fa-youtube"></span></a>
                             </div>
                             <div class="mu-footer-copyright">
-                                <p>Designed by <a rel="nofollow" href="http://www.markups.io/">MarkUps.io</a></p>
+                                <p>Diseñado por Manuel Francisco Mora Martín</p>
                             </div>         
                         </div>
                     </div>
