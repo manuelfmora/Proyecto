@@ -18,40 +18,12 @@
                                     <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AtDiversidad/Buscar' ?>"  method="POST" >
                                         <div class="form-group">
                                             <label for="apellidos">Buscar por Apellidos</label><br><br>
-                                            <input type="text" class="form-control" placeholder="Apellidos" name="apellidos" id="apellidos" onKeyUp="buscar();" autocomplete="off" />
+                                            <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">
                                         </div>                                      
                                         <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
                                     </form>
                                 </div><!---->
                             </div><!---->
-                              <!---------------------------------------------- MENÚ CURSOS --------------------------------------------------------------------------------------->
-                            <!--------------------------------------------------------------------------------------------------------------------------------------------------->
- 
-                            
-                            <script>
-                                $(document).ready(function() {
-                                    $("#resultadoBusqueda").html('<p>JQUERY VACIO</p>');
-                                });
-
-                                function buscar() {
-                                    print('Entra el el scrip buscar');
-                                    var textoBusqueda = $("input#apellidos").val();
-
-                                     if (textoBusqueda != "") {
-                                        $.post("buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
-                                            
-                                            $("#resultadoBusqueda").html(mensaje);
-                                            
-                                         }); 
-                                     } else { 
-                                         
-                                        $("#resultadoBusqueda").html('<p>JQUERY VACIO</p>');
-                                        
-                                        };
-                                };
-                            </script>
-                            
-
 
                             <!---------------------------------------------- MENÚ CURSOS --------------------------------------------------------------------------------------->
                             <!--------------------------------------------------------------------------------------------------------------------------------------------------->
