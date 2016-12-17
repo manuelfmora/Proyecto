@@ -12,10 +12,9 @@ class User_insert extends CI_Controller{
         parent::__construct();
         
         $this->load->helper('Formulario');
-//        $this->load->model('M_Provincias');
         $this->load->model('M_User');    
         $this->load->library('form_validation');
-//        $this->load->library('L_Cart', 0, 'myCart');
+
         
     }
 
@@ -76,7 +75,13 @@ class User_insert extends CI_Controller{
 
             $this->M_User->addUsuario($data);
             
-            redirect('Login/Login/'.$data['nombre_usu'], 'location', 301);
+                   $cuerpo = $this->load->view('V_Registro_ok', array(), true);
+
+                    $this->load->view('V_Plantilla', Array(
+                                              'cuerpo'=>$cuerpo,
+                                              'homeactive' => 'active'));
+            
+//            redirect('Login/Login/'.$data['nombre_usu'], 'location', 301);
         }
     }
 

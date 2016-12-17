@@ -9,7 +9,7 @@
                         <h2>Usuario</h2>
                         
                         <i class="fa fa-spoon"> </i>              
-                        <span class="mu-title-bar"></span>>
+                        <span class="mu-title-bar"></span>
                     </div>
     
                     <div class="mu-contact-content">
@@ -23,7 +23,7 @@
                                                 <th>Usario</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                 <th>Baja Usuario</th>
+                                                 <th>Acciones</th>
                                                  <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
                                                 <th>Eliminar</th>
                                                  <?php endif;?>
@@ -38,8 +38,13 @@
                                                     <td><?= $value['nombre_persona'] ?></td>
                                                     <td><?= $value['apellidos_persona'] ?>  </td>
                                                     
-                                                    
+                                                     <?php if ($value['estado']=='A'): ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/UserRemove/baja/" . $value['idUsuario'] ?>">Baja</a></td>
+                                                    <?php endif;?>
+                                                    <?php if ($value['estado']=='B'): ?>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/UserRemove/alta/" . $value['idUsuario'] ?>">Alta</a></td>
+                                                    <?php endif;?>
+                                                    
                                                      <?php if ($this->session->userdata('username')=='admin'): ?>
                                                     <td><a class="mu-readmore-btn" href="<?= site_url() . "/UserRemove/eliminar/" . $value['idUsuario'] ?>">Eliminar</a></td>
                                                     <?php endif;?>

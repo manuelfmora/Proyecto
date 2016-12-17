@@ -98,18 +98,21 @@
                     <?= form_error('cod_provincia'); ?>
                     </div>
                   </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('telefono1') ?>" placeholder="Teléfono 1" name="telefono1" maxlength="9">
-                        <?= form_error('telefono1'); ?>
-                    </div>
+                  <div class="col-md-12"><!--Div Agrupa los dos teléfonos-->
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <input type="text" class="form-control" value="<?= set_value('telefono1') ?>" placeholder="Teléfono 1" name="telefono1" maxlength="9">
+                              <?= form_error('telefono1'); ?>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <input type="text" class="form-control" value="<?= set_value('telefono2') ?>" placeholder="Teléfono 2" name="telefono2" maxlength="9">
+                              <?= form_error('telefono2'); ?>
+                          </div>
+                      </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="<?= set_value('telefono2') ?>" placeholder="Teléfono 2" name="telefono2" maxlength="9">
-                        <?= form_error('telefono2'); ?>
-                    </div>
-                  </div>
+                  <!--fin DIV telefono 2-->
                   <div class="col-md-6">
                     <div class="form-group">
                         <input type="text" class="form-control" value="<?= set_value('tipo') ?>" placeholder="Tipo Familia" name="tipo" >

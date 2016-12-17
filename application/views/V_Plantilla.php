@@ -211,9 +211,10 @@
       
       
        <!--CREAMOS EL ID_CUERPO...............-->
-<section id="cuerpo">
-        <!-- Start Footer -->
-        <a name="pie"></a> 
+<!--<section id="cuerpo">-->
+       
+<!--        <a name="pie"></a> -->
+       <!-- Start Footer -->
         <footer id="mu-footer">
             <div class="container">
                 <div class="row">
@@ -254,7 +255,7 @@
 
         <!-- Custom js -->
         <script src="<?= base_url() ?>assets/js/custom.js"></script> 
-         </section>
+<!--         </section>-->
        <!-- // CREAMOS EL ID_CUERPO...............-->
        <script>
             $('select').select2({ width: '100%' });
@@ -280,7 +281,8 @@
                   return data;
                 },
                 theme: "square",
-                requestDelay: 400
+                /*Estaba en 400*/
+                requestDelay: 200
               };
 
               $("#searchApell").easyAutocomplete(options);

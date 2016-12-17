@@ -62,6 +62,18 @@ class M_User extends CI_Model{
     }
     
     /**
+     * Cambia el estado de un usuario a 'A', Alta
+     * @param String $username Nombre de usuario
+     */
+    public function setAltaUsuario($idUsuario) {
+        $data = array(
+            'estado' => 'A'
+        );
+        $this->db->where('idUsuario', $idUsuario);
+        $this->db->update('usuario', $data);
+    }    
+    
+    /**
      * Consulta los datos que se van a modificar para mostrarlos en el formualario
      * @param String $nombre_usu Nombre de usuario
      * @return Array
@@ -73,6 +85,20 @@ class M_User extends CI_Model{
                 . "WHERE nombre_usu = '$nombre_usu'");
                    
         return $query->row_array();
+    }
+    
+        /**
+     * Consulta los datos que se van a modificar para mostrarlos en el formualario
+     * @param String $nombre_usu Nombre de usuario
+     * @return Array
+     */
+    public function getEmail($idUsuario) {
+
+        $query = $this->db->query("SELECT correo "
+                . "FROM usuario "
+                . "WHERE idUsuario = '$idUsuario'");
+                   
+        return $query->row_array()['correo'];
     }
     
         /**

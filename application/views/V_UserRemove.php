@@ -5,7 +5,7 @@
           <div class="mu-reservation-area">
             <div class="mu-title">
               <span class="mu-subtitle">Eliminar Usuaio</span>
-              <h2>¿Desea darlo de baja?</h2>
+              <h2>¿Desea Eliminarlo?</h2>
               <i class="fa fa-spoon"></i>              
               <span class="mu-title-bar"></span>
             </div>

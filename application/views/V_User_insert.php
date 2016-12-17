@@ -76,7 +76,7 @@
 
                     </div>
                   </div>
-                    <input type="hidden" name="estado" value="B">
+<!--                    <input type="hidden" name="estado" value="B">-->
                   <button type="submit" name="GuardarUsuario" class="mu-readmore-btn">Registrarse</button>
                 </div>
               </form>      
