@@ -23,16 +23,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Proyecto/';
+//$config['base_url'] = 'http://localhost/Proyecto/';
 //$config['base_url'] = 'http://proyecto.com';
-//$config['base_url'] = 'http://iessansebastian.com/alumnos/2daw161Ev/mfmora/Proyecto';
+//$config['base_url'] = 'http://iessansebastian.com/alumnos/2daw161Ev/mfmora/';
 
-//if (defined('LOCALHOST')) {
-//    $config['base_url'] = 'http://localhost/Proyecto/';
-//}
-//if (defined('GERION')) {
-//    $config['base_url'] = 'http://iessansebastian.com/alumnos/2daw161Ev/mfmora/Proyecto';
-//}
+if (defined('LOCALHOST')) {
+    $config['base_url'] = 'http://localhost/Proyecto/';
+}
+if (defined('GERION')) {
+    $config['base_url'] = 'http://iessansebastian.com/alumnos/2daw161Ev/mfmora/';
+}
 
 /*
 |--------------------------------------------------------------------------
