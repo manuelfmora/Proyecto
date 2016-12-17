@@ -105,13 +105,16 @@ class M_Alumno extends CI_Model{
      * @param String $nombre_usu Nombre de Alumno
      * @return Int Nº de Alumnos
      */
-    public function getApellidosUsuario($apellido,$limit,$start) {
+    public function getApellidosUsuario($apellido,$limit,$start, $group="") {
+        $groupby = "";
+        if(!empty($group)){
+            $groupby = "GROUP BY ".$group;
+        }
         
         $query = $this->db->query("SELECT * "
                 . "FROM alumno "
-                . "WHERE apellidos like '%$apellido%' "
-                . "LIMIT $start, $limit; ");
-     
+                . "WHERE apellidos like '%$apellido%' ".$groupby
+                . " LIMIT $start, $limit; ");
    
         return $query->result_array();
     }

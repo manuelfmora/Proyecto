@@ -17,7 +17,7 @@
                                     <form class="mu-contact-form"  action= "<?= base_url() . 'index.php/AlumnoBuscar/Buscar' ?>"  method="POST" >
                                         <div class="form-group">
                                             <label for="apellidos">Buscar por Apellidos</label><br><br>
-                                            <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">
+                                            <input type="text" class="form-control" id="searchApell" placeholder="Apellidos" name="apellidos" autocomplete="off" />
                                         </div>                                      
                                         <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
                                     </form>
@@ -33,7 +33,7 @@
                                         <div class="form-group">
                                           <label for="apellidos">Buscar por Curso</label><br><br>
                                        
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
 
                                             <select name="cursos">
                                                 <option value="">Curso</option>
@@ -45,7 +45,7 @@
                                             </select>
 
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
 
                                             <select name="grupos">
                                                 <option value="">Grupo</option>
@@ -57,7 +57,7 @@
                                             </select>
 
                                         </div> 
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <button type="submit" class="mu-send-btn" value="entrar" name="entrar">Buscar</button>
                                         </div>
                                      </div>

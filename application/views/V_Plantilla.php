@@ -9,6 +9,10 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="<?= base_url() ?>assets/img/favicon.ico" type="image/x-icon">
 
+                <!-- Font awesome -->
+        <link href="<?= base_url() ?>assets/css/select2.css" rel="stylesheet">
+        <link href="<?= base_url() ?>assets/css/easy-autocomplete.css" rel="stylesheet">
+        <link href="<?= base_url() ?>assets/css/autocomplete.css" rel="stylesheet">
         <!-- Font awesome -->
         <link href="<?= base_url() ?>assets/css/font-awesome.css" rel="stylesheet">
         <!-- Bootstrap -->
@@ -231,12 +235,16 @@
             </div>
         </footer>
         <!-- End Footer -->
-
+ 
         <!-- jQuery library -->
         <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>  
         <!-- Include all compiled plugins (below), or include individual files as needed -->
+        
         <script src="<?= base_url() ?>assets/js/bootstrap.js"></script>   
         <!-- Slick slider -->
+                <!-- selct2 -->
+        <script src="<?= base_url() ?>assets/js/select2.js"></script> 
+        <script src="<?= base_url() ?>assets/js/autocomplete.js"></script>   
         <script type="text/javascript" src="<?= base_url() ?>assets/js/slick.js"></script>
         <!-- Counter -->
         <script type="text/javascript" src="<?= base_url() ?>assets/js/waypoints.js"></script>
@@ -248,6 +256,35 @@
         <script src="<?= base_url() ?>assets/js/custom.js"></script> 
          </section>
        <!-- // CREAMOS EL ID_CUERPO...............-->
+       <script>
+            $('select').select2({ width: '100%' });
+            var options = {
+                url: function() {
+                  return "/Proyecto/index.php/AtDiversidad/buscarApellidos";
+                },
+
+                getValue: function(jsonController) {
+                  return jsonController.apellidos;
+                },
+             
+                ajaxSettings: {
+                  dataType: "json",
+                  method: "POST",
+                  data: {
+                    dataType: "json"
+                  }
+                },
+
+                preparePostData: function(data) {
+                  data.apellidos = $("#searchApell").val();
+                  return data;
+                },
+                theme: "square",
+                requestDelay: 400
+              };
+
+              $("#searchApell").easyAutocomplete(options);
+        </script>
 
     </body>
 </html>
