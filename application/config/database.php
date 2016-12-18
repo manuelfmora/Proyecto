@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 
-if (defined('LOCALHOST')) {
+//if (defined('LOCALHOST')) {
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -97,30 +97,30 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );    
     
-}
+//}
 
-if (defined('GERION')) {
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '2daw161Ev_mfmora',
-	'password' => 'elfrra,70',
-	'database' => '2daw161Ev_mfmora01',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);    
-    
-
-}
+//if (defined('GERION')) {
+//$db['default'] = array(
+//	'dsn'	=> '',
+//	'hostname' => 'localhost',
+//	'username' => '2daw161Ev_mfmora',
+//	'password' => 'elfrra,70',
+//	'database' => '2daw161Ev_mfmora01',
+//	'dbdriver' => 'mysqli',
+//	'dbprefix' => '',
+//	'pconnect' => FALSE,
+//	'db_debug' => (ENVIRONMENT !== 'production'),
+//	'cache_on' => FALSE,
+//	'cachedir' => '',
+//	'char_set' => 'utf8',
+//	'dbcollat' => 'utf8_general_ci',
+//	'swap_pre' => '',
+//	'encrypt' => FALSE,
+//	'compress' => FALSE,
+//	'stricton' => FALSE,
+//	'failover' => array(),
+//	'save_queries' => TRUE
+//);    
+//    
+//
+//}
