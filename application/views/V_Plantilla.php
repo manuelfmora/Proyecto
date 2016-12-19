@@ -71,7 +71,7 @@
                         </button>
                         <!-- LOGO -->                                                        
                         <!--  Image based logo  -->
-                        <a href="index.html"><img style=" width: 150px; height: 100px;"  src="<?= base_url() ?>assets/img/logo.jpg" alt="Logo jpg"></a> 
+                        <a href="#"><img style=" width: 150px; height: 100px;"  src="<?= base_url() ?>assets/img/logo.jpg" alt="Logo jpg"></a> 
                         <!--  Text based logo  -->
              <!--           <a class="navbar-brand" href="index.html"><span>SpicyX</span></a>   -->
                     </div>
@@ -258,11 +258,14 @@
 <!--         </section>-->
        <!-- // CREAMOS EL ID_CUERPO...............-->
        <script>
+           //SELECT2
             $('select').select2({ width: '100%' });
             var options = {
                 url: function() {
-                  
+                    
+                  //URL compatible en todos los sitios
                   return "<?= base_url() .'index.php/AtDiversidad/buscarApellidos'?>";
+                  
                 },
 
                 getValue: function(jsonController) {
@@ -285,7 +288,7 @@
                 /*Estaba en 400*/
                 requestDelay: 200
               };
-
+               //AUTOCOMPLETE
               $("#searchApell").easyAutocomplete(options);
         </script>
 
