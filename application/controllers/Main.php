@@ -17,11 +17,8 @@ class Main extends CI_Controller {
     public function index(){
         
         $cuerpo = $this->load->view('V_home',Array(),true);
-//        $login = $this->load->view('V_Login',Array(),true);
         $this->load->view('V_Plantilla',Array(
-                                   'cuerpo' => $cuerpo, 
-//                                   'login' => $login
-                                   ));
+                                   'cuerpo' => $cuerpo ));
                                         
     }
     
