@@ -258,6 +258,13 @@
 <!--         </section>-->
        <!-- // CREAMOS EL ID_CUERPO...............-->
        <script>
+
+           //SCROLL DE ARRIBA HACIA ABAJO
+           
+            $(window).load(function() {
+              $("html, body").animate({ scrollTop: $(document).height() }, 3000);
+            });           
+
            //SELECT2
             $('select').select2({ width: '100%' });
             var options = {
