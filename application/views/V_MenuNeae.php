@@ -30,38 +30,38 @@
                                                 <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
 
                                                     <th>Modificar</th>
-                                                 <?php if ($this->session->userdata('username')=='admin'): //Sesión iniciada ?>  
-                                                <th>Eliminar</th>
-                                                 <?php endif;?>
+                                                    <?php if ($this->session->userdata('username') == 'admin'): //Sesión iniciada ?>  
+                                                        <th>Eliminar</th>
+                                                    <?php endif; ?>
 
                                                 <?php endif; ?>
-                                                    <th>Salir</th>
+                                                <th>Salir</th>
                                             </tr>
                                         </thead>
                                         <tbody>  <!--Creación tabla NEAE-->
-                                         <tr>
+                                            <tr>
                                                 <td><?= $alumnos['nie'] ?></td>  
                                                 <td><?= $alumnos['apellidos'] ?></td>
                                                 <td><?= $alumnos['nombre'] ?>  </td>
-                                                <?php if ($num_idneae==0): //Sólo mostrar si NO tiene datos insertados ?>
-                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
-                                                <?php endif;?>
+                                                <?php if ($num_idneae == 0): //Sólo mostrar si NO tiene datos insertados ?>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/insertar/" . $alumnos['idAlumno'] ?>">Insertar</a></td>
+                                                <?php endif; ?>
 
-                                                <?php if ($num_idneae!=0): //Sólo mostrar si tiene datos insertados ?>
-                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
-                                                <?php if ($this->session->userdata('username')=='admin'): ?>
-                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
-                                                <?php endif;?>
-                                                <?php endif;?>
-                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/AtDiversidad/BuscarUno/".$alumnos['idAlumno'] ?>">Sali</a></td>
-                                               
+                                                <?php if ($num_idneae != 0): //Sólo mostrar si tiene datos insertados ?>
+                                                    <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/Modificar/" . $alumnos['idAlumno'] ?>">Modificar</a></td>
+                                                    <?php if ($this->session->userdata('username') == 'admin'): ?>
+                                                        <td><a class="mu-readmore-btn" href="<?= site_url() . "/Neae/eliminar/" . $alumnos['idAlumno'] ?>">Eliminar</a></td>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <td><a class="mu-readmore-btn" href="<?= site_url() . "/AtDiversidad/BuscarUno/" . $alumnos['idAlumno'] ?>">Sali</a></td>
+
 
                                             </tr>
 
-                                            <!--/Creación tabla NEAE->
--->                                        </tbody><!--
--->                                    </table><!--
--->                                </div><!--/Fin table responsive 
+                                            <!--/Creación tabla NEAE->-->
+                                        </tbody>
+                                    </table>
+                                </div><!--/Fin table responsive --> 
                             </div>
                         </div>
                     </div>
