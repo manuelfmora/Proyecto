@@ -261,7 +261,8 @@
             $('select').select2({ width: '100%' });
             var options = {
                 url: function() {
-                  return "/Proyecto/index.php/AtDiversidad/buscarApellidos";
+                  
+                  return "<?= base_url() .'index.php/AtDiversidad/buscarApellidos'?>";
                 },
 
                 getValue: function(jsonController) {

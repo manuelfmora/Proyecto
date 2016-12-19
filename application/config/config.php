@@ -24,8 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //LOCALHOST
-$config['base_url'] = 'http://localhost/Proyecto/';
-//$config['base_url'] = 'http://proyecto.com';
+//$config['base_url'] = 'http://localhost/Proyecto/';
+
+//DESSMAN
+$config['base_url'] = 'http://proyecto.com';
 //
 //GERION
 //$config['base_url'] = 'http://iessansebastian.com/alumnos/2daw161Ev/mfmora/';
