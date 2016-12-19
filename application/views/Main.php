@@ -16,7 +16,7 @@ class Main extends CI_Controller {
      
     public function index(){
         
-        $cuerpo = $this->load->view('V_Home',Array(),true);
+        $cuerpo = $this->load->view('V_home',Array(),true);
         $this->load->view('V_Plantilla',Array(
                                    'cuerpo' => $cuerpo ));
                                         
