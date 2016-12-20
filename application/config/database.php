@@ -73,8 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+//LOCALHOST
 
-//if (defined('LOCALHOST')) {
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -97,9 +97,11 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );    
     
-//}
 
-//if (defined('GERION')) {
+
+//GERION
+
+
 //$db['default'] = array(
 //	'dsn'	=> '',
 //	'hostname' => 'localhost',
@@ -121,6 +123,4 @@ $db['default'] = array(
 //	'failover' => array(),
 //	'save_queries' => TRUE
 //);    
-//    
-//
-//}
+

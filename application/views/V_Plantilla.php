@@ -87,7 +87,7 @@
                              <!-- SESIÓN INCIADA -->   
                             <?php if (SesionIniciadaCheck()): //Sesión iniciada ?> 
                              <!--Menú Original -->  
-                            <li><a href="#cuerpo">HOME</a></li>
+                            <li><a href="<?= base_url()?>">HOME</a></li>
                               <!-- Menú salir -->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">HOLA:  <?= $this->session->userdata('username'); ?><span class="caret"></span></a>
