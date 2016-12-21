@@ -11,7 +11,7 @@
         <div class="col-md-12">
           <div class="mu-reservation-area">
             <div class="mu-title">
-              <span class="mu-subtitle">IES. Sebastián Fernándes</span>            
+              <span class="mu-subtitle">IES. Sebastián Fernández</span>            
 
             </div>
 

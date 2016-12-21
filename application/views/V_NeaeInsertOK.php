@@ -12,7 +12,7 @@
             </div>
             <div class="mu-reservation-content">
                 <center>
-                <a class="mu-readmore-btn" href="<?= base_url().'index.php/Neae'?>"> Ir a la página de inicio.</a>    
+                <a class="mu-readmore-btn" href="<?= base_url().'index.php/AtDiversidad'?>"> Ir a la página de inicio.</a>    
                 </center>
             </div>
           </div>
